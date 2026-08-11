@@ -1,0 +1,40 @@
+{
+  "bcr": 1.0,
+  "bundle_accuracy_rate": 1.0,
+  "consacc_relaxed": 1.0,
+  "consacc_strict": 1.0,
+  "constraint_violation_rates": {
+    "contradiction": 0.0,
+    "multi_hop": 0.0,
+    "provenance": 0.0,
+    "relational": 0.0,
+    "temporal": 0.0,
+    "transition": 0.0,
+    "uniqueness": 0.0
+  },
+  "family_accuracy": {
+    "conflict_validity": 1.0,
+    "contradiction": 1.0,
+    "counterfactual": 1.0,
+    "current_state": 1.0,
+    "historical_state": 1.0,
+    "multi_hop": 1.0,
+    "provenance": 1.0,
+    "temporal_order": 1.0,
+    "transition": 1.0
+  },
+  "gap_bundle_acc_minus_consacc": 0.0,
+  "gap_mean_acc_minus_bcr": 0.0,
+  "high_acc_inconsistent_rate": 0.0,
+  "mean_query_accuracy": 1.0,
+  "n_bundles": 125,
+  "n_queries": 825,
+  "notes": {
+    "gap_bundle_acc_minus_consacc": "Planning consistency-metrics.md: Acc_bundle - ConsAcc (Acc_bundle = fraction of fully-correct bundles)",
+    "gap_mean_acc_minus_bcr": "User milestone definition: MeanQueryAccuracy - BCR",
+    "metric_definition_conflict": "benchmark brief Gap=MeanQueryAcc-BCR vs planning Gap_bundle=Acc_bundle-ConsAcc; both reported."
+  },
+  "provenance_violation_rate": 0.0,
+  "relaxed_acc_threshold": 0.8,
+  "temporal_violation_rate": 0.0
+}

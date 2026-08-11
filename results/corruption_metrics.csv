@@ -1,0 +1,9 @@
+corruption,mean_query_accuracy,bcr,consacc_strict,consacc_relaxed,gap_mean_acc_minus_bcr,gap_bundle_acc_minus_consacc,high_acc_inconsistent_rate,temporal_violation_rate,provenance_violation_rate
+single_answer,0.8485,0.0,0.0,0.0,0.8485,0.0,1.0,1.0,1.0
+entity_swap,0.7879,0.0,0.0,0.0,0.7879,0.0,0.6,0.8,0.8
+temporal_mismatch,0.8182,0.2,0.2,0.2,0.6182,0.0,0.4,0.8,0.0
+wrong_provenance,0.8485,0.0,0.0,0.0,0.8485,0.0,1.0,0.0,1.0
+transition_inconsistency,0.9394,0.6,0.6,0.6,0.3394,0.0,0.4,0.4,0.0
+multihop_inconsistency,0.9394,0.6,0.6,0.6,0.3394,0.0,0.4,0.0,0.0
+high_acc_inconsistent,0.8485,0.0,0.0,0.0,0.8485,0.0,1.0,0.0,1.0
+consistent_wrong_world,0.3939,1.0,0.0,0.0,-0.6061,0.0,0.0,0.0,0.0

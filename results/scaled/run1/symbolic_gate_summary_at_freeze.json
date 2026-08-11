@@ -1,0 +1,10 @@
+{
+  "best_lift_bcr_vs_compact": -0.13888888888888884,
+  "best_lift_bcr_vs_recency": 0.19444444444444442,
+  "gap_persists": true,
+  "llm_advantage": false,
+  "llm_note": "Phi-3.5-mini-instruct-4bit download incomplete (weights .incomplete); H4 not executed",
+  "paper": "benchmark (+ weakened architecture claims; H0 does not beat compact flat)",
+  "selective_ablations": 4,
+  "verdict": "PARTIAL RESEARCH SIGNAL"
+}

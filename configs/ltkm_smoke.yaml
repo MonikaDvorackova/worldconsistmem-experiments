@@ -1,0 +1,11 @@
+system_id: H0_ltkm
+enable_archive: true
+enable_graph: true
+enable_provenance: true
+enable_conflict: true
+enable_temporal_validity: true
+max_logical_records: null
+k_baseline_retrieval: 5
+relaxed_acc_threshold: 0.8
+seed: 42
+n_worlds: 25

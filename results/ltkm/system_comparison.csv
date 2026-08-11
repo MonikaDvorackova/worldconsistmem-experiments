@@ -1,0 +1,9 @@
+system,mean_query_accuracy,bcr,consacc_strict,consacc_relaxed,gap_mean_acc_minus_bcr,high_acc_inconsistent_rate,consistent_wrong_rate,provenance_accuracy,temporal_violation_rate,abstention_rate,avg_stored_records,avg_records_consulted,avg_latency_ms,n_violations
+B1_flat_append,1.0,1.0,1.0,1.0,0.0,0.0,0.0,1.0,0.0,0.0,26.72,26.72,0.0337,0
+B2_latest_only,0.4848,0.2,0.2,0.2,0.2848,0.0,0.0,0.6,0.8,0.3939,19.8,19.8,0.0227,225
+B3_recency_retrieval,0.697,0.2,0.0,0.2,0.497,0.2,0.2,0.8,0.8,0.2424,26.72,5.0,0.3958,225
+B4_bm25,0.9091,0.4,0.4,0.4,0.5091,0.6,0.0,1.0,0.2,0.0909,26.72,5.0,0.4046,100
+H0_ltkm,1.0,1.0,1.0,1.0,0.0,0.0,0.0,1.0,0.0,0.0,111.88,1.0,0.0124,0
+H-archive,0.8788,0.4,0.2,0.4,0.4788,0.6,0.2,1.0,0.6,0.0909,103.16,0.88,0.0109,100
+H-temporal-validity,0.8788,0.4,0.2,0.4,0.4788,0.6,0.2,1.0,0.6,0.0,111.88,0.97,0.0112,100
+H-graph,0.9394,0.6,0.6,0.6,0.3394,0.4,0.0,1.0,0.0,0.0606,85.88,0.97,0.0109,100

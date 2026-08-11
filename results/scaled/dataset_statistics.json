@@ -1,0 +1,65 @@
+{
+  "capacity_accounting": {
+    "B1": "1 observation = 1 logical record; eviction removes records permanently",
+    "H0": "current+archive+graph+provenance+conflicts+event_index+transitions",
+    "budgets": {
+      "high": 400,
+      "low": 60,
+      "medium": 150,
+      "unconstrained": null
+    },
+    "eviction_B1": "recency | compact_padding | reservoir",
+    "eviction_H0": "padding events → excess provenance → terminated edges → non-protected archive → …",
+    "secondary_unit": "serialized_bytes",
+    "unit": "logical_records"
+  },
+  "difficulty_counts": {
+    "complex": 748,
+    "intermediate": 340
+  },
+  "events_by_tier": {
+    "large": {
+      "max": 215,
+      "mean": 215.0,
+      "min": 215
+    },
+    "medium": {
+      "max": 97,
+      "mean": 97.0,
+      "min": 97
+    },
+    "small": {
+      "max": 35,
+      "mean": 35.0,
+      "min": 35
+    }
+  },
+  "metric_freeze": {
+    "primary": "Gap_query = MeanQueryAccuracy - BCR",
+    "secondary": "Gap_bundle = BundleAccuracy - ConsAcc_strict",
+    "smoke_sha256": "3aa67ed1b6a39be3d9e1805d14f7d5ce7cc05f4655bdce0bc4ff49900c14c7ab"
+  },
+  "n_bundles": 1088,
+  "n_queries": 7140,
+  "n_worlds": 102,
+  "query_family_counts": {
+    "conflict_validity": 442,
+    "contradiction": 408,
+    "counterfactual": 408,
+    "current_state": 1088,
+    "historical_state": 1088,
+    "multi_hop": 1088,
+    "provenance": 1088,
+    "temporal_order": 442,
+    "transition": 1088
+  },
+  "retrieval_budgets": {
+    "low": 3,
+    "moderate": 8
+  },
+  "worlds_per_tier": {
+    "large": 34,
+    "medium": 34,
+    "small": 34
+  }
+}

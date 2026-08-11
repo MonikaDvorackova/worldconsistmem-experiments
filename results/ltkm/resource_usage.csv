@@ -1,0 +1,5 @@
+system,n_current,n_archive,n_graph_edges,n_graph_nodes,n_provenance,n_conflicts,n_unresolved_conflicts,n_event_index,logical_records,serialized_bytes,n_ingest,n_audit_obs_sealed
+H0_ltkm,13,8,13,7,44,1,0,26,109,10816,26,26
+H-archive,13,0,13,7,44,1,0,26,101,8005,26,26
+H-temporal-validity,13,8,13,7,44,1,0,26,109,10815,26,26
+H-graph,13,8,0,0,31,1,0,26,83,7568,26,26

@@ -1,0 +1,33 @@
+# WorldConsistMem smoke benchmark freeze record
+
+freeze_date: "2026-08-02"
+prior_smoke_sha256: "204e689e5febdc755c7081f434c3306d57f5168ce12e59391935c4ff0d96eb15"
+smoke_sha256: "3aa67ed1b6a39be3d9e1805d14f7d5ce7cc05f4655bdce0bc4ff49900c14c7ab"
+regeneration_reason: |
+  Bug: PROJECT_OWNERSHIP_TRANSFER observations omitted old_org_id / prior org
+  in affected_ids, so no observation-only memory could reconstruct pre-transfer
+  ownership. Minimal generator fix adds old_org_id and prior org to affected_ids.
+  Regression: tests/test_ownership_observation_bug.py
+n_worlds: 25
+n_events: 668
+n_observations: 693
+n_bundles: 125
+n_queries: 825
+query_family_distribution:
+  current_state: 125
+  historical_state: 125
+  transition: 125
+  multi_hop: 125
+  provenance: 125
+  temporal_order: 50
+  contradiction: 50
+  counterfactual: 50
+  conflict_validity: 50
+constraint_family_distribution:
+  uniqueness: 100
+  transition: 300
+  relational: 200
+  temporal: 300
+  contradiction: 225
+  multi_hop: 125
+  provenance: 125

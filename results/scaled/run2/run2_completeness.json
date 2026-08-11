@@ -1,0 +1,16 @@
+{
+  "complete": true,
+  "expected_new": 2734,
+  "failures": 0,
+  "filled": 2321,
+  "stats": {
+    "failures": 0,
+    "initial_todo": 2321,
+    "newly_generated": 2321,
+    "reused_run1": 2306,
+    "timeouts": 0,
+    "wall_hours": 3.264
+  },
+  "still_missing": 0,
+  "updated_at": "2026-08-04T00:02:25Z"
+}

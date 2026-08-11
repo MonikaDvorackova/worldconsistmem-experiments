@@ -1,0 +1,20 @@
+{
+  "expected_new_predictions": 2734,
+  "experiment": "H4-Run2-OptionA",
+  "frozen_config_hash": "1d8a74f29b6b328853f7484a62e52d06ca4237e472e278258bad20acdb090db2",
+  "h4_status": "not_supported",
+  "model": "mlx-community/Qwen2.5-3B-Instruct-4bit",
+  "paper": "BENCHMARK ONLY",
+  "run1_cache_sha256": "9bb7cfb1737a6d6a2ec15f1fc641bd1b0cd00919d1c473a2039d22ec776f8af3",
+  "run1_unchanged": true,
+  "runtime_hours_finalize_wall": 3.264,
+  "stats": {
+    "failures": 0,
+    "initial_todo": 2321,
+    "newly_generated": 2321,
+    "reused_run1": 2306,
+    "timeouts": 0,
+    "wall_hours": 3.264
+  },
+  "timestamp_utc": "2026-08-04T00:02:28Z"
+}

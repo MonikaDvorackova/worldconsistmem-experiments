@@ -1,0 +1,127 @@
+{
+  "cache_statistics": {
+    "Phi-3.5-mini-instruct-4bit": {
+      "by_status": {
+        "abstain": 5,
+        "malformed": 9,
+        "ok": 8
+      },
+      "by_system": {
+        "B1_flat_cap150_compact": 22
+      },
+      "cache_key_mismatches_vs_current_hasher": 22,
+      "raw_lines": 22,
+      "sha256": "1b33fa1ff78d79847f5821d8dad49a0373586eb3f7a4955d0684d77581ae0c98",
+      "unique_logical_valid": 22
+    },
+    "Qwen2.5-3B-Instruct-4bit": {
+      "by_status": {
+        "abstain": 1684,
+        "malformed": 15,
+        "ok": 607
+      },
+      "by_system": {
+        "B1_flat_cap150_compact": 1260,
+        "B3_recency_k8": 1046
+      },
+      "cache_key_mismatches_vs_current_hasher": 0,
+      "raw_lines": 2306,
+      "sha256": "9bb7cfb1737a6d6a2ec15f1fc641bd1b0cd00919d1c473a2039d22ec776f8af3",
+      "unique_logical_valid": 2306
+    }
+  },
+  "completed_predictions": 2328,
+  "completion_percentage": 23.0952,
+  "evidence_json_cap": 1200,
+  "expected_predictions": 10080,
+  "experiment": "H4-Run1",
+  "frozen_benchmark_checksum": {
+    "h4_checksums_before": {
+      "data/scaled/bundles.jsonl": "d28ffafb165aa5e8fdbe7142961d10e69af912144b8585acc9c7ac74897c5670",
+      "data/scaled/manifest.json": "37aa8604c3e6d87691332f66d2f7c0ab93578f2fe468bc29f7e8217c1675af3f",
+      "data/scaled/observations.jsonl": "94321e4a508acaebc416ff555574ab7010eed09f92a47ac72fdf789d464f5868",
+      "outputs/scaled/capacity_results.csv": "73032313284d8d548f982b510fa26dcc4dfe340f3f5bcaa6b941ef15e058a816",
+      "outputs/scaled/dataset_statistics.json": "19c3083513dcf0b81d6c7568d5f4fc4178f80765bbc7833a19c3e55186a1db49",
+      "outputs/scaled/system_results.csv": "70b5ce4f27d1b70d796678029bb375487d37cbf0701f1d75a56b4224c2a941bd",
+      "smoke": "3aa67ed1b6a39be3d9e1805d14f7d5ce7cc05f4655bdce0bc4ff49900c14c7ab"
+    },
+    "manifest_sha256": "37aa8604c3e6d87691332f66d2f7c0ab93578f2fe468bc29f7e8217c1675af3f",
+    "smoke_sha256": "3aa67ed1b6a39be3d9e1805d14f7d5ce7cc05f4655bdce0bc4ff49900c14c7ab"
+  },
+  "frozen_config_hash": "1d8a74f29b6b328853f7484a62e52d06ca4237e472e278258bad20acdb090db2",
+  "git_commit": "9fc6743608aaefdbd95de4ded98de41c050eef38",
+  "matching_rule": "logical (model_slug, system, query_id); Phi rows retained despite legacy cache_key hash mismatch",
+  "max_evidence_items": 3,
+  "max_tokens": 48,
+  "missing_data_audit": {
+    "classification": [
+      "blocked_by_one_model: Phi only 22/5040 logical cells (B1 only; cache_key hasher mismatch vs current protocol key)",
+      "blocked_by_systems: Qwen B4 and H0 not started",
+      "deterministic_tail: Qwen\u00d7B3 missing is contiguous suffix of traversal order",
+      "not_MCAR: missingness is structured by model/system schedule, not random over cells"
+    ],
+    "details": {
+      "miss_by_model_system": {
+        "Phi-3.5-mini-instruct-4bit|B1_flat_cap150_compact": 1238,
+        "Phi-3.5-mini-instruct-4bit|B3_recency_k8": 1260,
+        "Phi-3.5-mini-instruct-4bit|B4_bm25_k8": 1260,
+        "Phi-3.5-mini-instruct-4bit|H0_ltkm_cap150_ret8": 1260,
+        "Qwen2.5-3B-Instruct-4bit|B3_recency_k8": 214,
+        "Qwen2.5-3B-Instruct-4bit|B4_bm25_k8": 1260,
+        "Qwen2.5-3B-Instruct-4bit|H0_ltkm_cap150_ret8": 1260
+      },
+      "orphans": 0,
+      "phi_cache_key_mismatches": 22,
+      "phi_logical_completed": 22,
+      "qwen_b3_completed": 1046,
+      "qwen_b3_first_missing_index": 1046,
+      "qwen_b3_holes_before_first_miss": 0,
+      "qwen_b3_missing_tail": 214
+    }
+  },
+  "models": [
+    "mlx-community/Qwen2.5-3B-Instruct-4bit",
+    "mlx-community/Phi-3.5-mini-instruct-4bit"
+  ],
+  "note": "Source prediction files under outputs/scaled/llm_reader_cache were not modified; copies live under run1/.",
+  "prompt_tag": "prompt_v3_k3_mt48",
+  "run2_minimum_cells": {
+    "breakdown": {
+      "finish_qwen_b3_tail": 214,
+      "phi_b1_remaining": 1238,
+      "phi_b3": 1260,
+      "phi_b4": 1260,
+      "phi_h0": 1260,
+      "qwen_b4": 1260,
+      "qwen_h0": 1260
+    },
+    "eta_hours_one_model_at_193_per_30min": 7.08,
+    "eta_hours_two_model_at_193_per_30min": 20.08,
+    "observed_throughput_per_30min": 193,
+    "one_model_qwen_complete_for_H4_gate": 2734,
+    "two_model_full_remaining": 7752
+  },
+  "stop_point": {
+    "last_qwen_query_id": "sl0171_003:b:doc:2:temporal_order",
+    "last_qwen_system": "B3_recency_k8",
+    "phi_all": "22/5040",
+    "qwen_b1": "1260/1260",
+    "qwen_b3": "1046/1260",
+    "qwen_b4": "0/1260",
+    "qwen_h0": "0/1260",
+    "worker_stop": "SIGTERM after durable persist"
+  },
+  "sufficiency": {
+    "A_benchmark": "INTERIM only for LLM-reader Acc\u2013BCR gap under Qwen\u00d7B1 (and partial B3). Symbolic benchmark already frozen separately.",
+    "B_architecture": "NOT justified \u2014 H0 and B4 absent; Phi incomplete; no H0 vs compact-flat comparison under LLM readers.",
+    "C": "Architecture: neither from Run1. Benchmark (symbolic): already available from prior scaled study."
+  },
+  "systems": [
+    "B1_flat_cap150_compact",
+    "B3_recency_k8",
+    "B4_bm25_k8",
+    "H0_ltkm_cap150_ret8"
+  ],
+  "temperature": 0.0,
+  "timestamp_utc": "2026-08-03T15:38:39Z"
+}

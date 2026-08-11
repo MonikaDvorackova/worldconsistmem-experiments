@@ -1,0 +1,123 @@
+{
+  "mlx": "0.32.0",
+  "mlx_lm": "0.31.3",
+  "disk_free_gb": 29.156724736,
+  "models": {
+    "mlx-community/Qwen2.5-3B-Instruct-4bit": {
+      "model_id": "mlx-community/Qwen2.5-3B-Instruct-4bit",
+      "weight_bytes": 1736293090,
+      "files": [
+        {
+          "name": ".gitattributes",
+          "bytes": 1519
+        },
+        {
+          "name": "README.md",
+          "bytes": 755
+        },
+        {
+          "name": "added_tokens.json",
+          "bytes": 605
+        },
+        {
+          "name": "config.json",
+          "bytes": 785
+        },
+        {
+          "name": "merges.txt",
+          "bytes": 1671853
+        },
+        {
+          "name": "model.safetensors",
+          "bytes": 1736293090
+        },
+        {
+          "name": "model.safetensors.index.json",
+          "bytes": 66290
+        },
+        {
+          "name": "special_tokens_map.json",
+          "bytes": 613
+        },
+        {
+          "name": "tokenizer.json",
+          "bytes": 7031673
+        },
+        {
+          "name": "tokenizer_config.json",
+          "bytes": 7308
+        },
+        {
+          "name": "vocab.json",
+          "bytes": 2776833
+        }
+      ],
+      "complete": true
+    },
+    "mlx-community/Phi-3.5-mini-instruct-4bit": {
+      "model_id": "mlx-community/Phi-3.5-mini-instruct-4bit",
+      "weight_bytes": 2149696133,
+      "files": [
+        {
+          "name": ".gitattributes",
+          "bytes": 1519
+        },
+        {
+          "name": "README.md",
+          "bytes": 890
+        },
+        {
+          "name": "added_tokens.json",
+          "bytes": 293
+        },
+        {
+          "name": "config.json",
+          "bytes": 4149
+        },
+        {
+          "name": "configuration_phi3.py",
+          "bytes": 11153
+        },
+        {
+          "name": "model.safetensors",
+          "bytes": 2149696133
+        },
+        {
+          "name": "model.safetensors.index.json",
+          "bytes": 32695
+        },
+        {
+          "name": "modeling_phi3.py",
+          "bytes": 73814
+        },
+        {
+          "name": "sample_finetune.py",
+          "bytes": 6131
+        },
+        {
+          "name": "special_tokens_map.json",
+          "bytes": 569
+        },
+        {
+          "name": "tokenizer.json",
+          "bytes": 1844436
+        },
+        {
+          "name": "tokenizer.model",
+          "bytes": 499723
+        },
+        {
+          "name": "tokenizer_config.json",
+          "bytes": 3352
+        }
+      ],
+      "complete": true
+    }
+  },
+  "decoding": {
+    "temperature": 0.0,
+    "max_tokens": 48,
+    "early_stop_on_json": true,
+    "path": "mlx_lm.stream_generate"
+  }
+}

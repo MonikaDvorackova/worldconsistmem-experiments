@@ -1,0 +1,72 @@
+{
+  "timestamp_utc": "2026-08-03T20:40:08Z",
+  "interrupted_process_alive": false,
+  "interruption_reason": "manual_stop",
+  "detail": "stopped_duplicate_workers_pgrep_false_dead; cache left intact (last-wins load)",
+  "cache_raw_lines": 404,
+  "valid_unique_cache_keys": 399,
+  "valid_completed_run2": 399,
+  "duplicates": 5,
+  "duplicate_keys_sample": [
+    {
+      "line": 398,
+      "cache_key": "158de3fbc4709804ce2a24d23eae3b1b459210ab4dc88270bd4f4cba8494fe6d",
+      "memory_system": "B4_bm25_k8",
+      "query_id": "ss0102_002:b:ceo:7:provenance"
+    },
+    {
+      "line": 400,
+      "cache_key": "b66c1346291c38aa4abb515bfe3b9d710a564c156b3837d2d0dd3b2d9e482816",
+      "memory_system": "B4_bm25_k8",
+      "query_id": "ss0102_002:b:ceo:7:temporal_order"
+    },
+    {
+      "line": 401,
+      "cache_key": "158de3fbc4709804ce2a24d23eae3b1b459210ab4dc88270bd4f4cba8494fe6d",
+      "memory_system": "B4_bm25_k8",
+      "query_id": "ss0102_002:b:ceo:7:provenance"
+    },
+    {
+      "line": 403,
+      "cache_key": "35d02436fd397bf6e95b4b2952094af0f4c65d91eab9e86c8edd9b9cdca9dea8",
+      "memory_system": "B4_bm25_k8",
+      "query_id": "ss0102_002:b:ceo:7:contradiction"
+    },
+    {
+      "line": 404,
+      "cache_key": "b66c1346291c38aa4abb515bfe3b9d710a564c156b3837d2d0dd3b2d9e482816",
+      "memory_system": "B4_bm25_k8",
+      "query_id": "ss0102_002:b:ceo:7:temporal_order"
+    }
+  ],
+  "invalid_or_truncated": [],
+  "repaired_trailing_line": false,
+  "coverage_by_system": {
+    "B3_recency_k8": 214,
+    "B4_bm25_k8": 185
+  },
+  "remaining_by_system": {
+    "B4_bm25_k8": 1075,
+    "H0_ltkm_cap150_ret8": 1260
+  },
+  "remaining_total": 2335,
+  "expected_run2_new_total": 2734,
+  "run1_b1": 1260,
+  "run1_b3": 1046,
+  "last_durable": {
+    "memory_system": "B4_bm25_k8",
+    "query_id": "ss0102_002:b:ceo:7:temporal_order",
+    "world_id": "ss0102_002",
+    "bundle_id": "ss0102_002:b:ceo:7",
+    "status": "abstain",
+    "prediction_key": "1eb9efdfcbcab89bc82ca22d59f0cda71770cbb65a151523ec343c73cc0c422d",
+    "cache_mtime": "2026-08-03T22:26:47.510642"
+  },
+  "frozen_config_hash_computed": "1d8a74f29b6b328853f7484a62e52d06ca4237e472e278258bad20acdb090db2",
+  "frozen_config_hash_manifest": "1d8a74f29b6b328853f7484a62e52d06ca4237e472e278258bad20acdb090db2",
+  "config_hash_match": true,
+  "run1_sha_unchanged": true,
+  "run1_sha": "9bb7cfb1737a6d6a2ec15f1fc641bd1b0cd00919d1c473a2039d22ec776f8af3",
+  "protocol_ok": true,
+  "cache_rewritten": false
+}

@@ -1,0 +1,48 @@
+{
+  "best_lift_bcr_vs_compact": -0.13888888888888884,
+  "best_lift_bcr_vs_recency": 0.19444444444444442,
+  "gap_persists": true,
+  "h4_notes": {
+    "beats_flat": false,
+    "beats_ret": false,
+    "mal_ok": true,
+    "not_via_abs": true,
+    "systems": {
+      "B1_flat_cap150_compact": {
+        "abs": 0.7278,
+        "acc": 0.096,
+        "bcr": 0.0,
+        "high_inconsist": 0.0,
+        "mal": 0.0071
+      },
+      "B3_recency_k8": {
+        "abs": 0.7278,
+        "acc": 0.0929,
+        "bcr": 0.0,
+        "high_inconsist": 0.0,
+        "mal": 0.0071
+      },
+      "B4_bm25_k8": {
+        "abs": 0.5786,
+        "acc": 0.1484,
+        "bcr": 0.0,
+        "high_inconsist": 0.0,
+        "mal": 0.0008
+      },
+      "H0_ltkm_cap150_ret8": {
+        "abs": 0.4825,
+        "acc": 0.1849,
+        "bcr": 0.0,
+        "high_inconsist": 0.0,
+        "mal": 0.0286
+      }
+    }
+  },
+  "h4_run": "run2_option_a_qwen",
+  "h4_status": "not_supported",
+  "llm_advantage": false,
+  "llm_note": "Qwen Option A complete; status=not_supported",
+  "paper": "BENCHMARK ONLY",
+  "selective_ablations": 4,
+  "verdict": "BENCHMARK ONLY"
+}

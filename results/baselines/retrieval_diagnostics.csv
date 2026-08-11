@@ -1,0 +1,12 @@
+baseline_id,run_id,k,recall_at_k,avg_retrieved,avg_stored
+B0_oracle,oracle,,,0.0,1.0
+B1_flat_append,flat,,1.0,26.72,26.72
+B2_latest_only,latest,,0.8182,19.8,19.8
+B3_recency_retrieval,recency_k5,5,0.9091,5.0,26.72
+B4_bm25,bm25_k5,5,0.9139,5.0,26.72
+B5_reservoir_c8,reservoir_c8_s0,,0.1515,8.0,8.0
+B5_reservoir_c8,reservoir_c8_s1,,0.1515,8.0,8.0
+B5_reservoir_c8,reservoir_c8_s2,,0.303,8.0,8.0
+B5_reservoir_c16,reservoir_c16_s0,,0.5964,16.0,16.0
+B5_reservoir_c16,reservoir_c16_s1,,0.5394,16.0,16.0
+B5_reservoir_c16,reservoir_c16_s2,,0.9152,16.0,16.0

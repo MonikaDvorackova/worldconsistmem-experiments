@@ -1,0 +1,17 @@
+{
+  "completed_valid": 1922,
+  "current_process_pid": 75170,
+  "estimated_hours_remaining": 19.42,
+  "failed": 0,
+  "last_restart_reason": "adopt_existing_healthy_worker",
+  "model": "mlx-community/Qwen2.5-3B-Instruct-4bit",
+  "newly_generated": 0,
+  "remaining": 8158,
+  "restart_count": 0,
+  "rolling_queries_per_30min": 210,
+  "skipped_from_cache": 1922,
+  "system": "B3_recency_k8",
+  "timeout_count": 0,
+  "total_expected": 10080,
+  "updated_at": "2026-08-03T14:17:02Z"
+}

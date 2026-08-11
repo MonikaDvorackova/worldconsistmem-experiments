@@ -1,0 +1,62 @@
+{
+  "ablation_archive": [
+    {
+      "H0_bcr": 1.0,
+      "H0_hist_acc": 1.0,
+      "H_archive_bcr": 0.4,
+      "H_archive_hist_acc": 0.2
+    }
+  ],
+  "ablation_graph": [
+    {
+      "H0_bcr": 1.0,
+      "H0_mh_acc": 1.0,
+      "H_graph_bcr": 0.6,
+      "H_graph_mh_acc": 0.6
+    }
+  ],
+  "corrected_vs_b4": [
+    {
+      "b4": "__ABSTAIN__",
+      "gold": "w0042_000:org:0",
+      "h0": "w0042_000:org:0",
+      "query_id": "w0042_000:b:ceo:0:multihop",
+      "slot": "ceo_employer"
+    },
+    {
+      "b4": "__ABSTAIN__",
+      "gold": "w0042_000:org:0",
+      "h0": "w0042_000:org:0",
+      "query_id": "w0042_000:b:own:1:historical",
+      "slot": "owner_historical"
+    },
+    {
+      "b4": "__ABSTAIN__",
+      "gold": {
+        "approver": "w0042_000:person:1",
+        "project_id": "w0042_000:project:0"
+      },
+      "h0": {
+        "approver": "w0042_000:person:1",
+        "project_id": "w0042_000:project:0"
+      },
+      "query_id": "w0042_000:b:doc:2:multihop",
+      "slot": "doc_approve_project"
+    },
+    {
+      "b4": "__ABSTAIN__",
+      "gold": "w0042_001:org:0",
+      "h0": "w0042_001:org:0",
+      "query_id": "w0042_001:b:ceo:0:multihop",
+      "slot": "ceo_employer"
+    },
+    {
+      "b4": "__ABSTAIN__",
+      "gold": "w0042_001:org:0",
+      "h0": "w0042_001:org:0",
+      "query_id": "w0042_001:b:own:1:historical",
+      "slot": "owner_historical"
+    }
+  ],
+  "ltkm_remaining": []
+}

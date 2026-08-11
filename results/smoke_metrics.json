@@ -1,0 +1,169 @@
+{
+  "corruption": [
+    {
+      "bcr": 0.0,
+      "consacc_relaxed": 0.0,
+      "consacc_strict": 0.0,
+      "corruption": "single_answer",
+      "gap_bundle_acc_minus_consacc": 0.0,
+      "gap_mean_acc_minus_bcr": 0.8485,
+      "high_acc_inconsistent_rate": 1.0,
+      "mean_query_accuracy": 0.8485,
+      "provenance_violation_rate": 1.0,
+      "temporal_violation_rate": 1.0
+    },
+    {
+      "bcr": 0.0,
+      "consacc_relaxed": 0.0,
+      "consacc_strict": 0.0,
+      "corruption": "entity_swap",
+      "gap_bundle_acc_minus_consacc": 0.0,
+      "gap_mean_acc_minus_bcr": 0.7879,
+      "high_acc_inconsistent_rate": 0.6,
+      "mean_query_accuracy": 0.7879,
+      "provenance_violation_rate": 0.8,
+      "temporal_violation_rate": 0.8
+    },
+    {
+      "bcr": 0.2,
+      "consacc_relaxed": 0.2,
+      "consacc_strict": 0.2,
+      "corruption": "temporal_mismatch",
+      "gap_bundle_acc_minus_consacc": 0.0,
+      "gap_mean_acc_minus_bcr": 0.6182,
+      "high_acc_inconsistent_rate": 0.4,
+      "mean_query_accuracy": 0.8182,
+      "provenance_violation_rate": 0.0,
+      "temporal_violation_rate": 0.8
+    },
+    {
+      "bcr": 0.0,
+      "consacc_relaxed": 0.0,
+      "consacc_strict": 0.0,
+      "corruption": "wrong_provenance",
+      "gap_bundle_acc_minus_consacc": 0.0,
+      "gap_mean_acc_minus_bcr": 0.8485,
+      "high_acc_inconsistent_rate": 1.0,
+      "mean_query_accuracy": 0.8485,
+      "provenance_violation_rate": 1.0,
+      "temporal_violation_rate": 0.0
+    },
+    {
+      "bcr": 0.6,
+      "consacc_relaxed": 0.6,
+      "consacc_strict": 0.6,
+      "corruption": "transition_inconsistency",
+      "gap_bundle_acc_minus_consacc": 0.0,
+      "gap_mean_acc_minus_bcr": 0.3394,
+      "high_acc_inconsistent_rate": 0.4,
+      "mean_query_accuracy": 0.9394,
+      "provenance_violation_rate": 0.0,
+      "temporal_violation_rate": 0.4
+    },
+    {
+      "bcr": 0.6,
+      "consacc_relaxed": 0.6,
+      "consacc_strict": 0.6,
+      "corruption": "multihop_inconsistency",
+      "gap_bundle_acc_minus_consacc": 0.0,
+      "gap_mean_acc_minus_bcr": 0.3394,
+      "high_acc_inconsistent_rate": 0.4,
+      "mean_query_accuracy": 0.9394,
+      "provenance_violation_rate": 0.0,
+      "temporal_violation_rate": 0.0
+    },
+    {
+      "bcr": 0.0,
+      "consacc_relaxed": 0.0,
+      "consacc_strict": 0.0,
+      "corruption": "high_acc_inconsistent",
+      "gap_bundle_acc_minus_consacc": 0.0,
+      "gap_mean_acc_minus_bcr": 0.8485,
+      "high_acc_inconsistent_rate": 1.0,
+      "mean_query_accuracy": 0.8485,
+      "provenance_violation_rate": 1.0,
+      "temporal_violation_rate": 0.0
+    },
+    {
+      "bcr": 1.0,
+      "consacc_relaxed": 0.0,
+      "consacc_strict": 0.0,
+      "corruption": "consistent_wrong_world",
+      "gap_bundle_acc_minus_consacc": 0.0,
+      "gap_mean_acc_minus_bcr": -0.6061,
+      "high_acc_inconsistent_rate": 0.0,
+      "mean_query_accuracy": 0.3939,
+      "provenance_violation_rate": 0.0,
+      "temporal_violation_rate": 0.0
+    }
+  ],
+  "gold": {
+    "bcr": 1.0,
+    "bundle_accuracy_rate": 1.0,
+    "consacc_relaxed": 1.0,
+    "consacc_strict": 1.0,
+    "constraint_violation_rates": {
+      "contradiction": 0.0,
+      "multi_hop": 0.0,
+      "provenance": 0.0,
+      "relational": 0.0,
+      "temporal": 0.0,
+      "transition": 0.0,
+      "uniqueness": 0.0
+    },
+    "family_accuracy": {
+      "conflict_validity": 1.0,
+      "contradiction": 1.0,
+      "counterfactual": 1.0,
+      "current_state": 1.0,
+      "historical_state": 1.0,
+      "multi_hop": 1.0,
+      "provenance": 1.0,
+      "temporal_order": 1.0,
+      "transition": 1.0
+    },
+    "gap_bundle_acc_minus_consacc": 0.0,
+    "gap_mean_acc_minus_bcr": 0.0,
+    "high_acc_inconsistent_rate": 0.0,
+    "mean_query_accuracy": 1.0,
+    "n_bundles": 125,
+    "n_queries": 825,
+    "notes": {
+      "gap_bundle_acc_minus_consacc": "Planning consistency-metrics.md: Acc_bundle - ConsAcc (Acc_bundle = fraction of fully-correct bundles)",
+      "gap_mean_acc_minus_bcr": "User milestone definition: MeanQueryAccuracy - BCR",
+      "metric_definition_conflict": "benchmark brief Gap=MeanQueryAcc-BCR vs planning Gap_bundle=Acc_bundle-ConsAcc; both reported."
+    },
+    "provenance_violation_rate": 0.0,
+    "relaxed_acc_threshold": 0.8,
+    "temporal_violation_rate": 0.0
+  },
+  "scale": {
+    "constraint_family_annotation_counts": {
+      "contradiction": 225,
+      "multi_hop": 125,
+      "provenance": 125,
+      "relational": 200,
+      "temporal": 300,
+      "transition": 300,
+      "uniqueness": 100
+    },
+    "min_bundles_per_world": 5,
+    "min_events_per_world": 25,
+    "min_queries_per_bundle": 6,
+    "n_bundles": 125,
+    "n_events": 668,
+    "n_queries": 825,
+    "n_worlds": 25,
+    "query_family_distribution": {
+      "conflict_validity": 50,
+      "contradiction": 50,
+      "counterfactual": 50,
+      "current_state": 125,
+      "historical_state": 125,
+      "multi_hop": 125,
+      "provenance": 125,
+      "temporal_order": 50,
+      "transition": 125
+    }
+  }
+}

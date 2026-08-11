@@ -1,0 +1,1124 @@
+[
+  {
+    "difficulties": {
+      "intermediate": 10
+    },
+    "n_bundles": 10,
+    "n_events": 35,
+    "n_queries": 66,
+    "seed": 100,
+    "tier": "small",
+    "world_id": "ss0100_000"
+  },
+  {
+    "difficulties": {
+      "intermediate": 10
+    },
+    "n_bundles": 10,
+    "n_events": 35,
+    "n_queries": 66,
+    "seed": 101,
+    "tier": "small",
+    "world_id": "ss0101_001"
+  },
+  {
+    "difficulties": {
+      "intermediate": 10
+    },
+    "n_bundles": 10,
+    "n_events": 35,
+    "n_queries": 66,
+    "seed": 102,
+    "tier": "small",
+    "world_id": "ss0102_002"
+  },
+  {
+    "difficulties": {
+      "intermediate": 10
+    },
+    "n_bundles": 10,
+    "n_events": 35,
+    "n_queries": 66,
+    "seed": 103,
+    "tier": "small",
+    "world_id": "ss0103_003"
+  },
+  {
+    "difficulties": {
+      "intermediate": 10
+    },
+    "n_bundles": 10,
+    "n_events": 35,
+    "n_queries": 66,
+    "seed": 104,
+    "tier": "small",
+    "world_id": "ss0104_004"
+  },
+  {
+    "difficulties": {
+      "intermediate": 10
+    },
+    "n_bundles": 10,
+    "n_events": 35,
+    "n_queries": 66,
+    "seed": 105,
+    "tier": "small",
+    "world_id": "ss0105_005"
+  },
+  {
+    "difficulties": {
+      "intermediate": 10
+    },
+    "n_bundles": 10,
+    "n_events": 35,
+    "n_queries": 66,
+    "seed": 106,
+    "tier": "small",
+    "world_id": "ss0106_006"
+  },
+  {
+    "difficulties": {
+      "intermediate": 10
+    },
+    "n_bundles": 10,
+    "n_events": 35,
+    "n_queries": 66,
+    "seed": 107,
+    "tier": "small",
+    "world_id": "ss0107_007"
+  },
+  {
+    "difficulties": {
+      "intermediate": 10
+    },
+    "n_bundles": 10,
+    "n_events": 35,
+    "n_queries": 66,
+    "seed": 108,
+    "tier": "small",
+    "world_id": "ss0108_008"
+  },
+  {
+    "difficulties": {
+      "intermediate": 10
+    },
+    "n_bundles": 10,
+    "n_events": 35,
+    "n_queries": 66,
+    "seed": 109,
+    "tier": "small",
+    "world_id": "ss0109_009"
+  },
+  {
+    "difficulties": {
+      "intermediate": 10
+    },
+    "n_bundles": 10,
+    "n_events": 35,
+    "n_queries": 66,
+    "seed": 110,
+    "tier": "small",
+    "world_id": "ss0110_010"
+  },
+  {
+    "difficulties": {
+      "intermediate": 10
+    },
+    "n_bundles": 10,
+    "n_events": 35,
+    "n_queries": 66,
+    "seed": 111,
+    "tier": "small",
+    "world_id": "ss0111_011"
+  },
+  {
+    "difficulties": {
+      "intermediate": 10
+    },
+    "n_bundles": 10,
+    "n_events": 35,
+    "n_queries": 66,
+    "seed": 112,
+    "tier": "small",
+    "world_id": "ss0112_012"
+  },
+  {
+    "difficulties": {
+      "intermediate": 10
+    },
+    "n_bundles": 10,
+    "n_events": 35,
+    "n_queries": 66,
+    "seed": 113,
+    "tier": "small",
+    "world_id": "ss0113_013"
+  },
+  {
+    "difficulties": {
+      "intermediate": 10
+    },
+    "n_bundles": 10,
+    "n_events": 35,
+    "n_queries": 66,
+    "seed": 114,
+    "tier": "small",
+    "world_id": "ss0114_014"
+  },
+  {
+    "difficulties": {
+      "intermediate": 10
+    },
+    "n_bundles": 10,
+    "n_events": 35,
+    "n_queries": 66,
+    "seed": 115,
+    "tier": "small",
+    "world_id": "ss0115_015"
+  },
+  {
+    "difficulties": {
+      "intermediate": 10
+    },
+    "n_bundles": 10,
+    "n_events": 35,
+    "n_queries": 66,
+    "seed": 116,
+    "tier": "small",
+    "world_id": "ss0116_016"
+  },
+  {
+    "difficulties": {
+      "intermediate": 10
+    },
+    "n_bundles": 10,
+    "n_events": 35,
+    "n_queries": 66,
+    "seed": 117,
+    "tier": "small",
+    "world_id": "ss0117_017"
+  },
+  {
+    "difficulties": {
+      "intermediate": 10
+    },
+    "n_bundles": 10,
+    "n_events": 35,
+    "n_queries": 66,
+    "seed": 118,
+    "tier": "small",
+    "world_id": "ss0118_018"
+  },
+  {
+    "difficulties": {
+      "intermediate": 10
+    },
+    "n_bundles": 10,
+    "n_events": 35,
+    "n_queries": 66,
+    "seed": 119,
+    "tier": "small",
+    "world_id": "ss0119_019"
+  },
+  {
+    "difficulties": {
+      "intermediate": 10
+    },
+    "n_bundles": 10,
+    "n_events": 35,
+    "n_queries": 66,
+    "seed": 120,
+    "tier": "small",
+    "world_id": "ss0120_020"
+  },
+  {
+    "difficulties": {
+      "intermediate": 10
+    },
+    "n_bundles": 10,
+    "n_events": 35,
+    "n_queries": 66,
+    "seed": 121,
+    "tier": "small",
+    "world_id": "ss0121_021"
+  },
+  {
+    "difficulties": {
+      "intermediate": 10
+    },
+    "n_bundles": 10,
+    "n_events": 35,
+    "n_queries": 66,
+    "seed": 122,
+    "tier": "small",
+    "world_id": "ss0122_022"
+  },
+  {
+    "difficulties": {
+      "intermediate": 10
+    },
+    "n_bundles": 10,
+    "n_events": 35,
+    "n_queries": 66,
+    "seed": 123,
+    "tier": "small",
+    "world_id": "ss0123_023"
+  },
+  {
+    "difficulties": {
+      "intermediate": 10
+    },
+    "n_bundles": 10,
+    "n_events": 35,
+    "n_queries": 66,
+    "seed": 124,
+    "tier": "small",
+    "world_id": "ss0124_024"
+  },
+  {
+    "difficulties": {
+      "intermediate": 10
+    },
+    "n_bundles": 10,
+    "n_events": 35,
+    "n_queries": 66,
+    "seed": 125,
+    "tier": "small",
+    "world_id": "ss0125_025"
+  },
+  {
+    "difficulties": {
+      "intermediate": 10
+    },
+    "n_bundles": 10,
+    "n_events": 35,
+    "n_queries": 66,
+    "seed": 126,
+    "tier": "small",
+    "world_id": "ss0126_026"
+  },
+  {
+    "difficulties": {
+      "intermediate": 10
+    },
+    "n_bundles": 10,
+    "n_events": 35,
+    "n_queries": 66,
+    "seed": 127,
+    "tier": "small",
+    "world_id": "ss0127_027"
+  },
+  {
+    "difficulties": {
+      "intermediate": 10
+    },
+    "n_bundles": 10,
+    "n_events": 35,
+    "n_queries": 66,
+    "seed": 128,
+    "tier": "small",
+    "world_id": "ss0128_028"
+  },
+  {
+    "difficulties": {
+      "intermediate": 10
+    },
+    "n_bundles": 10,
+    "n_events": 35,
+    "n_queries": 66,
+    "seed": 129,
+    "tier": "small",
+    "world_id": "ss0129_029"
+  },
+  {
+    "difficulties": {
+      "intermediate": 10
+    },
+    "n_bundles": 10,
+    "n_events": 35,
+    "n_queries": 66,
+    "seed": 130,
+    "tier": "small",
+    "world_id": "ss0130_030"
+  },
+  {
+    "difficulties": {
+      "intermediate": 10
+    },
+    "n_bundles": 10,
+    "n_events": 35,
+    "n_queries": 66,
+    "seed": 131,
+    "tier": "small",
+    "world_id": "ss0131_031"
+  },
+  {
+    "difficulties": {
+      "intermediate": 10
+    },
+    "n_bundles": 10,
+    "n_events": 35,
+    "n_queries": 66,
+    "seed": 132,
+    "tier": "small",
+    "world_id": "ss0132_032"
+  },
+  {
+    "difficulties": {
+      "intermediate": 10
+    },
+    "n_bundles": 10,
+    "n_events": 35,
+    "n_queries": 66,
+    "seed": 133,
+    "tier": "small",
+    "world_id": "ss0133_033"
+  },
+  {
+    "difficulties": {
+      "complex": 10
+    },
+    "n_bundles": 10,
+    "n_events": 97,
+    "n_queries": 66,
+    "seed": 134,
+    "tier": "medium",
+    "world_id": "sm0134_000"
+  },
+  {
+    "difficulties": {
+      "complex": 10
+    },
+    "n_bundles": 10,
+    "n_events": 97,
+    "n_queries": 66,
+    "seed": 135,
+    "tier": "medium",
+    "world_id": "sm0135_001"
+  },
+  {
+    "difficulties": {
+      "complex": 10
+    },
+    "n_bundles": 10,
+    "n_events": 97,
+    "n_queries": 66,
+    "seed": 136,
+    "tier": "medium",
+    "world_id": "sm0136_002"
+  },
+  {
+    "difficulties": {
+      "complex": 10
+    },
+    "n_bundles": 10,
+    "n_events": 97,
+    "n_queries": 66,
+    "seed": 137,
+    "tier": "medium",
+    "world_id": "sm0137_003"
+  },
+  {
+    "difficulties": {
+      "complex": 10
+    },
+    "n_bundles": 10,
+    "n_events": 97,
+    "n_queries": 66,
+    "seed": 138,
+    "tier": "medium",
+    "world_id": "sm0138_004"
+  },
+  {
+    "difficulties": {
+      "complex": 10
+    },
+    "n_bundles": 10,
+    "n_events": 97,
+    "n_queries": 66,
+    "seed": 139,
+    "tier": "medium",
+    "world_id": "sm0139_005"
+  },
+  {
+    "difficulties": {
+      "complex": 10
+    },
+    "n_bundles": 10,
+    "n_events": 97,
+    "n_queries": 66,
+    "seed": 140,
+    "tier": "medium",
+    "world_id": "sm0140_006"
+  },
+  {
+    "difficulties": {
+      "complex": 10
+    },
+    "n_bundles": 10,
+    "n_events": 97,
+    "n_queries": 66,
+    "seed": 141,
+    "tier": "medium",
+    "world_id": "sm0141_007"
+  },
+  {
+    "difficulties": {
+      "complex": 10
+    },
+    "n_bundles": 10,
+    "n_events": 97,
+    "n_queries": 66,
+    "seed": 142,
+    "tier": "medium",
+    "world_id": "sm0142_008"
+  },
+  {
+    "difficulties": {
+      "complex": 10
+    },
+    "n_bundles": 10,
+    "n_events": 97,
+    "n_queries": 66,
+    "seed": 143,
+    "tier": "medium",
+    "world_id": "sm0143_009"
+  },
+  {
+    "difficulties": {
+      "complex": 10
+    },
+    "n_bundles": 10,
+    "n_events": 97,
+    "n_queries": 66,
+    "seed": 144,
+    "tier": "medium",
+    "world_id": "sm0144_010"
+  },
+  {
+    "difficulties": {
+      "complex": 10
+    },
+    "n_bundles": 10,
+    "n_events": 97,
+    "n_queries": 66,
+    "seed": 145,
+    "tier": "medium",
+    "world_id": "sm0145_011"
+  },
+  {
+    "difficulties": {
+      "complex": 10
+    },
+    "n_bundles": 10,
+    "n_events": 97,
+    "n_queries": 66,
+    "seed": 146,
+    "tier": "medium",
+    "world_id": "sm0146_012"
+  },
+  {
+    "difficulties": {
+      "complex": 10
+    },
+    "n_bundles": 10,
+    "n_events": 97,
+    "n_queries": 66,
+    "seed": 147,
+    "tier": "medium",
+    "world_id": "sm0147_013"
+  },
+  {
+    "difficulties": {
+      "complex": 10
+    },
+    "n_bundles": 10,
+    "n_events": 97,
+    "n_queries": 66,
+    "seed": 148,
+    "tier": "medium",
+    "world_id": "sm0148_014"
+  },
+  {
+    "difficulties": {
+      "complex": 10
+    },
+    "n_bundles": 10,
+    "n_events": 97,
+    "n_queries": 66,
+    "seed": 149,
+    "tier": "medium",
+    "world_id": "sm0149_015"
+  },
+  {
+    "difficulties": {
+      "complex": 10
+    },
+    "n_bundles": 10,
+    "n_events": 97,
+    "n_queries": 66,
+    "seed": 150,
+    "tier": "medium",
+    "world_id": "sm0150_016"
+  },
+  {
+    "difficulties": {
+      "complex": 10
+    },
+    "n_bundles": 10,
+    "n_events": 97,
+    "n_queries": 66,
+    "seed": 151,
+    "tier": "medium",
+    "world_id": "sm0151_017"
+  },
+  {
+    "difficulties": {
+      "complex": 10
+    },
+    "n_bundles": 10,
+    "n_events": 97,
+    "n_queries": 66,
+    "seed": 152,
+    "tier": "medium",
+    "world_id": "sm0152_018"
+  },
+  {
+    "difficulties": {
+      "complex": 10
+    },
+    "n_bundles": 10,
+    "n_events": 97,
+    "n_queries": 66,
+    "seed": 153,
+    "tier": "medium",
+    "world_id": "sm0153_019"
+  },
+  {
+    "difficulties": {
+      "complex": 10
+    },
+    "n_bundles": 10,
+    "n_events": 97,
+    "n_queries": 66,
+    "seed": 154,
+    "tier": "medium",
+    "world_id": "sm0154_020"
+  },
+  {
+    "difficulties": {
+      "complex": 10
+    },
+    "n_bundles": 10,
+    "n_events": 97,
+    "n_queries": 66,
+    "seed": 155,
+    "tier": "medium",
+    "world_id": "sm0155_021"
+  },
+  {
+    "difficulties": {
+      "complex": 10
+    },
+    "n_bundles": 10,
+    "n_events": 97,
+    "n_queries": 66,
+    "seed": 156,
+    "tier": "medium",
+    "world_id": "sm0156_022"
+  },
+  {
+    "difficulties": {
+      "complex": 10
+    },
+    "n_bundles": 10,
+    "n_events": 97,
+    "n_queries": 66,
+    "seed": 157,
+    "tier": "medium",
+    "world_id": "sm0157_023"
+  },
+  {
+    "difficulties": {
+      "complex": 10
+    },
+    "n_bundles": 10,
+    "n_events": 97,
+    "n_queries": 66,
+    "seed": 158,
+    "tier": "medium",
+    "world_id": "sm0158_024"
+  },
+  {
+    "difficulties": {
+      "complex": 10
+    },
+    "n_bundles": 10,
+    "n_events": 97,
+    "n_queries": 66,
+    "seed": 159,
+    "tier": "medium",
+    "world_id": "sm0159_025"
+  },
+  {
+    "difficulties": {
+      "complex": 10
+    },
+    "n_bundles": 10,
+    "n_events": 97,
+    "n_queries": 66,
+    "seed": 160,
+    "tier": "medium",
+    "world_id": "sm0160_026"
+  },
+  {
+    "difficulties": {
+      "complex": 10
+    },
+    "n_bundles": 10,
+    "n_events": 97,
+    "n_queries": 66,
+    "seed": 161,
+    "tier": "medium",
+    "world_id": "sm0161_027"
+  },
+  {
+    "difficulties": {
+      "complex": 10
+    },
+    "n_bundles": 10,
+    "n_events": 97,
+    "n_queries": 66,
+    "seed": 162,
+    "tier": "medium",
+    "world_id": "sm0162_028"
+  },
+  {
+    "difficulties": {
+      "complex": 10
+    },
+    "n_bundles": 10,
+    "n_events": 97,
+    "n_queries": 66,
+    "seed": 163,
+    "tier": "medium",
+    "world_id": "sm0163_029"
+  },
+  {
+    "difficulties": {
+      "complex": 10
+    },
+    "n_bundles": 10,
+    "n_events": 97,
+    "n_queries": 66,
+    "seed": 164,
+    "tier": "medium",
+    "world_id": "sm0164_030"
+  },
+  {
+    "difficulties": {
+      "complex": 10
+    },
+    "n_bundles": 10,
+    "n_events": 97,
+    "n_queries": 66,
+    "seed": 165,
+    "tier": "medium",
+    "world_id": "sm0165_031"
+  },
+  {
+    "difficulties": {
+      "complex": 10
+    },
+    "n_bundles": 10,
+    "n_events": 97,
+    "n_queries": 66,
+    "seed": 166,
+    "tier": "medium",
+    "world_id": "sm0166_032"
+  },
+  {
+    "difficulties": {
+      "complex": 10
+    },
+    "n_bundles": 10,
+    "n_events": 97,
+    "n_queries": 66,
+    "seed": 167,
+    "tier": "medium",
+    "world_id": "sm0167_033"
+  },
+  {
+    "difficulties": {
+      "complex": 12
+    },
+    "n_bundles": 12,
+    "n_events": 215,
+    "n_queries": 78,
+    "seed": 168,
+    "tier": "large",
+    "world_id": "sl0168_000"
+  },
+  {
+    "difficulties": {
+      "complex": 12
+    },
+    "n_bundles": 12,
+    "n_events": 215,
+    "n_queries": 78,
+    "seed": 169,
+    "tier": "large",
+    "world_id": "sl0169_001"
+  },
+  {
+    "difficulties": {
+      "complex": 12
+    },
+    "n_bundles": 12,
+    "n_events": 215,
+    "n_queries": 78,
+    "seed": 170,
+    "tier": "large",
+    "world_id": "sl0170_002"
+  },
+  {
+    "difficulties": {
+      "complex": 12
+    },
+    "n_bundles": 12,
+    "n_events": 215,
+    "n_queries": 78,
+    "seed": 171,
+    "tier": "large",
+    "world_id": "sl0171_003"
+  },
+  {
+    "difficulties": {
+      "complex": 12
+    },
+    "n_bundles": 12,
+    "n_events": 215,
+    "n_queries": 78,
+    "seed": 172,
+    "tier": "large",
+    "world_id": "sl0172_004"
+  },
+  {
+    "difficulties": {
+      "complex": 12
+    },
+    "n_bundles": 12,
+    "n_events": 215,
+    "n_queries": 78,
+    "seed": 173,
+    "tier": "large",
+    "world_id": "sl0173_005"
+  },
+  {
+    "difficulties": {
+      "complex": 12
+    },
+    "n_bundles": 12,
+    "n_events": 215,
+    "n_queries": 78,
+    "seed": 174,
+    "tier": "large",
+    "world_id": "sl0174_006"
+  },
+  {
+    "difficulties": {
+      "complex": 12
+    },
+    "n_bundles": 12,
+    "n_events": 215,
+    "n_queries": 78,
+    "seed": 175,
+    "tier": "large",
+    "world_id": "sl0175_007"
+  },
+  {
+    "difficulties": {
+      "complex": 12
+    },
+    "n_bundles": 12,
+    "n_events": 215,
+    "n_queries": 78,
+    "seed": 176,
+    "tier": "large",
+    "world_id": "sl0176_008"
+  },
+  {
+    "difficulties": {
+      "complex": 12
+    },
+    "n_bundles": 12,
+    "n_events": 215,
+    "n_queries": 78,
+    "seed": 177,
+    "tier": "large",
+    "world_id": "sl0177_009"
+  },
+  {
+    "difficulties": {
+      "complex": 12
+    },
+    "n_bundles": 12,
+    "n_events": 215,
+    "n_queries": 78,
+    "seed": 178,
+    "tier": "large",
+    "world_id": "sl0178_010"
+  },
+  {
+    "difficulties": {
+      "complex": 12
+    },
+    "n_bundles": 12,
+    "n_events": 215,
+    "n_queries": 78,
+    "seed": 179,
+    "tier": "large",
+    "world_id": "sl0179_011"
+  },
+  {
+    "difficulties": {
+      "complex": 12
+    },
+    "n_bundles": 12,
+    "n_events": 215,
+    "n_queries": 78,
+    "seed": 180,
+    "tier": "large",
+    "world_id": "sl0180_012"
+  },
+  {
+    "difficulties": {
+      "complex": 12
+    },
+    "n_bundles": 12,
+    "n_events": 215,
+    "n_queries": 78,
+    "seed": 181,
+    "tier": "large",
+    "world_id": "sl0181_013"
+  },
+  {
+    "difficulties": {
+      "complex": 12
+    },
+    "n_bundles": 12,
+    "n_events": 215,
+    "n_queries": 78,
+    "seed": 182,
+    "tier": "large",
+    "world_id": "sl0182_014"
+  },
+  {
+    "difficulties": {
+      "complex": 12
+    },
+    "n_bundles": 12,
+    "n_events": 215,
+    "n_queries": 78,
+    "seed": 183,
+    "tier": "large",
+    "world_id": "sl0183_015"
+  },
+  {
+    "difficulties": {
+      "complex": 12
+    },
+    "n_bundles": 12,
+    "n_events": 215,
+    "n_queries": 78,
+    "seed": 184,
+    "tier": "large",
+    "world_id": "sl0184_016"
+  },
+  {
+    "difficulties": {
+      "complex": 12
+    },
+    "n_bundles": 12,
+    "n_events": 215,
+    "n_queries": 78,
+    "seed": 185,
+    "tier": "large",
+    "world_id": "sl0185_017"
+  },
+  {
+    "difficulties": {
+      "complex": 12
+    },
+    "n_bundles": 12,
+    "n_events": 215,
+    "n_queries": 78,
+    "seed": 186,
+    "tier": "large",
+    "world_id": "sl0186_018"
+  },
+  {
+    "difficulties": {
+      "complex": 12
+    },
+    "n_bundles": 12,
+    "n_events": 215,
+    "n_queries": 78,
+    "seed": 187,
+    "tier": "large",
+    "world_id": "sl0187_019"
+  },
+  {
+    "difficulties": {
+      "complex": 12
+    },
+    "n_bundles": 12,
+    "n_events": 215,
+    "n_queries": 78,
+    "seed": 188,
+    "tier": "large",
+    "world_id": "sl0188_020"
+  },
+  {
+    "difficulties": {
+      "complex": 12
+    },
+    "n_bundles": 12,
+    "n_events": 215,
+    "n_queries": 78,
+    "seed": 189,
+    "tier": "large",
+    "world_id": "sl0189_021"
+  },
+  {
+    "difficulties": {
+      "complex": 12
+    },
+    "n_bundles": 12,
+    "n_events": 215,
+    "n_queries": 78,
+    "seed": 190,
+    "tier": "large",
+    "world_id": "sl0190_022"
+  },
+  {
+    "difficulties": {
+      "complex": 12
+    },
+    "n_bundles": 12,
+    "n_events": 215,
+    "n_queries": 78,
+    "seed": 191,
+    "tier": "large",
+    "world_id": "sl0191_023"
+  },
+  {
+    "difficulties": {
+      "complex": 12
+    },
+    "n_bundles": 12,
+    "n_events": 215,
+    "n_queries": 78,
+    "seed": 192,
+    "tier": "large",
+    "world_id": "sl0192_024"
+  },
+  {
+    "difficulties": {
+      "complex": 12
+    },
+    "n_bundles": 12,
+    "n_events": 215,
+    "n_queries": 78,
+    "seed": 193,
+    "tier": "large",
+    "world_id": "sl0193_025"
+  },
+  {
+    "difficulties": {
+      "complex": 12
+    },
+    "n_bundles": 12,
+    "n_events": 215,
+    "n_queries": 78,
+    "seed": 194,
+    "tier": "large",
+    "world_id": "sl0194_026"
+  },
+  {
+    "difficulties": {
+      "complex": 12
+    },
+    "n_bundles": 12,
+    "n_events": 215,
+    "n_queries": 78,
+    "seed": 195,
+    "tier": "large",
+    "world_id": "sl0195_027"
+  },
+  {
+    "difficulties": {
+      "complex": 12
+    },
+    "n_bundles": 12,
+    "n_events": 215,
+    "n_queries": 78,
+    "seed": 196,
+    "tier": "large",
+    "world_id": "sl0196_028"
+  },
+  {
+    "difficulties": {
+      "complex": 12
+    },
+    "n_bundles": 12,
+    "n_events": 215,
+    "n_queries": 78,
+    "seed": 197,
+    "tier": "large",
+    "world_id": "sl0197_029"
+  },
+  {
+    "difficulties": {
+      "complex": 12
+    },
+    "n_bundles": 12,
+    "n_events": 215,
+    "n_queries": 78,
+    "seed": 198,
+    "tier": "large",
+    "world_id": "sl0198_030"
+  },
+  {
+    "difficulties": {
+      "complex": 12
+    },
+    "n_bundles": 12,
+    "n_events": 215,
+    "n_queries": 78,
+    "seed": 199,
+    "tier": "large",
+    "world_id": "sl0199_031"
+  },
+  {
+    "difficulties": {
+      "complex": 12
+    },
+    "n_bundles": 12,
+    "n_events": 215,
+    "n_queries": 78,
+    "seed": 200,
+    "tier": "large",
+    "world_id": "sl0200_032"
+  },
+  {
+    "difficulties": {
+      "complex": 12
+    },
+    "n_bundles": 12,
+    "n_events": 215,
+    "n_queries": 78,
+    "seed": 201,
+    "tier": "large",
+    "world_id": "sl0201_033"
+  }
+]

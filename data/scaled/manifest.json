@@ -1,0 +1,19 @@
+{
+  "n_bundles": 1088,
+  "n_queries": 7140,
+  "n_worlds": 102,
+  "seed_base": 100,
+  "sha256": "c7eda78d921c7e2aa4c74ac180605a2d8d348515f7750eeabc2c9212f5231cbe",
+  "smoke_untouched": true,
+  "tier_targets": {
+    "large": 220,
+    "medium": 100,
+    "small": 35
+  },
+  "tiers": {
+    "large": 34,
+    "medium": 34,
+    "small": 34
+  },
+  "worlds_per_tier": 34
+}

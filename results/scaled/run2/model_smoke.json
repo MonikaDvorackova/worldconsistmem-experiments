@@ -1,0 +1,7 @@
+{
+  "mlx": "0.32.0",
+  "mlx_lm": "0.31.3",
+  "model": "mlx-community/Qwen2.5-3B-Instruct-4bit",
+  "preview": "{\"answer\": 2, \"abstain\": false, \"provenance\": \"[{\"fact\": \"1+1=2\"}]\"}",
+  "smoke_ok": true
+}

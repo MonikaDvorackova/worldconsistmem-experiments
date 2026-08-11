@@ -1,0 +1,20 @@
+{
+  "completed_valid": 2734,
+  "current_process_pid": 11393,
+  "estimated_hours_remaining": null,
+  "failed": 0,
+  "last_completed_key": "43c4705f75916007371d36bb711576091455d44a7c6bae3aa906fe2b7795bc54",
+  "last_completion_timestamp": "2026-08-04T00:02:25Z",
+  "last_query_id": "sl0173_005:b:doc:11:temporal_order",
+  "last_restart_reason": "process_dead",
+  "model": "mlx-community/Qwen2.5-3B-Instruct-4bit",
+  "newly_generated": 2321,
+  "remaining": 0,
+  "restart_count": 1,
+  "rolling_queries_per_30min": 601.0,
+  "skipped_from_cache": 413,
+  "system": "H0_ltkm_cap150_ret8",
+  "timeout_count": 0,
+  "total_expected": 2734,
+  "updated_at": "2026-08-04T00:02:25Z"
+}

@@ -1,0 +1,221 @@
+{
+  "consistent_wrong": [
+    {
+      "baseline_id": "B3_recency_retrieval",
+      "bundle_id": "w0042_000:b:conf:4",
+      "mean_acc": 0.8571428571428571
+    },
+    {
+      "baseline_id": "B3_recency_retrieval",
+      "bundle_id": "w0042_001:b:conf:4",
+      "mean_acc": 0.8571428571428571
+    },
+    {
+      "baseline_id": "B3_recency_retrieval",
+      "bundle_id": "w0042_002:b:conf:4",
+      "mean_acc": 0.8571428571428571
+    },
+    {
+      "baseline_id": "B3_recency_retrieval",
+      "bundle_id": "w0042_003:b:conf:4",
+      "mean_acc": 0.8571428571428571
+    },
+    {
+      "baseline_id": "B3_recency_retrieval",
+      "bundle_id": "w0042_004:b:conf:4",
+      "mean_acc": 0.8571428571428571
+    }
+  ],
+  "high_acc_inconsistent": [
+    {
+      "baseline_id": "B3_recency_retrieval",
+      "bundle_id": "w0042_000:b:own:1",
+      "mean_acc": 0.8333333333333334,
+      "violations": [
+        {
+          "constraint_id": "w0042_000:b:own:1:trans_owner_current",
+          "constraint_type": "transition",
+          "explanation": "Transition from/to disagree with historical/current answers.",
+          "gold_evidence": {
+            "gold_current": "w0042_000:org:1",
+            "gold_historical": "w0042_000:org:0",
+            "gold_transition": {
+              "from": "w0042_000:org:0",
+              "project_id": "w0042_000:project:0",
+              "t": 19,
+              "to": "w0042_000:org:1"
+            }
+          },
+          "involved_predicted_values": {
+            "current": "w0042_000:org:1",
+            "historical": "__ABSTAIN__",
+            "transition": {
+              "from": "w0042_000:org:0",
+              "project_id": "w0042_000:project:0",
+              "t": 19,
+              "to": "w0042_000:org:1"
+            }
+          },
+          "involved_query_ids": [
+            "w0042_000:b:own:1:current",
+            "w0042_000:b:own:1:historical",
+            "w0042_000:b:own:1:transition"
+          ],
+          "passed": false
+        }
+      ]
+    },
+    {
+      "baseline_id": "B3_recency_retrieval",
+      "bundle_id": "w0042_001:b:own:1",
+      "mean_acc": 0.8333333333333334,
+      "violations": [
+        {
+          "constraint_id": "w0042_001:b:own:1:trans_owner_current",
+          "constraint_type": "transition",
+          "explanation": "Transition from/to disagree with historical/current answers.",
+          "gold_evidence": {
+            "gold_current": "w0042_001:org:1",
+            "gold_historical": "w0042_001:org:0",
+            "gold_transition": {
+              "from": "w0042_001:org:0",
+              "project_id": "w0042_001:project:0",
+              "t": 19,
+              "to": "w0042_001:org:1"
+            }
+          },
+          "involved_predicted_values": {
+            "current": "w0042_001:org:1",
+            "historical": "__ABSTAIN__",
+            "transition": {
+              "from": "w0042_001:org:0",
+              "project_id": "w0042_001:project:0",
+              "t": 19,
+              "to": "w0042_001:org:1"
+            }
+          },
+          "involved_query_ids": [
+            "w0042_001:b:own:1:current",
+            "w0042_001:b:own:1:historical",
+            "w0042_001:b:own:1:transition"
+          ],
+          "passed": false
+        }
+      ]
+    },
+    {
+      "baseline_id": "B3_recency_retrieval",
+      "bundle_id": "w0042_002:b:own:1",
+      "mean_acc": 0.8333333333333334,
+      "violations": [
+        {
+          "constraint_id": "w0042_002:b:own:1:trans_owner_current",
+          "constraint_type": "transition",
+          "explanation": "Transition from/to disagree with historical/current answers.",
+          "gold_evidence": {
+            "gold_current": "w0042_002:org:1",
+            "gold_historical": "w0042_002:org:0",
+            "gold_transition": {
+              "from": "w0042_002:org:0",
+              "project_id": "w0042_002:project:0",
+              "t": 19,
+              "to": "w0042_002:org:1"
+            }
+          },
+          "involved_predicted_values": {
+            "current": "w0042_002:org:1",
+            "historical": "__ABSTAIN__",
+            "transition": {
+              "from": "w0042_002:org:0",
+              "project_id": "w0042_002:project:0",
+              "t": 19,
+              "to": "w0042_002:org:1"
+            }
+          },
+          "involved_query_ids": [
+            "w0042_002:b:own:1:current",
+            "w0042_002:b:own:1:historical",
+            "w0042_002:b:own:1:transition"
+          ],
+          "passed": false
+        }
+      ]
+    },
+    {
+      "baseline_id": "B3_recency_retrieval",
+      "bundle_id": "w0042_003:b:own:1",
+      "mean_acc": 0.8333333333333334,
+      "violations": [
+        {
+          "constraint_id": "w0042_003:b:own:1:trans_owner_current",
+          "constraint_type": "transition",
+          "explanation": "Transition from/to disagree with historical/current answers.",
+          "gold_evidence": {
+            "gold_current": "w0042_003:org:1",
+            "gold_historical": "w0042_003:org:0",
+            "gold_transition": {
+              "from": "w0042_003:org:0",
+              "project_id": "w0042_003:project:0",
+              "t": 19,
+              "to": "w0042_003:org:1"
+            }
+          },
+          "involved_predicted_values": {
+            "current": "w0042_003:org:1",
+            "historical": "__ABSTAIN__",
+            "transition": {
+              "from": "w0042_003:org:0",
+              "project_id": "w0042_003:project:0",
+              "t": 19,
+              "to": "w0042_003:org:1"
+            }
+          },
+          "involved_query_ids": [
+            "w0042_003:b:own:1:current",
+            "w0042_003:b:own:1:historical",
+            "w0042_003:b:own:1:transition"
+          ],
+          "passed": false
+        }
+      ]
+    },
+    {
+      "baseline_id": "B3_recency_retrieval",
+      "bundle_id": "w0042_004:b:own:1",
+      "mean_acc": 0.8333333333333334,
+      "violations": [
+        {
+          "constraint_id": "w0042_004:b:own:1:trans_owner_current",
+          "constraint_type": "transition",
+          "explanation": "Transition from/to disagree with historical/current answers.",
+          "gold_evidence": {
+            "gold_current": "w0042_004:org:1",
+            "gold_historical": "w0042_004:org:0",
+            "gold_transition": {
+              "from": "w0042_004:org:0",
+              "project_id": "w0042_004:project:0",
+              "t": 19,
+              "to": "w0042_004:org:1"
+            }
+          },
+          "involved_predicted_values": {
+            "current": "w0042_004:org:1",
+            "historical": "__ABSTAIN__",
+            "transition": {
+              "from": "w0042_004:org:0",
+              "project_id": "w0042_004:project:0",
+              "t": 19,
+              "to": "w0042_004:org:1"
+            }
+          },
+          "involved_query_ids": [
+            "w0042_004:b:own:1:current",
+            "w0042_004:b:own:1:historical",
+            "w0042_004:b:own:1:transition"
+          ],
+          "passed": false
+        }
+      ]
+    }
+  ]
+}

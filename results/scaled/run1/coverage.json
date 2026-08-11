@@ -1,0 +1,240 @@
+{
+  "by_bundle_summary": {
+    "bundles_full_all_8_cells": 0,
+    "bundles_with_any_completion": 192,
+    "mean_bundle_coverage_pct": 23.07,
+    "n_bundles": 192
+  },
+  "by_family": {
+    "conflict_validity": {
+      "done": 143,
+      "expected": 624,
+      "pct": 22.92
+    },
+    "contradiction": {
+      "done": 134,
+      "expected": 576,
+      "pct": 23.26
+    },
+    "counterfactual": {
+      "done": 134,
+      "expected": 576,
+      "pct": 23.26
+    },
+    "current_state": {
+      "done": 355,
+      "expected": 1536,
+      "pct": 23.11
+    },
+    "historical_state": {
+      "done": 355,
+      "expected": 1536,
+      "pct": 23.11
+    },
+    "multi_hop": {
+      "done": 354,
+      "expected": 1536,
+      "pct": 23.05
+    },
+    "provenance": {
+      "done": 354,
+      "expected": 1536,
+      "pct": 23.05
+    },
+    "temporal_order": {
+      "done": 145,
+      "expected": 624,
+      "pct": 23.24
+    },
+    "transition": {
+      "done": 354,
+      "expected": 1536,
+      "pct": 23.05
+    }
+  },
+  "by_model": {
+    "Phi-3.5-mini-instruct-4bit": {
+      "done": 22,
+      "expected": 5040,
+      "pct": 0.44
+    },
+    "Qwen2.5-3B-Instruct-4bit": {
+      "done": 2306,
+      "expected": 5040,
+      "pct": 45.75
+    }
+  },
+  "by_model_system": {
+    "Phi-3.5-mini-instruct-4bit|B1_flat_cap150_compact": {
+      "done": 22,
+      "expected": 1260,
+      "pct": 1.75
+    },
+    "Phi-3.5-mini-instruct-4bit|B3_recency_k8": {
+      "done": 0,
+      "expected": 1260,
+      "pct": 0.0
+    },
+    "Phi-3.5-mini-instruct-4bit|B4_bm25_k8": {
+      "done": 0,
+      "expected": 1260,
+      "pct": 0.0
+    },
+    "Phi-3.5-mini-instruct-4bit|H0_ltkm_cap150_ret8": {
+      "done": 0,
+      "expected": 1260,
+      "pct": 0.0
+    },
+    "Qwen2.5-3B-Instruct-4bit|B1_flat_cap150_compact": {
+      "done": 1260,
+      "expected": 1260,
+      "pct": 100.0
+    },
+    "Qwen2.5-3B-Instruct-4bit|B3_recency_k8": {
+      "done": 1046,
+      "expected": 1260,
+      "pct": 83.02
+    },
+    "Qwen2.5-3B-Instruct-4bit|B4_bm25_k8": {
+      "done": 0,
+      "expected": 1260,
+      "pct": 0.0
+    },
+    "Qwen2.5-3B-Instruct-4bit|H0_ltkm_cap150_ret8": {
+      "done": 0,
+      "expected": 1260,
+      "pct": 0.0
+    }
+  },
+  "by_system": {
+    "B1_flat_cap150_compact": {
+      "done": 1282,
+      "expected": 2520,
+      "pct": 50.87
+    },
+    "B3_recency_k8": {
+      "done": 1046,
+      "expected": 2520,
+      "pct": 41.51
+    },
+    "B4_bm25_k8": {
+      "done": 0,
+      "expected": 2520,
+      "pct": 0.0
+    },
+    "H0_ltkm_cap150_ret8": {
+      "done": 0,
+      "expected": 2520,
+      "pct": 0.0
+    }
+  },
+  "by_tier": {
+    "large": {
+      "done": 722,
+      "expected": 3744,
+      "pct": 19.28
+    },
+    "medium": {
+      "done": 792,
+      "expected": 3168,
+      "pct": 25.0
+    },
+    "small": {
+      "done": 814,
+      "expected": 3168,
+      "pct": 25.69
+    }
+  },
+  "by_world": {
+    "sl0168_000": {
+      "done": 156,
+      "expected": 624,
+      "pct": 25.0
+    },
+    "sl0169_001": {
+      "done": 156,
+      "expected": 624,
+      "pct": 25.0
+    },
+    "sl0170_002": {
+      "done": 156,
+      "expected": 624,
+      "pct": 25.0
+    },
+    "sl0171_003": {
+      "done": 98,
+      "expected": 624,
+      "pct": 15.71
+    },
+    "sl0172_004": {
+      "done": 78,
+      "expected": 624,
+      "pct": 12.5
+    },
+    "sl0173_005": {
+      "done": 78,
+      "expected": 624,
+      "pct": 12.5
+    },
+    "sm0134_000": {
+      "done": 132,
+      "expected": 528,
+      "pct": 25.0
+    },
+    "sm0135_001": {
+      "done": 132,
+      "expected": 528,
+      "pct": 25.0
+    },
+    "sm0136_002": {
+      "done": 132,
+      "expected": 528,
+      "pct": 25.0
+    },
+    "sm0137_003": {
+      "done": 132,
+      "expected": 528,
+      "pct": 25.0
+    },
+    "sm0138_004": {
+      "done": 132,
+      "expected": 528,
+      "pct": 25.0
+    },
+    "sm0139_005": {
+      "done": 132,
+      "expected": 528,
+      "pct": 25.0
+    },
+    "ss0100_000": {
+      "done": 154,
+      "expected": 528,
+      "pct": 29.17
+    },
+    "ss0101_001": {
+      "done": 132,
+      "expected": 528,
+      "pct": 25.0
+    },
+    "ss0102_002": {
+      "done": 132,
+      "expected": 528,
+      "pct": 25.0
+    },
+    "ss0103_003": {
+      "done": 132,
+      "expected": 528,
+      "pct": 25.0
+    },
+    "ss0104_004": {
+      "done": 132,
+      "expected": 528,
+      "pct": 25.0
+    },
+    "ss0105_005": {
+      "done": 132,
+      "expected": 528,
+      "pct": 25.0
+    }
+  }
+}

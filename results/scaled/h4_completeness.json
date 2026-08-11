@@ -1,0 +1,40 @@
+{
+  "total_expected": 10080,
+  "completed_valid": 1922,
+  "remaining": 8158,
+  "by_model": {
+    "Qwen2.5-3B-Instruct-4bit": {
+      "unique_valid": 1922,
+      "completed_by_system": {
+        "B1_flat_cap150_compact": 1260,
+        "B3_recency_k8": 662
+      },
+      "missing_by_system": {
+        "B3_recency_k8": 598,
+        "B4_bm25_k8": 1260,
+        "H0_ltkm_cap150_ret8": 1260
+      },
+      "missing_total": 3118,
+      "diagnostics_n": 0,
+      "duplicates_seen": 0,
+      "corrupt_lines": 0,
+      "mtime": 1785766605.6999514
+    },
+    "Phi-3.5-mini-instruct-4bit": {
+      "unique_valid": 22,
+      "completed_by_system": {},
+      "missing_by_system": {
+        "B1_flat_cap150_compact": 1260,
+        "B3_recency_k8": 1260,
+        "B4_bm25_k8": 1260,
+        "H0_ltkm_cap150_ret8": 1260
+      },
+      "missing_total": 5040,
+      "diagnostics_n": 0,
+      "duplicates_seen": 0,
+      "corrupt_lines": 0,
+      "mtime": 1785740777.9993765
+    }
+  },
+  "updated_at": "2026-08-03T14:17:02Z"
+}

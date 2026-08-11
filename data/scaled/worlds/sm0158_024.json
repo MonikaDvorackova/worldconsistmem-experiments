@@ -1,0 +1,1591 @@
+{
+  "T": 97,
+  "events": [
+    {
+      "actor_id": null,
+      "affected_ids": [
+        "sm0158_024:person:0",
+        "sm0158_024:org:0"
+      ],
+      "event_id": "sm0158_024:e:1",
+      "event_type": "person_joins_org",
+      "narrative": "join",
+      "payload": {
+        "org_id": "sm0158_024:org:0",
+        "person_id": "sm0158_024:person:0"
+      },
+      "preconditions": [],
+      "provenance_id": "sm0158_024:prov:1",
+      "t": 1
+    },
+    {
+      "actor_id": "sm0158_024:person:0",
+      "affected_ids": [
+        "sm0158_024:person:0",
+        "sm0158_024:org:0"
+      ],
+      "event_id": "sm0158_024:e:2",
+      "event_type": "role_assignment",
+      "narrative": "ceo",
+      "payload": {
+        "exclusive": true,
+        "org_id": "sm0158_024:org:0",
+        "person_id": "sm0158_024:person:0",
+        "role": "CEO"
+      },
+      "preconditions": [],
+      "provenance_id": "sm0158_024:prov:2",
+      "t": 2
+    },
+    {
+      "actor_id": null,
+      "affected_ids": [
+        "sm0158_024:person:1",
+        "sm0158_024:org:0"
+      ],
+      "event_id": "sm0158_024:e:3",
+      "event_type": "person_joins_org",
+      "narrative": "join",
+      "payload": {
+        "org_id": "sm0158_024:org:0",
+        "person_id": "sm0158_024:person:1"
+      },
+      "preconditions": [],
+      "provenance_id": "sm0158_024:prov:3",
+      "t": 3
+    },
+    {
+      "actor_id": null,
+      "affected_ids": [
+        "sm0158_024:person:2",
+        "sm0158_024:org:0"
+      ],
+      "event_id": "sm0158_024:e:4",
+      "event_type": "person_joins_org",
+      "narrative": "join",
+      "payload": {
+        "org_id": "sm0158_024:org:0",
+        "person_id": "sm0158_024:person:2"
+      },
+      "preconditions": [],
+      "provenance_id": "sm0158_024:prov:4",
+      "t": 4
+    },
+    {
+      "actor_id": "sm0158_024:person:0",
+      "affected_ids": [
+        "sm0158_024:project:0"
+      ],
+      "event_id": "sm0158_024:e:5",
+      "event_type": "project_status_change",
+      "narrative": "status",
+      "payload": {
+        "manager_id": "sm0158_024:person:0",
+        "project_id": "sm0158_024:project:0",
+        "status": "active"
+      },
+      "preconditions": [],
+      "provenance_id": "sm0158_024:prov:5",
+      "t": 5
+    },
+    {
+      "actor_id": "sm0158_024:person:0",
+      "affected_ids": [
+        "sm0158_024:person:0",
+        "sm0158_024:project:0"
+      ],
+      "event_id": "sm0158_024:e:6",
+      "event_type": "relationship_creation",
+      "narrative": "rel",
+      "payload": {
+        "rel_id": "sm0158_024:rel:0",
+        "rel_type": "manages",
+        "source_id": "sm0158_024:person:0",
+        "target_id": "sm0158_024:project:0"
+      },
+      "preconditions": [],
+      "provenance_id": "sm0158_024:prov:6",
+      "t": 6
+    },
+    {
+      "actor_id": "sm0158_024:person:2",
+      "affected_ids": [
+        "sm0158_024:doc:0"
+      ],
+      "event_id": "sm0158_024:e:7",
+      "event_type": "document_creation",
+      "narrative": "doc",
+      "payload": {
+        "author_id": "sm0158_024:person:2",
+        "base_doc_id": "sm0158_024:docbase:0",
+        "doc_id": "sm0158_024:doc:0",
+        "project_id": "sm0158_024:project:0",
+        "title": "Charter-sm0158_024:project:0"
+      },
+      "preconditions": [],
+      "provenance_id": "sm0158_024:prov:7",
+      "t": 7
+    },
+    {
+      "actor_id": "sm0158_024:person:0",
+      "affected_ids": [
+        "sm0158_024:doc:0"
+      ],
+      "event_id": "sm0158_024:e:8",
+      "event_type": "document_approval",
+      "narrative": "approve",
+      "payload": {
+        "approver_id": "sm0158_024:person:0",
+        "doc_id": "sm0158_024:doc:0"
+      },
+      "preconditions": [],
+      "provenance_id": "sm0158_024:prov:8",
+      "t": 8
+    },
+    {
+      "actor_id": "sm0158_024:person:2",
+      "affected_ids": [
+        "sm0158_024:person:2"
+      ],
+      "event_id": "sm0158_024:e:9",
+      "event_type": "location_change",
+      "narrative": "loc",
+      "payload": {
+        "location_id": "sm0158_024:loc:1",
+        "person_id": "sm0158_024:person:2"
+      },
+      "preconditions": [],
+      "provenance_id": "sm0158_024:prov:9",
+      "t": 9
+    },
+    {
+      "actor_id": "sm0158_024:person:2",
+      "affected_ids": [
+        "sm0158_024:person:2"
+      ],
+      "event_id": "sm0158_024:e:10",
+      "event_type": "role_assignment",
+      "narrative": "eng",
+      "payload": {
+        "exclusive": false,
+        "org_id": "sm0158_024:org:0",
+        "person_id": "sm0158_024:person:2",
+        "role": "Engineer"
+      },
+      "preconditions": [],
+      "provenance_id": "sm0158_024:prov:10",
+      "t": 10
+    },
+    {
+      "actor_id": "sm0158_024:person:1",
+      "affected_ids": [
+        "sm0158_024:project:0"
+      ],
+      "event_id": "sm0158_024:e:11",
+      "event_type": "conflict_introduction",
+      "narrative": "conf",
+      "payload": {
+        "attribute": "priority",
+        "conflict_id": "sm0158_024:conflict:0",
+        "subject": "sm0158_024:project:0",
+        "value_a": "P0",
+        "value_b": "P2"
+      },
+      "preconditions": [],
+      "provenance_id": "sm0158_024:prov:11",
+      "t": 11
+    },
+    {
+      "actor_id": "sm0158_024:person:3",
+      "affected_ids": [
+        "sm0158_024:project:1"
+      ],
+      "event_id": "sm0158_024:e:12",
+      "event_type": "temporary_state",
+      "narrative": "temp",
+      "payload": {
+        "attribute": "project_status",
+        "entity_id": "sm0158_024:project:1",
+        "mark_id": "sm0158_024:temp:0",
+        "original_value": "planned",
+        "temporary_value": "paused"
+      },
+      "preconditions": [],
+      "provenance_id": "sm0158_024:prov:12",
+      "t": 12
+    },
+    {
+      "actor_id": null,
+      "affected_ids": [
+        "sm0158_024:person:3",
+        "sm0158_024:org:1"
+      ],
+      "event_id": "sm0158_024:e:13",
+      "event_type": "person_joins_org",
+      "narrative": "join",
+      "payload": {
+        "org_id": "sm0158_024:org:1",
+        "person_id": "sm0158_024:person:3"
+      },
+      "preconditions": [],
+      "provenance_id": "sm0158_024:prov:13",
+      "t": 13
+    },
+    {
+      "actor_id": "sm0158_024:person:3",
+      "affected_ids": [
+        "sm0158_024:person:3"
+      ],
+      "event_id": "sm0158_024:e:14",
+      "event_type": "role_assignment",
+      "narrative": "ceo_b",
+      "payload": {
+        "exclusive": true,
+        "org_id": "sm0158_024:org:1",
+        "person_id": "sm0158_024:person:3",
+        "role": "CEO"
+      },
+      "preconditions": [],
+      "provenance_id": "sm0158_024:prov:14",
+      "t": 14
+    },
+    {
+      "actor_id": "sm0158_024:person:2",
+      "affected_ids": [],
+      "event_id": "sm0158_024:e:15",
+      "event_type": "document_revision",
+      "narrative": "rev",
+      "payload": {
+        "author_id": "sm0158_024:person:2",
+        "base_doc_id": "sm0158_024:docbase:0",
+        "doc_id": "sm0158_024:doc:1",
+        "expected_prev_version": 1
+      },
+      "preconditions": [],
+      "provenance_id": "sm0158_024:prov:15",
+      "t": 15
+    },
+    {
+      "actor_id": "sm0158_024:person:1",
+      "affected_ids": [
+        "sm0158_024:person:0",
+        "sm0158_024:person:1"
+      ],
+      "event_id": "sm0158_024:e:16",
+      "event_type": "role_replacement",
+      "narrative": "replace",
+      "payload": {
+        "new_person_id": "sm0158_024:person:1",
+        "old_person_id": "sm0158_024:person:0",
+        "org_id": "sm0158_024:org:0",
+        "role": "CEO"
+      },
+      "preconditions": [],
+      "provenance_id": "sm0158_024:prov:16",
+      "t": 16
+    },
+    {
+      "actor_id": "sm0158_024:person:0",
+      "affected_ids": [
+        "sm0158_024:rel:0"
+      ],
+      "event_id": "sm0158_024:e:17",
+      "event_type": "relationship_termination",
+      "narrative": "endrel",
+      "payload": {
+        "rel_id": "sm0158_024:rel:0"
+      },
+      "preconditions": [],
+      "provenance_id": "sm0158_024:prov:17",
+      "t": 17
+    },
+    {
+      "actor_id": "sm0158_024:person:1",
+      "affected_ids": [
+        "sm0158_024:person:1",
+        "sm0158_024:project:0"
+      ],
+      "event_id": "sm0158_024:e:18",
+      "event_type": "relationship_creation",
+      "narrative": "rel2",
+      "payload": {
+        "rel_id": "sm0158_024:rel:1",
+        "rel_type": "manages",
+        "source_id": "sm0158_024:person:1",
+        "target_id": "sm0158_024:project:0"
+      },
+      "preconditions": [],
+      "provenance_id": "sm0158_024:prov:18",
+      "t": 18
+    },
+    {
+      "actor_id": "sm0158_024:person:3",
+      "affected_ids": [
+        "sm0158_024:project:0",
+        "sm0158_024:org:0",
+        "sm0158_024:org:1"
+      ],
+      "event_id": "sm0158_024:e:19",
+      "event_type": "project_ownership_transfer",
+      "narrative": "own",
+      "payload": {
+        "new_org_id": "sm0158_024:org:1",
+        "old_org_id": "sm0158_024:org:0",
+        "project_id": "sm0158_024:project:0"
+      },
+      "preconditions": [],
+      "provenance_id": "sm0158_024:prov:19",
+      "t": 19
+    },
+    {
+      "actor_id": "sm0158_024:person:1",
+      "affected_ids": [
+        "sm0158_024:project:0"
+      ],
+      "event_id": "sm0158_024:e:20",
+      "event_type": "project_status_change",
+      "narrative": "status2",
+      "payload": {
+        "manager_id": "sm0158_024:person:1",
+        "project_id": "sm0158_024:project:0",
+        "status": "transferred"
+      },
+      "preconditions": [],
+      "provenance_id": "sm0158_024:prov:20",
+      "t": 20
+    },
+    {
+      "actor_id": "sm0158_024:person:1",
+      "affected_ids": [
+        "sm0158_024:conflict:0"
+      ],
+      "event_id": "sm0158_024:e:21",
+      "event_type": "conflict_resolution",
+      "narrative": "resolve",
+      "payload": {
+        "conflict_id": "sm0158_024:conflict:0",
+        "resolved_value": "P0"
+      },
+      "preconditions": [],
+      "provenance_id": "sm0158_024:prov:21",
+      "t": 21
+    },
+    {
+      "actor_id": "sm0158_024:person:3",
+      "affected_ids": [
+        "sm0158_024:temp:0"
+      ],
+      "event_id": "sm0158_024:e:22",
+      "event_type": "reversion",
+      "narrative": "revert",
+      "payload": {
+        "mark_id": "sm0158_024:temp:0"
+      },
+      "preconditions": [],
+      "provenance_id": "sm0158_024:prov:22",
+      "t": 22
+    },
+    {
+      "actor_id": "sm0158_024:person:0",
+      "affected_ids": [
+        "sm0158_024:person:0"
+      ],
+      "event_id": "sm0158_024:e:23",
+      "event_type": "person_leaves_org",
+      "narrative": "leave",
+      "payload": {
+        "org_id": "sm0158_024:org:0",
+        "person_id": "sm0158_024:person:0"
+      },
+      "preconditions": [],
+      "provenance_id": "sm0158_024:prov:23",
+      "t": 23
+    },
+    {
+      "actor_id": "sm0158_024:person:1",
+      "affected_ids": [
+        "sm0158_024:person:1"
+      ],
+      "event_id": "sm0158_024:e:24",
+      "event_type": "location_change",
+      "narrative": "loc2",
+      "payload": {
+        "location_id": "sm0158_024:loc:2",
+        "person_id": "sm0158_024:person:1"
+      },
+      "preconditions": [],
+      "provenance_id": "sm0158_024:prov:24",
+      "t": 24
+    },
+    {
+      "actor_id": "sm0158_024:person:1",
+      "affected_ids": [
+        "sm0158_024:doc:1"
+      ],
+      "event_id": "sm0158_024:e:25",
+      "event_type": "document_approval",
+      "narrative": "approve2",
+      "payload": {
+        "approver_id": "sm0158_024:person:1",
+        "doc_id": "sm0158_024:doc:1"
+      },
+      "preconditions": [],
+      "provenance_id": "sm0158_024:prov:25",
+      "t": 25
+    },
+    {
+      "actor_id": null,
+      "affected_ids": [
+        "sm0158_024:person:4",
+        "sm0158_024:org:1"
+      ],
+      "event_id": "sm0158_024:e:26",
+      "event_type": "person_joins_org",
+      "narrative": "xjoin",
+      "payload": {
+        "org_id": "sm0158_024:org:1",
+        "person_id": "sm0158_024:person:4"
+      },
+      "preconditions": [],
+      "provenance_id": "sm0158_024:prov:26",
+      "t": 26
+    },
+    {
+      "actor_id": null,
+      "affected_ids": [
+        "sm0158_024:person:5",
+        "sm0158_024:org:2"
+      ],
+      "event_id": "sm0158_024:e:27",
+      "event_type": "person_joins_org",
+      "narrative": "xjoin",
+      "payload": {
+        "org_id": "sm0158_024:org:2",
+        "person_id": "sm0158_024:person:5"
+      },
+      "preconditions": [],
+      "provenance_id": "sm0158_024:prov:27",
+      "t": 27
+    },
+    {
+      "actor_id": "sm0158_024:person:2",
+      "affected_ids": [
+        "sm0158_024:person:1",
+        "sm0158_024:person:2"
+      ],
+      "event_id": "sm0158_024:e:28",
+      "event_type": "role_replacement",
+      "narrative": "xreplace",
+      "payload": {
+        "new_person_id": "sm0158_024:person:2",
+        "old_person_id": "sm0158_024:person:1",
+        "org_id": "sm0158_024:org:0",
+        "role": "CEO"
+      },
+      "preconditions": [],
+      "provenance_id": "sm0158_024:prov:28",
+      "t": 28
+    },
+    {
+      "actor_id": "sm0158_024:person:3",
+      "affected_ids": [
+        "sm0158_024:project:0",
+        "sm0158_024:org:1",
+        "sm0158_024:org:2"
+      ],
+      "event_id": "sm0158_024:e:29",
+      "event_type": "project_ownership_transfer",
+      "narrative": "xown",
+      "payload": {
+        "new_org_id": "sm0158_024:org:2",
+        "old_org_id": "sm0158_024:org:1",
+        "project_id": "sm0158_024:project:0"
+      },
+      "preconditions": [],
+      "provenance_id": "sm0158_024:prov:29",
+      "t": 29
+    },
+    {
+      "actor_id": "sm0158_024:person:3",
+      "affected_ids": [
+        "sm0158_024:project:0",
+        "sm0158_024:org:2",
+        "sm0158_024:org:0"
+      ],
+      "event_id": "sm0158_024:e:30",
+      "event_type": "project_ownership_transfer",
+      "narrative": "xown",
+      "payload": {
+        "new_org_id": "sm0158_024:org:0",
+        "old_org_id": "sm0158_024:org:2",
+        "project_id": "sm0158_024:project:0"
+      },
+      "preconditions": [],
+      "provenance_id": "sm0158_024:prov:30",
+      "t": 30
+    },
+    {
+      "actor_id": "sm0158_024:person:2",
+      "affected_ids": [
+        "sm0158_024:doc:2"
+      ],
+      "event_id": "sm0158_024:e:31",
+      "event_type": "document_revision",
+      "narrative": "xrev",
+      "payload": {
+        "author_id": "sm0158_024:person:2",
+        "base_doc_id": "sm0158_024:docbase:0",
+        "doc_id": "sm0158_024:doc:2",
+        "expected_prev_version": 2
+      },
+      "preconditions": [],
+      "provenance_id": "sm0158_024:prov:31",
+      "t": 31
+    },
+    {
+      "actor_id": "sm0158_024:person:3",
+      "affected_ids": [
+        "sm0158_024:doc:2"
+      ],
+      "event_id": "sm0158_024:e:32",
+      "event_type": "document_approval",
+      "narrative": "xappr",
+      "payload": {
+        "approver_id": "sm0158_024:person:3",
+        "doc_id": "sm0158_024:doc:2"
+      },
+      "preconditions": [],
+      "provenance_id": "sm0158_024:prov:32",
+      "t": 32
+    },
+    {
+      "actor_id": "sm0158_024:person:2",
+      "affected_ids": [
+        "sm0158_024:doc:3"
+      ],
+      "event_id": "sm0158_024:e:33",
+      "event_type": "document_revision",
+      "narrative": "xrev",
+      "payload": {
+        "author_id": "sm0158_024:person:2",
+        "base_doc_id": "sm0158_024:docbase:0",
+        "doc_id": "sm0158_024:doc:3",
+        "expected_prev_version": 3
+      },
+      "preconditions": [],
+      "provenance_id": "sm0158_024:prov:33",
+      "t": 33
+    },
+    {
+      "actor_id": "sm0158_024:person:3",
+      "affected_ids": [
+        "sm0158_024:doc:3"
+      ],
+      "event_id": "sm0158_024:e:34",
+      "event_type": "document_approval",
+      "narrative": "xappr",
+      "payload": {
+        "approver_id": "sm0158_024:person:3",
+        "doc_id": "sm0158_024:doc:3"
+      },
+      "preconditions": [],
+      "provenance_id": "sm0158_024:prov:34",
+      "t": 34
+    },
+    {
+      "actor_id": "sm0158_024:person:2",
+      "affected_ids": [
+        "sm0158_024:doc:4"
+      ],
+      "event_id": "sm0158_024:e:35",
+      "event_type": "document_revision",
+      "narrative": "xrev",
+      "payload": {
+        "author_id": "sm0158_024:person:2",
+        "base_doc_id": "sm0158_024:docbase:0",
+        "doc_id": "sm0158_024:doc:4",
+        "expected_prev_version": 4
+      },
+      "preconditions": [],
+      "provenance_id": "sm0158_024:prov:35",
+      "t": 35
+    },
+    {
+      "actor_id": "sm0158_024:person:3",
+      "affected_ids": [
+        "sm0158_024:doc:4"
+      ],
+      "event_id": "sm0158_024:e:36",
+      "event_type": "document_approval",
+      "narrative": "xappr",
+      "payload": {
+        "approver_id": "sm0158_024:person:3",
+        "doc_id": "sm0158_024:doc:4"
+      },
+      "preconditions": [],
+      "provenance_id": "sm0158_024:prov:36",
+      "t": 36
+    },
+    {
+      "actor_id": "sm0158_024:person:1",
+      "affected_ids": [
+        "sm0158_024:project:0"
+      ],
+      "event_id": "sm0158_024:e:37",
+      "event_type": "conflict_introduction",
+      "narrative": "xconf",
+      "payload": {
+        "attribute": "priority",
+        "conflict_id": "sm0158_024:conflict:1",
+        "subject": "sm0158_024:project:0",
+        "value_a": "A0",
+        "value_b": "B0"
+      },
+      "preconditions": [],
+      "provenance_id": "sm0158_024:prov:37",
+      "t": 37
+    },
+    {
+      "actor_id": "sm0158_024:person:1",
+      "affected_ids": [
+        "sm0158_024:conflict:1"
+      ],
+      "event_id": "sm0158_024:e:38",
+      "event_type": "conflict_resolution",
+      "narrative": "xres",
+      "payload": {
+        "conflict_id": "sm0158_024:conflict:1",
+        "resolved_value": "A0"
+      },
+      "preconditions": [],
+      "provenance_id": "sm0158_024:prov:38",
+      "t": 38
+    },
+    {
+      "actor_id": "sm0158_024:person:1",
+      "affected_ids": [
+        "sm0158_024:project:1"
+      ],
+      "event_id": "sm0158_024:e:39",
+      "event_type": "conflict_introduction",
+      "narrative": "xconf",
+      "payload": {
+        "attribute": "priority",
+        "conflict_id": "sm0158_024:conflict:2",
+        "subject": "sm0158_024:project:1",
+        "value_a": "A1",
+        "value_b": "B1"
+      },
+      "preconditions": [],
+      "provenance_id": "sm0158_024:prov:39",
+      "t": 39
+    },
+    {
+      "actor_id": "sm0158_024:person:1",
+      "affected_ids": [
+        "sm0158_024:conflict:2"
+      ],
+      "event_id": "sm0158_024:e:40",
+      "event_type": "conflict_resolution",
+      "narrative": "xres",
+      "payload": {
+        "conflict_id": "sm0158_024:conflict:2",
+        "resolved_value": "A1"
+      },
+      "preconditions": [],
+      "provenance_id": "sm0158_024:prov:40",
+      "t": 40
+    },
+    {
+      "actor_id": "sm0158_024:person:3",
+      "affected_ids": [
+        "sm0158_024:project:1"
+      ],
+      "event_id": "sm0158_024:e:41",
+      "event_type": "project_status_change",
+      "narrative": "xstat",
+      "payload": {
+        "project_id": "sm0158_024:project:1",
+        "status": "planned"
+      },
+      "preconditions": [],
+      "provenance_id": "sm0158_024:prov:41",
+      "t": 41
+    },
+    {
+      "actor_id": "sm0158_024:person:3",
+      "affected_ids": [
+        "sm0158_024:project:1"
+      ],
+      "event_id": "sm0158_024:e:42",
+      "event_type": "temporary_state",
+      "narrative": "xtemp",
+      "payload": {
+        "attribute": "project_status",
+        "entity_id": "sm0158_024:project:1",
+        "mark_id": "sm0158_024:temp:1",
+        "original_value": "planned",
+        "temporary_value": "paused"
+      },
+      "preconditions": [],
+      "provenance_id": "sm0158_024:prov:42",
+      "t": 42
+    },
+    {
+      "actor_id": "sm0158_024:person:3",
+      "affected_ids": [
+        "sm0158_024:temp:1"
+      ],
+      "event_id": "sm0158_024:e:43",
+      "event_type": "reversion",
+      "narrative": "xrevt",
+      "payload": {
+        "mark_id": "sm0158_024:temp:1"
+      },
+      "preconditions": [],
+      "provenance_id": "sm0158_024:prov:43",
+      "t": 43
+    },
+    {
+      "actor_id": "sm0158_024:person:3",
+      "affected_ids": [
+        "sm0158_024:project:2"
+      ],
+      "event_id": "sm0158_024:e:44",
+      "event_type": "project_status_change",
+      "narrative": "xstat",
+      "payload": {
+        "project_id": "sm0158_024:project:2",
+        "status": "planned"
+      },
+      "preconditions": [],
+      "provenance_id": "sm0158_024:prov:44",
+      "t": 44
+    },
+    {
+      "actor_id": "sm0158_024:person:3",
+      "affected_ids": [
+        "sm0158_024:project:2"
+      ],
+      "event_id": "sm0158_024:e:45",
+      "event_type": "temporary_state",
+      "narrative": "xtemp",
+      "payload": {
+        "attribute": "project_status",
+        "entity_id": "sm0158_024:project:2",
+        "mark_id": "sm0158_024:temp:2",
+        "original_value": "planned",
+        "temporary_value": "paused"
+      },
+      "preconditions": [],
+      "provenance_id": "sm0158_024:prov:45",
+      "t": 45
+    },
+    {
+      "actor_id": "sm0158_024:person:3",
+      "affected_ids": [
+        "sm0158_024:temp:2"
+      ],
+      "event_id": "sm0158_024:e:46",
+      "event_type": "reversion",
+      "narrative": "xrevt",
+      "payload": {
+        "mark_id": "sm0158_024:temp:2"
+      },
+      "preconditions": [],
+      "provenance_id": "sm0158_024:prov:46",
+      "t": 46
+    },
+    {
+      "actor_id": null,
+      "affected_ids": [],
+      "event_id": "sm0158_024:e:47",
+      "event_type": "project_status_change",
+      "narrative": "padstat",
+      "payload": {
+        "project_id": "sm0158_024:project:2",
+        "status": "active"
+      },
+      "preconditions": [],
+      "provenance_id": "sm0158_024:prov:47",
+      "t": 47
+    },
+    {
+      "actor_id": null,
+      "affected_ids": [],
+      "event_id": "sm0158_024:e:48",
+      "event_type": "location_change",
+      "narrative": "padloc",
+      "payload": {
+        "location_id": "sm0158_024:loc:2",
+        "person_id": "sm0158_024:person:0"
+      },
+      "preconditions": [],
+      "provenance_id": "sm0158_024:prov:48",
+      "t": 48
+    },
+    {
+      "actor_id": null,
+      "affected_ids": [],
+      "event_id": "sm0158_024:e:49",
+      "event_type": "project_status_change",
+      "narrative": "padstat",
+      "payload": {
+        "project_id": "sm0158_024:project:1",
+        "status": "planned"
+      },
+      "preconditions": [],
+      "provenance_id": "sm0158_024:prov:49",
+      "t": 49
+    },
+    {
+      "actor_id": null,
+      "affected_ids": [],
+      "event_id": "sm0158_024:e:50",
+      "event_type": "location_change",
+      "narrative": "padloc",
+      "payload": {
+        "location_id": "sm0158_024:loc:3",
+        "person_id": "sm0158_024:person:3"
+      },
+      "preconditions": [],
+      "provenance_id": "sm0158_024:prov:50",
+      "t": 50
+    },
+    {
+      "actor_id": null,
+      "affected_ids": [],
+      "event_id": "sm0158_024:e:51",
+      "event_type": "project_status_change",
+      "narrative": "padstat",
+      "payload": {
+        "project_id": "sm0158_024:project:1",
+        "status": "hold"
+      },
+      "preconditions": [],
+      "provenance_id": "sm0158_024:prov:51",
+      "t": 51
+    },
+    {
+      "actor_id": null,
+      "affected_ids": [],
+      "event_id": "sm0158_024:e:52",
+      "event_type": "location_change",
+      "narrative": "padloc",
+      "payload": {
+        "location_id": "sm0158_024:loc:1",
+        "person_id": "sm0158_024:person:3"
+      },
+      "preconditions": [],
+      "provenance_id": "sm0158_024:prov:52",
+      "t": 52
+    },
+    {
+      "actor_id": "sm0158_024:person:5",
+      "affected_ids": [
+        "sm0158_024:person:5",
+        "sm0158_024:person:1"
+      ],
+      "event_id": "sm0158_024:e:53",
+      "event_type": "relationship_creation",
+      "narrative": "padrel",
+      "payload": {
+        "rel_id": "sm0158_024:rel:2",
+        "rel_type": "collaborates",
+        "source_id": "sm0158_024:person:5",
+        "target_id": "sm0158_024:person:1"
+      },
+      "preconditions": [],
+      "provenance_id": "sm0158_024:prov:53",
+      "t": 53
+    },
+    {
+      "actor_id": null,
+      "affected_ids": [],
+      "event_id": "sm0158_024:e:54",
+      "event_type": "location_change",
+      "narrative": "padloc",
+      "payload": {
+        "location_id": "sm0158_024:loc:2",
+        "person_id": "sm0158_024:person:3"
+      },
+      "preconditions": [],
+      "provenance_id": "sm0158_024:prov:54",
+      "t": 54
+    },
+    {
+      "actor_id": null,
+      "affected_ids": [],
+      "event_id": "sm0158_024:e:55",
+      "event_type": "project_status_change",
+      "narrative": "padstat",
+      "payload": {
+        "project_id": "sm0158_024:project:1",
+        "status": "planned"
+      },
+      "preconditions": [],
+      "provenance_id": "sm0158_024:prov:55",
+      "t": 55
+    },
+    {
+      "actor_id": null,
+      "affected_ids": [],
+      "event_id": "sm0158_024:e:56",
+      "event_type": "location_change",
+      "narrative": "padloc",
+      "payload": {
+        "location_id": "sm0158_024:loc:2",
+        "person_id": "sm0158_024:person:4"
+      },
+      "preconditions": [],
+      "provenance_id": "sm0158_024:prov:56",
+      "t": 56
+    },
+    {
+      "actor_id": null,
+      "affected_ids": [],
+      "event_id": "sm0158_024:e:57",
+      "event_type": "project_status_change",
+      "narrative": "padstat",
+      "payload": {
+        "project_id": "sm0158_024:project:0",
+        "status": "review"
+      },
+      "preconditions": [],
+      "provenance_id": "sm0158_024:prov:57",
+      "t": 57
+    },
+    {
+      "actor_id": null,
+      "affected_ids": [],
+      "event_id": "sm0158_024:e:58",
+      "event_type": "location_change",
+      "narrative": "padloc",
+      "payload": {
+        "location_id": "sm0158_024:loc:2",
+        "person_id": "sm0158_024:person:4"
+      },
+      "preconditions": [],
+      "provenance_id": "sm0158_024:prov:58",
+      "t": 58
+    },
+    {
+      "actor_id": null,
+      "affected_ids": [],
+      "event_id": "sm0158_024:e:59",
+      "event_type": "project_status_change",
+      "narrative": "padstat",
+      "payload": {
+        "project_id": "sm0158_024:project:0",
+        "status": "active"
+      },
+      "preconditions": [],
+      "provenance_id": "sm0158_024:prov:59",
+      "t": 59
+    },
+    {
+      "actor_id": null,
+      "affected_ids": [],
+      "event_id": "sm0158_024:e:60",
+      "event_type": "location_change",
+      "narrative": "padloc",
+      "payload": {
+        "location_id": "sm0158_024:loc:2",
+        "person_id": "sm0158_024:person:3"
+      },
+      "preconditions": [],
+      "provenance_id": "sm0158_024:prov:60",
+      "t": 60
+    },
+    {
+      "actor_id": null,
+      "affected_ids": [],
+      "event_id": "sm0158_024:e:61",
+      "event_type": "project_status_change",
+      "narrative": "padstat",
+      "payload": {
+        "project_id": "sm0158_024:project:0",
+        "status": "hold"
+      },
+      "preconditions": [],
+      "provenance_id": "sm0158_024:prov:61",
+      "t": 61
+    },
+    {
+      "actor_id": null,
+      "affected_ids": [],
+      "event_id": "sm0158_024:e:62",
+      "event_type": "location_change",
+      "narrative": "padloc",
+      "payload": {
+        "location_id": "sm0158_024:loc:0",
+        "person_id": "sm0158_024:person:4"
+      },
+      "preconditions": [],
+      "provenance_id": "sm0158_024:prov:62",
+      "t": 62
+    },
+    {
+      "actor_id": null,
+      "affected_ids": [],
+      "event_id": "sm0158_024:e:63",
+      "event_type": "project_status_change",
+      "narrative": "padstat",
+      "payload": {
+        "project_id": "sm0158_024:project:2",
+        "status": "active"
+      },
+      "preconditions": [],
+      "provenance_id": "sm0158_024:prov:63",
+      "t": 63
+    },
+    {
+      "actor_id": null,
+      "affected_ids": [],
+      "event_id": "sm0158_024:e:64",
+      "event_type": "location_change",
+      "narrative": "padloc",
+      "payload": {
+        "location_id": "sm0158_024:loc:1",
+        "person_id": "sm0158_024:person:1"
+      },
+      "preconditions": [],
+      "provenance_id": "sm0158_024:prov:64",
+      "t": 64
+    },
+    {
+      "actor_id": null,
+      "affected_ids": [],
+      "event_id": "sm0158_024:e:65",
+      "event_type": "project_status_change",
+      "narrative": "padstat",
+      "payload": {
+        "project_id": "sm0158_024:project:2",
+        "status": "planned"
+      },
+      "preconditions": [],
+      "provenance_id": "sm0158_024:prov:65",
+      "t": 65
+    },
+    {
+      "actor_id": null,
+      "affected_ids": [],
+      "event_id": "sm0158_024:e:66",
+      "event_type": "location_change",
+      "narrative": "padloc",
+      "payload": {
+        "location_id": "sm0158_024:loc:2",
+        "person_id": "sm0158_024:person:5"
+      },
+      "preconditions": [],
+      "provenance_id": "sm0158_024:prov:66",
+      "t": 66
+    },
+    {
+      "actor_id": null,
+      "affected_ids": [],
+      "event_id": "sm0158_024:e:67",
+      "event_type": "project_status_change",
+      "narrative": "padstat",
+      "payload": {
+        "project_id": "sm0158_024:project:0",
+        "status": "hold"
+      },
+      "preconditions": [],
+      "provenance_id": "sm0158_024:prov:67",
+      "t": 67
+    },
+    {
+      "actor_id": "sm0158_024:person:4",
+      "affected_ids": [
+        "sm0158_024:person:4",
+        "sm0158_024:person:1"
+      ],
+      "event_id": "sm0158_024:e:68",
+      "event_type": "relationship_creation",
+      "narrative": "padrel",
+      "payload": {
+        "rel_id": "sm0158_024:rel:3",
+        "rel_type": "collaborates",
+        "source_id": "sm0158_024:person:4",
+        "target_id": "sm0158_024:person:1"
+      },
+      "preconditions": [],
+      "provenance_id": "sm0158_024:prov:68",
+      "t": 68
+    },
+    {
+      "actor_id": null,
+      "affected_ids": [],
+      "event_id": "sm0158_024:e:69",
+      "event_type": "project_status_change",
+      "narrative": "padstat",
+      "payload": {
+        "project_id": "sm0158_024:project:2",
+        "status": "planned"
+      },
+      "preconditions": [],
+      "provenance_id": "sm0158_024:prov:69",
+      "t": 69
+    },
+    {
+      "actor_id": null,
+      "affected_ids": [],
+      "event_id": "sm0158_024:e:70",
+      "event_type": "location_change",
+      "narrative": "padloc",
+      "payload": {
+        "location_id": "sm0158_024:loc:3",
+        "person_id": "sm0158_024:person:5"
+      },
+      "preconditions": [],
+      "provenance_id": "sm0158_024:prov:70",
+      "t": 70
+    },
+    {
+      "actor_id": null,
+      "affected_ids": [],
+      "event_id": "sm0158_024:e:71",
+      "event_type": "project_status_change",
+      "narrative": "padstat",
+      "payload": {
+        "project_id": "sm0158_024:project:1",
+        "status": "active"
+      },
+      "preconditions": [],
+      "provenance_id": "sm0158_024:prov:71",
+      "t": 71
+    },
+    {
+      "actor_id": null,
+      "affected_ids": [],
+      "event_id": "sm0158_024:e:72",
+      "event_type": "location_change",
+      "narrative": "padloc",
+      "payload": {
+        "location_id": "sm0158_024:loc:3",
+        "person_id": "sm0158_024:person:1"
+      },
+      "preconditions": [],
+      "provenance_id": "sm0158_024:prov:72",
+      "t": 72
+    },
+    {
+      "actor_id": null,
+      "affected_ids": [],
+      "event_id": "sm0158_024:e:73",
+      "event_type": "project_status_change",
+      "narrative": "padstat",
+      "payload": {
+        "project_id": "sm0158_024:project:0",
+        "status": "active"
+      },
+      "preconditions": [],
+      "provenance_id": "sm0158_024:prov:73",
+      "t": 73
+    },
+    {
+      "actor_id": null,
+      "affected_ids": [],
+      "event_id": "sm0158_024:e:74",
+      "event_type": "location_change",
+      "narrative": "padloc",
+      "payload": {
+        "location_id": "sm0158_024:loc:1",
+        "person_id": "sm0158_024:person:1"
+      },
+      "preconditions": [],
+      "provenance_id": "sm0158_024:prov:74",
+      "t": 74
+    },
+    {
+      "actor_id": null,
+      "affected_ids": [],
+      "event_id": "sm0158_024:e:75",
+      "event_type": "project_status_change",
+      "narrative": "padstat",
+      "payload": {
+        "project_id": "sm0158_024:project:0",
+        "status": "review"
+      },
+      "preconditions": [],
+      "provenance_id": "sm0158_024:prov:75",
+      "t": 75
+    },
+    {
+      "actor_id": null,
+      "affected_ids": [],
+      "event_id": "sm0158_024:e:76",
+      "event_type": "location_change",
+      "narrative": "padloc",
+      "payload": {
+        "location_id": "sm0158_024:loc:2",
+        "person_id": "sm0158_024:person:0"
+      },
+      "preconditions": [],
+      "provenance_id": "sm0158_024:prov:76",
+      "t": 76
+    },
+    {
+      "actor_id": null,
+      "affected_ids": [],
+      "event_id": "sm0158_024:e:77",
+      "event_type": "project_status_change",
+      "narrative": "padstat",
+      "payload": {
+        "project_id": "sm0158_024:project:0",
+        "status": "active"
+      },
+      "preconditions": [],
+      "provenance_id": "sm0158_024:prov:77",
+      "t": 77
+    },
+    {
+      "actor_id": "sm0158_024:person:5",
+      "affected_ids": [
+        "sm0158_024:person:5",
+        "sm0158_024:person:2"
+      ],
+      "event_id": "sm0158_024:e:78",
+      "event_type": "relationship_creation",
+      "narrative": "padrel",
+      "payload": {
+        "rel_id": "sm0158_024:rel:4",
+        "rel_type": "collaborates",
+        "source_id": "sm0158_024:person:5",
+        "target_id": "sm0158_024:person:2"
+      },
+      "preconditions": [],
+      "provenance_id": "sm0158_024:prov:78",
+      "t": 78
+    },
+    {
+      "actor_id": "sm0158_024:person:5",
+      "affected_ids": [
+        "sm0158_024:rel:4"
+      ],
+      "event_id": "sm0158_024:e:79",
+      "event_type": "relationship_termination",
+      "narrative": "padend",
+      "payload": {
+        "rel_id": "sm0158_024:rel:4"
+      },
+      "preconditions": [],
+      "provenance_id": "sm0158_024:prov:79",
+      "t": 79
+    },
+    {
+      "actor_id": null,
+      "affected_ids": [],
+      "event_id": "sm0158_024:e:80",
+      "event_type": "location_change",
+      "narrative": "padloc",
+      "payload": {
+        "location_id": "sm0158_024:loc:3",
+        "person_id": "sm0158_024:person:0"
+      },
+      "preconditions": [],
+      "provenance_id": "sm0158_024:prov:80",
+      "t": 80
+    },
+    {
+      "actor_id": null,
+      "affected_ids": [],
+      "event_id": "sm0158_024:e:81",
+      "event_type": "project_status_change",
+      "narrative": "padstat",
+      "payload": {
+        "project_id": "sm0158_024:project:0",
+        "status": "planned"
+      },
+      "preconditions": [],
+      "provenance_id": "sm0158_024:prov:81",
+      "t": 81
+    },
+    {
+      "actor_id": null,
+      "affected_ids": [],
+      "event_id": "sm0158_024:e:82",
+      "event_type": "location_change",
+      "narrative": "padloc",
+      "payload": {
+        "location_id": "sm0158_024:loc:2",
+        "person_id": "sm0158_024:person:0"
+      },
+      "preconditions": [],
+      "provenance_id": "sm0158_024:prov:82",
+      "t": 82
+    },
+    {
+      "actor_id": "sm0158_024:person:1",
+      "affected_ids": [
+        "sm0158_024:person:1",
+        "sm0158_024:person:0"
+      ],
+      "event_id": "sm0158_024:e:83",
+      "event_type": "relationship_creation",
+      "narrative": "padrel",
+      "payload": {
+        "rel_id": "sm0158_024:rel:5",
+        "rel_type": "collaborates",
+        "source_id": "sm0158_024:person:1",
+        "target_id": "sm0158_024:person:0"
+      },
+      "preconditions": [],
+      "provenance_id": "sm0158_024:prov:83",
+      "t": 83
+    },
+    {
+      "actor_id": null,
+      "affected_ids": [],
+      "event_id": "sm0158_024:e:84",
+      "event_type": "location_change",
+      "narrative": "padloc",
+      "payload": {
+        "location_id": "sm0158_024:loc:2",
+        "person_id": "sm0158_024:person:0"
+      },
+      "preconditions": [],
+      "provenance_id": "sm0158_024:prov:84",
+      "t": 84
+    },
+    {
+      "actor_id": null,
+      "affected_ids": [],
+      "event_id": "sm0158_024:e:85",
+      "event_type": "project_status_change",
+      "narrative": "padstat",
+      "payload": {
+        "project_id": "sm0158_024:project:0",
+        "status": "review"
+      },
+      "preconditions": [],
+      "provenance_id": "sm0158_024:prov:85",
+      "t": 85
+    },
+    {
+      "actor_id": null,
+      "affected_ids": [],
+      "event_id": "sm0158_024:e:86",
+      "event_type": "location_change",
+      "narrative": "padloc",
+      "payload": {
+        "location_id": "sm0158_024:loc:2",
+        "person_id": "sm0158_024:person:2"
+      },
+      "preconditions": [],
+      "provenance_id": "sm0158_024:prov:86",
+      "t": 86
+    },
+    {
+      "actor_id": null,
+      "affected_ids": [],
+      "event_id": "sm0158_024:e:87",
+      "event_type": "project_status_change",
+      "narrative": "padstat",
+      "payload": {
+        "project_id": "sm0158_024:project:1",
+        "status": "planned"
+      },
+      "preconditions": [],
+      "provenance_id": "sm0158_024:prov:87",
+      "t": 87
+    },
+    {
+      "actor_id": null,
+      "affected_ids": [],
+      "event_id": "sm0158_024:e:88",
+      "event_type": "location_change",
+      "narrative": "padloc",
+      "payload": {
+        "location_id": "sm0158_024:loc:1",
+        "person_id": "sm0158_024:person:0"
+      },
+      "preconditions": [],
+      "provenance_id": "sm0158_024:prov:88",
+      "t": 88
+    },
+    {
+      "actor_id": null,
+      "affected_ids": [],
+      "event_id": "sm0158_024:e:89",
+      "event_type": "project_status_change",
+      "narrative": "padstat",
+      "payload": {
+        "project_id": "sm0158_024:project:1",
+        "status": "hold"
+      },
+      "preconditions": [],
+      "provenance_id": "sm0158_024:prov:89",
+      "t": 89
+    },
+    {
+      "actor_id": null,
+      "affected_ids": [],
+      "event_id": "sm0158_024:e:90",
+      "event_type": "location_change",
+      "narrative": "padloc",
+      "payload": {
+        "location_id": "sm0158_024:loc:3",
+        "person_id": "sm0158_024:person:1"
+      },
+      "preconditions": [],
+      "provenance_id": "sm0158_024:prov:90",
+      "t": 90
+    },
+    {
+      "actor_id": null,
+      "affected_ids": [],
+      "event_id": "sm0158_024:e:91",
+      "event_type": "project_status_change",
+      "narrative": "padstat",
+      "payload": {
+        "project_id": "sm0158_024:project:0",
+        "status": "planned"
+      },
+      "preconditions": [],
+      "provenance_id": "sm0158_024:prov:91",
+      "t": 91
+    },
+    {
+      "actor_id": null,
+      "affected_ids": [],
+      "event_id": "sm0158_024:e:92",
+      "event_type": "location_change",
+      "narrative": "padloc",
+      "payload": {
+        "location_id": "sm0158_024:loc:1",
+        "person_id": "sm0158_024:person:4"
+      },
+      "preconditions": [],
+      "provenance_id": "sm0158_024:prov:92",
+      "t": 92
+    },
+    {
+      "actor_id": null,
+      "affected_ids": [],
+      "event_id": "sm0158_024:e:93",
+      "event_type": "project_status_change",
+      "narrative": "padstat",
+      "payload": {
+        "project_id": "sm0158_024:project:0",
+        "status": "planned"
+      },
+      "preconditions": [],
+      "provenance_id": "sm0158_024:prov:93",
+      "t": 93
+    },
+    {
+      "actor_id": null,
+      "affected_ids": [],
+      "event_id": "sm0158_024:e:94",
+      "event_type": "location_change",
+      "narrative": "padloc",
+      "payload": {
+        "location_id": "sm0158_024:loc:3",
+        "person_id": "sm0158_024:person:2"
+      },
+      "preconditions": [],
+      "provenance_id": "sm0158_024:prov:94",
+      "t": 94
+    },
+    {
+      "actor_id": null,
+      "affected_ids": [],
+      "event_id": "sm0158_024:e:95",
+      "event_type": "project_status_change",
+      "narrative": "padstat",
+      "payload": {
+        "project_id": "sm0158_024:project:1",
+        "status": "active"
+      },
+      "preconditions": [],
+      "provenance_id": "sm0158_024:prov:95",
+      "t": 95
+    },
+    {
+      "actor_id": null,
+      "affected_ids": [],
+      "event_id": "sm0158_024:e:96",
+      "event_type": "location_change",
+      "narrative": "padloc",
+      "payload": {
+        "location_id": "sm0158_024:loc:0",
+        "person_id": "sm0158_024:person:1"
+      },
+      "preconditions": [],
+      "provenance_id": "sm0158_024:prov:96",
+      "t": 96
+    },
+    {
+      "actor_id": null,
+      "affected_ids": [],
+      "event_id": "sm0158_024:e:97",
+      "event_type": "project_status_change",
+      "narrative": "padstat",
+      "payload": {
+        "project_id": "sm0158_024:project:2",
+        "status": "hold"
+      },
+      "preconditions": [],
+      "provenance_id": "sm0158_024:prov:97",
+      "t": 97
+    }
+  ],
+  "meta": {
+    "base_doc": "sm0158_024:docbase:0",
+    "ceo0": "sm0158_024:person:0",
+    "ceo1": "sm0158_024:person:1",
+    "ceo_org": "sm0158_024:org:0",
+    "ceo_replace_t": 28,
+    "conflict_id": "sm0158_024:conflict:0",
+    "conflict_intro_t": 11,
+    "conflict_resolve_t": 21,
+    "doc_revision_t": 35,
+    "doc_v1": "sm0158_024:doc:0",
+    "doc_v2": "sm0158_024:doc:1",
+    "employee": "sm0158_024:person:2",
+    "focal_project": "sm0158_024:project:0",
+    "hist_ceo_time": 27,
+    "locations": [
+      "sm0158_024:loc:0",
+      "sm0158_024:loc:1",
+      "sm0158_024:loc:2",
+      "sm0158_024:loc:3"
+    ],
+    "n_ceo_replacements": 2,
+    "n_conflicts": 3,
+    "n_doc_revisions": 4,
+    "n_ownership_transfers": 3,
+    "orgs": [
+      "sm0158_024:org:0",
+      "sm0158_024:org:1",
+      "sm0158_024:org:2"
+    ],
+    "other_org": "sm0158_024:org:1",
+    "other_project": "sm0158_024:project:1",
+    "outsider": "sm0158_024:person:3",
+    "ownership_transfer_t": 30,
+    "persons": [
+      "sm0158_024:person:0",
+      "sm0158_024:person:1",
+      "sm0158_024:person:2",
+      "sm0158_024:person:3",
+      "sm0158_024:person:4",
+      "sm0158_024:person:5"
+    ],
+    "projects": [
+      "sm0158_024:project:0",
+      "sm0158_024:project:1",
+      "sm0158_024:project:2"
+    ],
+    "rel_id": "sm0158_024:rel:0",
+    "target_bundles": 10,
+    "temp_id": "sm0158_024:temp:0",
+    "tier": "medium"
+  },
+  "n_events": 97,
+  "seed": 158,
+  "world_id": "sm0158_024",
+  "world_idx": 24
+}

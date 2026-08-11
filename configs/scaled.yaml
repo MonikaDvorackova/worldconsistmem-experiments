@@ -1,0 +1,56 @@
+# WorldConsistMem scaled study configuration
+# Does not modify smoke freeze artefacts.
+
+seed_base: 100
+worlds_per_tier: 34  # 34*3 = 102 worlds
+tiers: [small, medium, large]
+
+# Capacity budgets (logical records). Primary accounting unit.
+# B1: 1 observation = 1 logical record.
+# H0: current+archive+graph+provenance+conflicts+event_index+transitions.
+capacity_budgets:
+  low: 60
+  medium: 150
+  high: 400
+  unconstrained: null
+
+# Retrieval / consultation budgets (records consulted / top-k)
+retrieval_budgets:
+  low: 3
+  moderate: 8
+
+relaxed_acc_threshold: 0.8
+
+systems:
+  unconstrained:
+    - B1_flat_unconstrained
+    - B2_latest_only
+    - B3_recency
+    - B4_bm25
+    - B5_reservoir
+    - H0_ltkm_unconstrained
+  capacity_matched:
+    - B1_flat_capacity
+    - B5_reservoir
+    - H0_ltkm_capacity
+  ablations:
+    - H-archive
+    - H-temporal-validity
+    - H-graph
+    - H-provenance
+    - H-conflict
+
+llm_models:
+  - mlx-community/Phi-3.5-mini-instruct-4bit
+  - mlx-community/Qwen2.5-3B-Instruct-4bit
+
+hypotheses:
+  H1: Acc-BCR gap persists across scaled worlds and baselines
+  H2: Under matched budgets, H0 improves BCR/ConsAcc vs flat in medium/large
+  H3: Ablations selectively harm predicted consistency dimensions
+  H4: Relative consistency advantage persists under local LLM readers
+  H5: Consistency degrades faster than accuracy as depth/dependency grow
+
+continuation_gate:
+  min_bcr_lift_vs_matched_flat: 0.10
+  min_consacc_lift_vs_matched_flat: 0.10

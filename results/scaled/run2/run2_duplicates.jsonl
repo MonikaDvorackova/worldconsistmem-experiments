@@ -1,0 +1,5 @@
+{"line": 398, "cache_key": "158de3fbc4709804ce2a24d23eae3b1b459210ab4dc88270bd4f4cba8494fe6d", "memory_system": "B4_bm25_k8", "query_id": "ss0102_002:b:ceo:7:provenance"}
+{"line": 400, "cache_key": "b66c1346291c38aa4abb515bfe3b9d710a564c156b3837d2d0dd3b2d9e482816", "memory_system": "B4_bm25_k8", "query_id": "ss0102_002:b:ceo:7:temporal_order"}
+{"line": 401, "cache_key": "158de3fbc4709804ce2a24d23eae3b1b459210ab4dc88270bd4f4cba8494fe6d", "memory_system": "B4_bm25_k8", "query_id": "ss0102_002:b:ceo:7:provenance"}
+{"line": 403, "cache_key": "35d02436fd397bf6e95b4b2952094af0f4c65d91eab9e86c8edd9b9cdca9dea8", "memory_system": "B4_bm25_k8", "query_id": "ss0102_002:b:ceo:7:contradiction"}
+{"line": 404, "cache_key": "b66c1346291c38aa4abb515bfe3b9d710a564c156b3837d2d0dd3b2d9e482816", "memory_system": "B4_bm25_k8", "query_id": "ss0102_002:b:ceo:7:temporal_order"}

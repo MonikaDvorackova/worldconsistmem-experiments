@@ -1,0 +1,91 @@
+{
+  "integrity": {
+    "run1_qwen_cache": "9bb7cfb1737a6d6a2ec15f1fc641bd1b0cd00919d1c473a2039d22ec776f8af3",
+    "run2_qwen_cache": "4024b825d89cec3835add27b04a881fe327f859e67a82290cf3b5a7d73e7000c",
+    "smoke": "3aa67ed1b6a39be3d9e1805d14f7d5ce7cc05f4655bdce0bc4ff49900c14c7ab",
+    "system_results_csv": "70b5ce4f27d1b70d796678029bb375487d37cbf0701f1d75a56b4224c2a941bd"
+  },
+  "n_qwen_systems": 4,
+  "n_symbolic_systems": 26,
+  "qwen_floor": {
+    "B1_flat_cap150_compact": {
+      "bcr": 0.0,
+      "bundles_with_family_violation": {
+        "contradiction": 10,
+        "multi_hop": 78,
+        "provenance": 180,
+        "relational": 120,
+        "temporal": 68,
+        "transition": 192,
+        "uniqueness": 42
+      },
+      "frac_csr_eq_1": 0.0,
+      "frac_exactly_one_violation": 0.03125,
+      "frac_multiple_violations": 0.96875,
+      "mean_csr": 0.2580729166666671,
+      "mean_violations": 3.59375,
+      "median_violations": 4.0,
+      "most_frequent_violated_family": "transition",
+      "n_bundles": 192
+    },
+    "B3_recency_k8": {
+      "bcr": 0.0,
+      "bundles_with_family_violation": {
+        "contradiction": 10,
+        "multi_hop": 78,
+        "provenance": 180,
+        "relational": 120,
+        "temporal": 68,
+        "transition": 192,
+        "uniqueness": 42
+      },
+      "frac_csr_eq_1": 0.0,
+      "frac_exactly_one_violation": 0.03125,
+      "frac_multiple_violations": 0.96875,
+      "mean_csr": 0.2580729166666671,
+      "mean_violations": 3.59375,
+      "median_violations": 4.0,
+      "most_frequent_violated_family": "transition",
+      "n_bundles": 192
+    },
+    "B4_bm25_k8": {
+      "bcr": 0.0,
+      "bundles_with_family_violation": {
+        "contradiction": 14,
+        "multi_hop": 78,
+        "provenance": 139,
+        "relational": 120,
+        "temporal": 62,
+        "transition": 192,
+        "uniqueness": 34
+      },
+      "frac_csr_eq_1": 0.0,
+      "frac_exactly_one_violation": 0.17708333333333334,
+      "frac_multiple_violations": 0.8229166666666666,
+      "mean_csr": 0.32907986111111154,
+      "mean_violations": 3.328125,
+      "median_violations": 4.0,
+      "most_frequent_violated_family": "transition",
+      "n_bundles": 192
+    },
+    "H0_ltkm_cap150_ret8": {
+      "bcr": 0.0,
+      "bundles_with_family_violation": {
+        "contradiction": 36,
+        "multi_hop": 78,
+        "provenance": 192,
+        "relational": 120,
+        "temporal": 54,
+        "transition": 192
+      },
+      "frac_csr_eq_1": 0.0,
+      "frac_exactly_one_violation": 0.0,
+      "frac_multiple_violations": 1.0,
+      "mean_csr": 0.28437500000000066,
+      "mean_violations": 3.5,
+      "median_violations": 3.5,
+      "most_frequent_violated_family": "transition",
+      "n_bundles": 192
+    }
+  }
+}

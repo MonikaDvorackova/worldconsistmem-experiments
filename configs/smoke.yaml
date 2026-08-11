@@ -1,0 +1,9 @@
+seed: 42
+n_worlds: 25
+min_events: 20
+min_bundles_per_world: 5
+min_queries_per_bundle: 5
+relaxed_acc_threshold: 0.8
+high_acc_corruption_threshold: 0.8
+output_dir: data/smoke
+metrics_dir: results

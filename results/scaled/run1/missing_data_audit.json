@@ -1,0 +1,26 @@
+{
+  "classification": [
+    "blocked_by_one_model: Phi only 22/5040 logical cells (B1 only; cache_key hasher mismatch vs current protocol key)",
+    "blocked_by_systems: Qwen B4 and H0 not started",
+    "deterministic_tail: Qwen\u00d7B3 missing is contiguous suffix of traversal order",
+    "not_MCAR: missingness is structured by model/system schedule, not random over cells"
+  ],
+  "details": {
+    "miss_by_model_system": {
+      "Phi-3.5-mini-instruct-4bit|B1_flat_cap150_compact": 1238,
+      "Phi-3.5-mini-instruct-4bit|B3_recency_k8": 1260,
+      "Phi-3.5-mini-instruct-4bit|B4_bm25_k8": 1260,
+      "Phi-3.5-mini-instruct-4bit|H0_ltkm_cap150_ret8": 1260,
+      "Qwen2.5-3B-Instruct-4bit|B3_recency_k8": 214,
+      "Qwen2.5-3B-Instruct-4bit|B4_bm25_k8": 1260,
+      "Qwen2.5-3B-Instruct-4bit|H0_ltkm_cap150_ret8": 1260
+    },
+    "orphans": 0,
+    "phi_cache_key_mismatches": 22,
+    "phi_logical_completed": 22,
+    "qwen_b3_completed": 1046,
+    "qwen_b3_first_missing_index": 1046,
+    "qwen_b3_holes_before_first_miss": 0,
+    "qwen_b3_missing_tail": 214
+  }
+}
