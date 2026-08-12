@@ -8,15 +8,14 @@ Pilot artefacts that previously lived under `outputs/` are shipped here under `r
 
 ## Install
 
+Uses [uv](https://docs.astral.sh/uv/) with a `pyproject.toml` (src layout, editable install — no `PYTHONPATH` needed):
+
 ```bash
 cd worldconsistmem-experiments
-python -m venv .venv
-source .venv/bin/activate   # Windows: .venv\Scripts\activate
-pip install -r requirements.txt
-export PYTHONPATH=src
+uv sync
 ```
 
-`requirements.txt` covers symbolic generation, baselines, metrics, and tests (`PyYAML`, `pytest`).
+This installs the `worldconsistmem` package plus runtime deps (`PyYAML`) and the dev group (`pytest`). Without uv: `pip install -e '.[llm]'` or `pip install -e .` in a venv.
 
 ### Optional: local LLM reader (Apple Silicon)
 
@@ -25,24 +24,21 @@ The existing LLM pilot uses **mlx-lm** on Apple Silicon (`mlx-community/Qwen2.5-
 ```bash
 # optional, Apple Silicon only — versions used in the pilot notes:
 # mlx 0.32.0 / mlx-lm 0.31.3 (see results/scaled/model_download_validation.md)
-pip install mlx-lm
+uv sync --extra llm
 ```
 
 ## Tests
 
 ```bash
-export PYTHONPATH=src
-python -m pytest tests/ -q
+uv run pytest tests/ -q
 ```
 
 ## Reproduce / regenerate (from repo root)
 
-All commands assume `export PYTHONPATH=src` (or prefix each command).
-
 ### Smoke generation
 
 ```bash
-PYTHONPATH=src python scripts/generate_smoke.py
+uv run python scripts/generate_smoke.py
 ```
 
 Writes `data/smoke/` and metrics under `results/` (including validation artefacts).
@@ -50,7 +46,7 @@ Writes `data/smoke/` and metrics under `results/` (including validation artefact
 ### Scaled generation
 
 ```bash
-PYTHONPATH=src python scripts/generate_scaled.py
+uv run python scripts/generate_scaled.py
 ```
 
 Writes `data/scaled/` using `configs/scaled.yaml` (smoke left untouched).
@@ -58,7 +54,7 @@ Writes `data/scaled/` using `configs/scaled.yaml` (smoke left untouched).
 ### Symbolic baselines (smoke)
 
 ```bash
-PYTHONPATH=src python scripts/run_baselines.py
+uv run python scripts/run_baselines.py
 ```
 
 Writes `results/baselines/`.
@@ -66,7 +62,7 @@ Writes `results/baselines/`.
 ### H0 / LTKM reference (smoke)
 
 ```bash
-PYTHONPATH=src python scripts/run_ltkm.py
+uv run python scripts/run_ltkm.py
 ```
 
 Writes `results/ltkm/`.
@@ -74,7 +70,7 @@ Writes `results/ltkm/`.
 ### Scaled symbolic study
 
 ```bash
-PYTHONPATH=src python scripts/run_scaled_study.py
+uv run python scripts/run_scaled_study.py
 ```
 
 Writes predictions and tables under `results/scaled/`.
@@ -82,7 +78,7 @@ Writes predictions and tables under `results/scaled/`.
 ### Prediction evaluation
 
 ```bash
-PYTHONPATH=src python scripts/evaluate_predictions.py \
+uv run python scripts/evaluate_predictions.py \
   --predictions results/baselines/B3_recency_retrieval_predictions.jsonl
 ```
 
@@ -93,7 +89,7 @@ Optional flags: `--bundles`, `--seed`, `--n-worlds`, `--out` (default `results/e
 Offline only; does **not** redefine BCR. Recomputes CSR, violations/bundle, and PConsAcc from frozen predictions:
 
 ```bash
-PYTHONPATH=src python scripts/recompute_partial_consistency.py
+uv run python scripts/recompute_partial_consistency.py
 ```
 
 Writes `results/scaled/partial_consistency_*.csv` and `partial_consistency_findings.md`.
@@ -103,9 +99,9 @@ Writes `results/scaled/partial_consistency_*.csv` and `partial_consistency_findi
 Pilot H4 runner and Qwen completion scripts:
 
 ```bash
-PYTHONPATH=src python scripts/run_h4_llm.py
-PYTHONPATH=src python scripts/run_h4_run2.py
-PYTHONPATH=src python scripts/finalize_scaled.py
+uv run python scripts/run_h4_llm.py
+uv run python scripts/run_h4_run2.py
+uv run python scripts/finalize_scaled.py
 ```
 
 These expect local mlx-lm model availability and may need adaptation on non-Apple platforms.

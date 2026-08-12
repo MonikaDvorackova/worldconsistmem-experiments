@@ -84,37 +84,36 @@ Do **not** treat the pilot’s model choice, subset size, or reported gaps as fi
 From the repository root (see also `README.md`):
 
 ```bash
-pip install -r requirements.txt
-export PYTHONPATH=src
+uv sync   # or: pip install -e . in a venv
 
 # tests
-python -m pytest tests/ -q
+uv run pytest tests/ -q
 
 # smoke generation
-python scripts/generate_smoke.py
+uv run python scripts/generate_smoke.py
 
 # scaled generation
-python scripts/generate_scaled.py
+uv run python scripts/generate_scaled.py
 
 # symbolic baselines (smoke)
-python scripts/run_baselines.py
+uv run python scripts/run_baselines.py
 
 # H0 / LTKM (smoke)
-python scripts/run_ltkm.py
+uv run python scripts/run_ltkm.py
 
 # scaled symbolic study
-python scripts/run_scaled_study.py
+uv run python scripts/run_scaled_study.py
 
 # evaluate a predictions JSONL
-python scripts/evaluate_predictions.py --predictions path/to/predictions.jsonl
+uv run python scripts/evaluate_predictions.py --predictions path/to/predictions.jsonl
 
 # CSR / partial consistency recompute (frozen predictions; does not redefine BCR)
-python scripts/recompute_partial_consistency.py
+uv run python scripts/recompute_partial_consistency.py
 
 # existing LLM pilot scripts (optional; mlx-lm / Apple Silicon — may need adaptation)
-python scripts/run_h4_llm.py
-python scripts/run_h4_run2.py
-python scripts/finalize_scaled.py
+uv run python scripts/run_h4_llm.py
+uv run python scripts/run_h4_run2.py
+uv run python scripts/finalize_scaled.py
 ```
 
 `mlx-lm` is **not** a mandatory dependency for symbolic experiments. The LLM path is optional and platform-specific in the current implementation.
