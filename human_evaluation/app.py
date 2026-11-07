@@ -6,9 +6,14 @@ import os
 from pathlib import Path
 import streamlit as st
 
-st.set_page_config(page_title="WorldConsistMem | Human Evaluation", layout="centered")
-st.title("WorldConsistMem — nezávislé hodnocení")
-st.caption("Posuzujte věcnou správnost podle důkazů; samotný formát JSON nehodnoťte.")
+st.set_page_config(page_title="WorldConsistMem | Human Evaluation", layout="centered", page_icon="◈")
+style_path = Path(__file__).parent / "style.css"
+if style_path.exists():
+    st.markdown("<style>" + style_path.read_text(encoding="utf-8") + "</style>", unsafe_allow_html=True)
+st.caption("WORLD CONSIST MEM  /  HUMAN EVALUATION")
+st.title("Nezávislé hodnocení")
+st.write("Posuzujte věcnou správnost podle dostupných důkazů. Formát JSON sám o sobě není kritériem správnosti.")
+st.divider()
 
 code = os.environ.get("WCM_ACCESS_CODE", "")
 if not code:
@@ -26,16 +31,23 @@ if not st.session_state.authorized:
     st.stop()
 
 path = Path(__file__).resolve().parent.parent / "BLINDED_ANNOTATION.csv"
-if not path.is_file():
-    st.error("Dataset zatím nebyl nahrán správcem. Hodnocení není dostupné.")
-    st.stop()
-
-@st.cache_data
-def read_rows():
+if path.is_file():
     with path.open(encoding="utf-8-sig", newline="") as f:
-        return list(csv.DictReader(f))
-
-rows = read_rows()
+        rows = list(csv.DictReader(f))
+else:
+    st.info("Dataset ještě není uložen na serveru. Můžete jej načíst přímo z CSV souboru.")
+    uploaded_dataset = st.file_uploader(
+        "Vyberte BLINDED_ANNOTATION.csv", type=["csv"], key="dataset_upload",
+        help="Soubor zůstane pouze v aktuální relaci. Pro trvalý přístup hodnotitelů jej správce musí nasadit na server."
+    )
+    if uploaded_dataset is None:
+        st.stop()
+    try:
+        rows = list(csv.DictReader(io.StringIO(uploaded_dataset.getvalue().decode("utf-8-sig"))))
+    except UnicodeDecodeError:
+        st.error("CSV musí být kódované v UTF-8.")
+        st.stop()
+    st.warning("Dočasné načtení: po obnovení nebo ukončení relace může být nutné CSV nahrát znovu. Hodnocení pravidelně zálohujte.")
 required = {"case_id","response_id","question","evidence_json","raw_model_response"}
 if not rows or any(not required.issubset(row) for row in rows):
     st.error("Dataset nemá požadované sloupce.")
@@ -69,7 +81,7 @@ idx = st.session_state.idx
 row = rows[idx]
 rid = row["response_id"]
 current = ratings.get(rid, {})
-st.subheader(f"Odpověď {idx+1} z {len(rows)}")
+st.subheader(f"Hodnocení {idx+1} / {len(rows)}")
 st.caption(f"Případ {row['case_id']} · {rid}")
 st.markdown("**Otázka**")
 st.write(row["question"])
