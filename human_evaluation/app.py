@@ -48,7 +48,7 @@ else:
         st.error("CSV musí být kódované v UTF-8.")
         st.stop()
     st.warning("Dočasné načtení: po obnovení nebo ukončení relace může být nutné CSV nahrát znovu. Hodnocení pravidelně zálohujte.")
-required = {"case_id","response_id","question","evidence_json","model_answer_json"}
+required = {"case_id","response_id","question","evidence_json","raw_model_response"}
 if not rows or any(not required.issubset(row) for row in rows):
     st.error("Dataset nemá požadované sloupce.")
     st.stop()
@@ -92,9 +92,9 @@ with st.expander("Důkazy", expanded=True):
         st.code(row["evidence_json"])
 st.markdown("**Odpověď modelu**")
 try:
-    st.json(json.loads(row["model_answer_json"]))
+    st.json(json.loads(row["raw_model_response"]))
 except (TypeError, ValueError):
-    st.code(row["model_answer_json"])
+    st.code(row["raw_model_response"])
 
 correct_options = ["correct","incorrect","ambiguous"]
 suff_options = ["yes","no","unclear"]
