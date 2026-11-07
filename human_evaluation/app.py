@@ -31,16 +31,23 @@ if not st.session_state.authorized:
     st.stop()
 
 path = Path(__file__).parent / "BLINDED_ANNOTATION.csv"
-if not path.is_file():
-    st.error("Dataset zatím nebyl nahrán správcem. Hodnocení není dostupné.")
-    st.stop()
-
-@st.cache_data
-def read_rows():
+if path.is_file():
     with path.open(encoding="utf-8-sig", newline="") as f:
-        return list(csv.DictReader(f))
-
-rows = read_rows()
+        rows = list(csv.DictReader(f))
+else:
+    st.info("Dataset ještě není uložen na serveru. Můžete jej načíst přímo z CSV souboru.")
+    uploaded_dataset = st.file_uploader(
+        "Vyberte BLINDED_ANNOTATION.csv", type=["csv"], key="dataset_upload",
+        help="Soubor zůstane pouze v aktuální relaci. Pro trvalý přístup hodnotitelů jej správce musí nasadit na server."
+    )
+    if uploaded_dataset is None:
+        st.stop()
+    try:
+        rows = list(csv.DictReader(io.StringIO(uploaded_dataset.getvalue().decode("utf-8-sig"))))
+    except UnicodeDecodeError:
+        st.error("CSV musí být kódované v UTF-8.")
+        st.stop()
+    st.warning("Dočasné načtení: po obnovení nebo ukončení relace může být nutné CSV nahrát znovu. Hodnocení pravidelně zálohujte.")
 required = {"case_id","response_id","question","evidence_json","model_answer_json"}
 if not rows or any(not required.issubset(row) for row in rows):
     st.error("Dataset nemá požadované sloupce.")
