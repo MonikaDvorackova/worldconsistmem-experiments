@@ -30,7 +30,7 @@ if not st.session_state.authorized:
             st.rerun()
     st.stop()
 
-path = Path(__file__).parent / "BLINDED_ANNOTATION.csv"
+path = Path(__file__).resolve().parent.parent / "BLINDED_ANNOTATION.csv"
 if path.is_file():
     with path.open(encoding="utf-8-sig", newline="") as f:
         rows = list(csv.DictReader(f))
