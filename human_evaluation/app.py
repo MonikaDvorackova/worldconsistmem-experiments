@@ -25,7 +25,7 @@ if not st.session_state.authorized:
             st.rerun()
     st.stop()
 
-path = Path(__file__).parent / "BLINDED_ANNOTATION.csv"
+path = Path(__file__).resolve().parent.parent / "BLINDED_ANNOTATION.csv"
 if not path.is_file():
     st.error("Dataset zatím nebyl nahrán správcem. Hodnocení není dostupné.")
     st.stop()
@@ -36,7 +36,7 @@ def read_rows():
         return list(csv.DictReader(f))
 
 rows = read_rows()
-required = {"case_id","response_id","question","evidence_json","model_answer_json"}
+required = {"case_id","response_id","question","evidence_json","raw_model_response"}
 if not rows or any(not required.issubset(row) for row in rows):
     st.error("Dataset nemá požadované sloupce.")
     st.stop()
@@ -80,9 +80,9 @@ with st.expander("Důkazy", expanded=True):
         st.code(row["evidence_json"])
 st.markdown("**Odpověď modelu**")
 try:
-    st.json(json.loads(row["model_answer_json"]))
+    st.json(json.loads(row["raw_model_response"]))
 except (TypeError, ValueError):
-    st.code(row["model_answer_json"])
+    st.code(row["raw_model_response"])
 
 correct_options = ["correct","incorrect","ambiguous"]
 suff_options = ["yes","no","unclear"]
