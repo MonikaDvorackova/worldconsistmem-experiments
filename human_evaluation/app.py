@@ -6,9 +6,14 @@ import os
 from pathlib import Path
 import streamlit as st
 
-st.set_page_config(page_title="WorldConsistMem | Human Evaluation", layout="centered")
-st.title("WorldConsistMem — nezávislé hodnocení")
-st.caption("Posuzujte věcnou správnost podle důkazů; samotný formát JSON nehodnoťte.")
+st.set_page_config(page_title="WorldConsistMem | Human Evaluation", layout="centered", page_icon="◈")
+style_path = Path(__file__).parent / "style.css"
+if style_path.exists():
+    st.markdown("<style>" + style_path.read_text(encoding="utf-8") + "</style>", unsafe_allow_html=True)
+st.caption("WORLD CONSIST MEM  /  HUMAN EVALUATION")
+st.title("Nezávislé hodnocení")
+st.write("Posuzujte věcnou správnost podle dostupných důkazů. Formát JSON sám o sobě není kritériem správnosti.")
+st.divider()
 
 code = os.environ.get("WCM_ACCESS_CODE", "")
 if not code:
@@ -69,7 +74,7 @@ idx = st.session_state.idx
 row = rows[idx]
 rid = row["response_id"]
 current = ratings.get(rid, {})
-st.subheader(f"Odpověď {idx+1} z {len(rows)}")
+st.subheader(f"Hodnocení {idx+1} / {len(rows)}")
 st.caption(f"Případ {row['case_id']} · {rid}")
 st.markdown("**Otázka**")
 st.write(row["question"])
