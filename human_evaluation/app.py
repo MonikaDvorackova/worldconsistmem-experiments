@@ -76,107 +76,100 @@ with st.expander("Obnovit rozpracované hodnocení"):
 
 ratings = st.session_state.ratings
 done = sum(ratings.get(r["response_id"], {}).get("semantic_correct") in ("correct", "incorrect", "ambiguous") for r in rows)
-st.progress(done / len(rows), text=f"Vyplněno {done}/{len(rows)}")
-idx = st.session_state.idx
-row = rows[idx]
-rid = row["response_id"]
-current = ratings.get(rid, {})
-st.subheader(f"Kontrola odpovědi {idx+1} / {len(rows)}")
+st.progress(done / len(rows), text=f"Vyplněno {done}/{len(rows)} odpovědí")
 
-def format_answer(raw):
+# One case is shown once, with all its blinded candidate responses.
+cases = {}
+for record in rows:
+    cases.setdefault(record["case_id"], []).append(record)
+case_ids = list(cases)
+st.session_state.idx = min(st.session_state.idx, len(case_ids) - 1)
+idx = st.session_state.idx
+case_id = case_ids[idx]
+case_rows = cases[case_id]
+reference = case_rows[0]
+st.subheader(f"Případ {idx+1} / {len(case_ids)}")
+st.caption(f"{len(case_rows)} odpovědi ke stejné otázce")
+
+import re
+
+def plain_question(question):
+    match = re.fullmatch(r"When was .+ revised from v1 to v2\\?", question)
+    if match:
+        return "Kdy byl dokument změněn z verze 1 na verzi 2?"
+    match = re.fullmatch(r"When and how did the CEO of .+ change\\?", question)
+    if match:
+        return "Kdy a jak se změnil generální ředitel organizace?"
+    return question
+
+def answer_summary(raw):
     try:
-        response = json.loads(raw)
+        value = json.loads(raw)
     except (ValueError, TypeError):
         return str(raw)
-    if isinstance(response, dict):
-        if response.get("abstain") is True:
+    if isinstance(value, dict):
+        if value.get("abstain") is True:
             return "Model neodpověděl."
-        answer = response.get("answer", response)
+        answer = value.get("answer", value)
         if isinstance(answer, dict):
-            if "t" in answer:
-                return f"Čas {answer['t']}"
-            return ", ".join(f"{k}: {v}" for k, v in answer.items())
-        if isinstance(answer, (int, float)) and not isinstance(answer, bool):
-            return f"Čas {answer}"
+            return " · ".join(f"{k}: {v}" for k, v in answer.items())
         return str(answer)
-    return str(response)
-
-def concise_evidence(raw):
-    try:
-        evidence = json.loads(raw)
-    except (ValueError, TypeError):
-        return None
-    if not isinstance(evidence, list):
-        return None
-    events = []
-    for item in evidence:
-        if not isinstance(item, dict):
-            return None
-        source = item.get("s")
-        if not isinstance(source, dict):
-            return None
-        t = source.get("t", item.get("t"))
-        if t is None:
-            return None
-        events.append((t, source.get("et", "událost")))
-    return events
+    return str(value)
 
 st.markdown("**Otázka**")
-st.write(row["question"])
-st.markdown("**Odpověď modelu**")
-st.markdown(f"### {format_answer(row['raw_model_response'])}")
-st.markdown("**Podklady k ověření**")
-events = concise_evidence(row["evidence_json"])
-if events is not None:
-    st.write("Zaznamenané události (časový krok — typ):")
-    for time, event_type in sorted(events, key=lambda e: (str(type(e[0])), e[0])):
-        st.write(f"**{time}** — {event_type}")
+st.write(plain_question(reference["question"]))
+st.markdown("**Co víme z podkladů**")
+try:
+    evidence = json.loads(reference["evidence_json"])
+except (ValueError, TypeError):
+    evidence = None
+if isinstance(evidence, list):
+    event_lines = []
+    for item in evidence:
+        if not isinstance(item, dict):
+            continue
+        source = item.get("s", {})
+        if not isinstance(source, dict):
+            continue
+        t = source.get("t", item.get("t"))
+        event_type = source.get("et", "událost")
+        event_lines.append((t, event_type))
+    for t, event_type in sorted(event_lines, key=lambda x: str(x[0]).zfill(12)):
+        st.write(f"Čas **{t}** — {event_type}")
 else:
-    st.warning("Podklady nejsou ve standardním formátu. Otevřete technické detaily.")
-st.caption("Záznamy samy nemusí dokazovat, která událost odpovídá konkrétní verzi. V takovém případě vyberte Nevím.")
-with st.expander("Technické detaily (nepovinné)"):
-    st.caption(f"Případ {row['case_id']} · {rid}")
-    st.write("Původní otázka:", row["question"])
-    st.write("Původní odpověď:")
-    try:
-        st.json(json.loads(row["raw_model_response"]))
-    except (ValueError, TypeError):
-        st.code(row["raw_model_response"])
-    st.write("Původní důkazy:")
-    try:
-        st.json(json.loads(row["evidence_json"]))
-    except (ValueError, TypeError):
-        st.code(row["evidence_json"])
+    st.warning("Podklady nemají standardní strukturu.")
+st.caption("Samotný seznam revizí nemusí určovat, která znamená přechod mezi verzemi. Pokud nelze odpověď ověřit, zvolte Nevím.")
+with st.expander("Technické podklady (nepovinné)"):
+    st.write(reference["question"])
+    st.json(evidence) if evidence is not None else st.code(reference["evidence_json"])
 
-choices = {"correct": "Ano", "incorrect": "Ne", "ambiguous": "Nevím"}
-with st.form(f"evaluation_{rid}"):
-    correct = st.radio(
-        "Lze odpověď potvrdit podle podkladů?",
-        list(choices),
-        index=list(choices).index(current["semantic_correct"]) if current.get("semantic_correct") in choices else None,
-        format_func=lambda value: choices[value],
-        horizontal=True,
-    )
-    left, right = st.columns(2)
-    prev = left.form_submit_button("Předchozí", disabled=idx == 0)
-    nxt = right.form_submit_button("Uložit a pokračovat", disabled=idx == len(rows)-1)
-    save = st.form_submit_button("Uložit", disabled=False)
-    if prev or nxt or save:
-        if correct is None and not prev:
-            st.error("Vyberte Ano, Ne nebo Nevím.")
-        else:
-            if correct is not None:
-                # Retain legacy export schema; evidence sufficiency is not inferred.
-                ratings[rid] = {
-                    "semantic_correct": correct,
-                    "evidence_sufficient": "",
-                    "notes": current.get("notes", ""),
-                }
-            if prev:
-                st.session_state.idx -= 1
-            elif nxt:
-                st.session_state.idx += 1
-            st.rerun()
+st.markdown("### Posuďte jednotlivé odpovědi")
+st.caption("Ano = podklady potvrzují. Ne = podklady vyvracejí. Nevím = nelze rozhodnout. Každá volba se ihned uloží do průběhu této relace.")
+for position, record in enumerate(case_rows, start=1):
+    rid = record["response_id"]
+    selected = ratings.get(rid, {}).get("semantic_correct")
+    with st.container(border=True):
+        st.markdown(f"**Odpověď {position}:** {answer_summary(record['raw_model_response'])}")
+        if selected in ("correct", "incorrect", "ambiguous"):
+            st.caption("Zvoleno: " + {"correct": "Ano", "incorrect": "Ne", "ambiguous": "Nevím"}[selected])
+        cols = st.columns(3)
+        for col, key, label in zip(cols, ("correct", "incorrect", "ambiguous"), ("Ano", "Ne", "Nevím")):
+            if col.button(label, key=f"rate_{rid}_{key}", use_container_width=True, type="primary" if selected == key else "secondary"):
+                ratings[rid] = {"semantic_correct": key, "evidence_sufficient": "", "notes": ""}
+                st.rerun()
+        with st.expander("Původní odpověď (nepovinné)"):
+            try:
+                st.json(json.loads(record["raw_model_response"]))
+            except (ValueError, TypeError):
+                st.code(record["raw_model_response"])
+
+previous, following = st.columns(2)
+if previous.button("Předchozí případ", disabled=idx == 0, use_container_width=True):
+    st.session_state.idx -= 1
+    st.rerun()
+if following.button("Další případ", disabled=idx == len(case_ids)-1, use_container_width=True):
+    st.session_state.idx += 1
+    st.rerun()
 
 st.download_button("Stáhnout průběžnou zálohu", json.dumps(ratings,ensure_ascii=False,indent=2),
                    file_name="wcm_annotation_progress.json", mime="application/json")
