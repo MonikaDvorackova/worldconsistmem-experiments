@@ -139,9 +139,22 @@ def reference_fact(question):
             matched.append(event)
     if not matched:
         return label, None, "Odpovídající událost nebyla nalezena"
-    # Ambiguous multiple matching events must not be presented as a single truth.
-    if len(matched) != 1:
-        return label, None, "Více odpovídajících událostí; nelze určit jedinou referenci"
+    # A changing world may legitimately have several matching transitions.
+    # Show the full timeline rather than falsely claiming that no reference exists.
+    if len(matched) > 1:
+        facts = []
+        for event in sorted(matched, key=lambda e: e.get("t", 0)):
+            p = event.get("payload", {})
+            t = event.get("t")
+            if event_type == "role_replacement":
+                facts.append(f"V čase {t} byl ředitel nahrazen: osoba {str(p.get('old_person_id', '?')).split(':')[-1]} → osoba {str(p.get('new_person_id', '?')).split(':')[-1]}.")
+            elif event_type == "project_ownership_transfer":
+                facts.append(f"V čase {t} byl projekt převeden: organizace {str(p.get('old_org_id', '?')).split(':')[-1]} → organizace {str(p.get('new_org_id', '?')).split(':')[-1]}.")
+            elif event_type == "document_revision":
+                facts.append(f"V čase {t} proběhla revize dokumentu.")
+            else:
+                facts.append(f"V čase {t} nastala odpovídající událost.")
+        return label, " ".join(facts), None
     event = matched[0]
     p = event.get("payload", {})
     t = event.get("t")
@@ -188,7 +201,7 @@ st.write(question_label)
 st.markdown("**Co se skutečně stalo**")
 if fact:
     st.info(fact)
-    st.caption("Referenční skutečnost pochází z generovaného syntetického světa, nikoli z odpovědi modelu.")
+    st.caption("Referenční skutečnost pochází ze syntetického světa. Pokud nastalo více změn, jsou uvedeny všechny v časovém pořadí.")
 else:
     st.error(f"Nelze bezpečně vyhodnotit tento případ: {reference_error}. U tohoto případu lze zvolit „Nelze posoudit“ a pokračovat.")
 with st.expander("Technické informace (nepovinné)"):
