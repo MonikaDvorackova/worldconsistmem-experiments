@@ -95,11 +95,11 @@ import re
 
 def describe_case(question):
     patterns = [
-        (r"When was (.+) revised from v1 to v2\\?", "Kdy byl dokument změněn z verze 1 na verzi 2?", "document_revision"),
-        (r"When and how did the CEO of (.+) change\\?", "Kdy a jak se změnil generální ředitel organizace?", "role_replacement"),
-        (r"When did (.+) leave (.+)\\?", "Kdy zaměstnanec opustil organizaci?", "person_leaves_org"),
-        (r"When was conflict (.+) resolved\\?", "Kdy byl vyřešen spor?", "conflict_resolution"),
-        (r"When did ownership of (.+) transfer\\?", "Kdy byl projekt převeden na jinou organizaci?", "project_ownership_transfer"),
+        (r"When was (.+) revised from v1 to v2\?", "Kdy byl dokument změněn z verze 1 na verzi 2?", "document_revision"),
+        (r"When and how did the CEO of (.+) change\?", "Kdy a jak se změnil generální ředitel organizace?", "role_replacement"),
+        (r"When did (.+) leave (.+)\?", "Kdy zaměstnanec opustil organizaci?", "person_leaves_org"),
+        (r"When was conflict (.+) resolved\?", "Kdy byl vyřešen spor?", "conflict_resolution"),
+        (r"When did ownership of (.+) transfer\?", "Kdy byl projekt převeden na jinou organizaci?", "project_ownership_transfer"),
     ]
     for pattern, label, event_type in patterns:
         match = re.fullmatch(pattern, question)
