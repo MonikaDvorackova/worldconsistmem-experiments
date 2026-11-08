@@ -11,8 +11,8 @@ style_path = Path(__file__).parent / "style.css"
 if style_path.exists():
     st.markdown("<style>" + style_path.read_text(encoding="utf-8") + "</style>", unsafe_allow_html=True)
 st.caption("WORLD CONSIST MEM  /  HUMAN EVALUATION")
-st.title("Nezávislé hodnocení")
-st.write("Posuzujte věcnou správnost podle dostupných důkazů. Formát JSON sám o sobě není kritériem správnosti.")
+st.title("Kontrola odpovědí")
+st.write("Přečtěte otázku a odpověď modelu. Podle podkladů vyberte Ano, Ne nebo Nevím.")
 st.divider()
 
 code = os.environ.get("WCM_ACCESS_CODE", "")
@@ -75,102 +75,107 @@ with st.expander("Obnovit rozpracované hodnocení"):
             st.error("Neplatný soubor průběhu.")
 
 ratings = st.session_state.ratings
-done = sum(bool(ratings.get(r["response_id"], {}).get("semantic_correct")) and bool(ratings.get(r["response_id"], {}).get("evidence_sufficient")) for r in rows)
+done = sum(ratings.get(r["response_id"], {}).get("semantic_correct") in ("correct", "incorrect", "ambiguous") for r in rows)
 st.progress(done / len(rows), text=f"Vyplněno {done}/{len(rows)}")
 idx = st.session_state.idx
 row = rows[idx]
 rid = row["response_id"]
 current = ratings.get(rid, {})
-st.subheader(f"Hodnocení {idx+1} / {len(rows)}")
-st.caption(f"Případ {row['case_id']} · {rid}")
+st.subheader(f"Kontrola odpovědi {idx+1} / {len(rows)}")
 
-def readable(value):
-    if value is None: return "neuvedeno"
-    if isinstance(value, bool): return "ano" if value else "ne"
-    if isinstance(value, (dict, list)): return json.dumps(value, ensure_ascii=False)
-    return str(value)
-
-def render_evidence(raw):
-    try: evidence = json.loads(raw)
+def format_answer(raw):
+    try:
+        response = json.loads(raw)
     except (ValueError, TypeError):
-        st.warning("Důkazy nelze strukturovaně zobrazit.")
-        st.code(raw)
-        return
-    if not isinstance(evidence, list):
-        st.json(evidence)
-        return
-    events = []
-    for index, item in enumerate(evidence):
-        if not isinstance(item, dict):
-            st.write(readable(item))
-            continue
-        source = item.get("s") if isinstance(item.get("s"), dict) else {}
-        props = source.get("p") if isinstance(source.get("p"), dict) else {}
-        time = source.get("t", item.get("t"))
-        events.append((time, index, item, source, props))
-    def sort_key(entry):
-        time = entry[0]
-        return (0, time, entry[1]) if isinstance(time, (int, float)) and not isinstance(time, bool) else (1, str(time), entry[1])
-    st.caption("Seřazeno chronologicky podle t. Časový krok není kalendářní datum.")
-    for time, _, item, source, props in sorted(events, key=sort_key):
-        with st.container(border=True):
-            st.markdown(f"**Čas {readable(time)}** · Událost: `{readable(source.get('et'))}`")
-            for key, value in props.items():
-                st.write(f"**{key}:** {readable(value)}")
-            if item.get("id"): st.caption(f"Zdrojový záznam: {item['id']}")
-    st.info("Samotná chronologie neprokazuje, která revize je přechod v1 → v2. Neodvozujte verze pouze z čísel v identifikátorech.")
-
-def render_model_answer(raw):
-    try: response = json.loads(raw)
-    except (ValueError, TypeError):
-        st.write(raw)
-        return
+        return str(raw)
     if isinstance(response, dict):
-        if response.get("abstain") is True: st.info("Model se zdržel odpovědi.")
+        if response.get("abstain") is True:
+            return "Model neodpověděl."
         answer = response.get("answer", response)
         if isinstance(answer, dict):
-            for key, value in answer.items(): st.write(f"**{key}:** {readable(value)}")
-        else: st.write(readable(answer))
-        if response.get("provenance") is not None: st.caption(f"Odkazovaný důkaz: {readable(response['provenance'])}")
-    else: st.write(readable(response))
-    with st.expander("Původní odpověď (JSON)"): st.json(response)
+            if "t" in answer:
+                return f"Čas {answer['t']}"
+            return ", ".join(f"{k}: {v}" for k, v in answer.items())
+        if isinstance(answer, (int, float)) and not isinstance(answer, bool):
+            return f"Čas {answer}"
+        return str(answer)
+    return str(response)
+
+def concise_evidence(raw):
+    try:
+        evidence = json.loads(raw)
+    except (ValueError, TypeError):
+        return None
+    if not isinstance(evidence, list):
+        return None
+    events = []
+    for item in evidence:
+        if not isinstance(item, dict):
+            return None
+        source = item.get("s")
+        if not isinstance(source, dict):
+            return None
+        t = source.get("t", item.get("t"))
+        if t is None:
+            return None
+        events.append((t, source.get("et", "událost")))
+    return events
 
 st.markdown("**Otázka**")
 st.write(row["question"])
-st.markdown("### Čitelný přehled důkazů")
-render_evidence(row["evidence_json"])
-with st.expander("Původní důkazy (JSON)"):
-    try: st.json(json.loads(row["evidence_json"]))
-    except (ValueError, TypeError): st.code(row["evidence_json"])
-st.markdown("### Odpověď modelu")
-render_model_answer(row["raw_model_response"])
-with st.expander("Jak hodnotit?"):
-    st.write("Správná: důkazy odpověď potvrzují. Nesprávná: důkazy jí odporují. Nelze určit: z dostupných důkazů nelze rozhodnout.")
-    st.write("Dostatečnost důkazů hodnoťte samostatně. I nesprávnou odpověď mohou důkazy jednoznačně vyvrátit.")
+st.markdown("**Odpověď modelu**")
+st.markdown(f"### {format_answer(row['raw_model_response'])}")
+st.markdown("**Podklady k ověření**")
+events = concise_evidence(row["evidence_json"])
+if events is not None:
+    st.write("Zaznamenané události (časový krok — typ):")
+    for time, event_type in sorted(events, key=lambda e: (str(type(e[0])), e[0])):
+        st.write(f"**{time}** — {event_type}")
+else:
+    st.warning("Podklady nejsou ve standardním formátu. Otevřete technické detaily.")
+st.caption("Záznamy samy nemusí dokazovat, která událost odpovídá konkrétní verzi. V takovém případě vyberte Nevím.")
+with st.expander("Technické detaily (nepovinné)"):
+    st.caption(f"Případ {row['case_id']} · {rid}")
+    st.write("Původní otázka:", row["question"])
+    st.write("Původní odpověď:")
+    try:
+        st.json(json.loads(row["raw_model_response"]))
+    except (ValueError, TypeError):
+        st.code(row["raw_model_response"])
+    st.write("Původní důkazy:")
+    try:
+        st.json(json.loads(row["evidence_json"]))
+    except (ValueError, TypeError):
+        st.code(row["evidence_json"])
 
-correct_options = ["correct","incorrect","ambiguous"]
-suff_options = ["yes","no","unclear"]
+choices = {"correct": "Ano", "incorrect": "Ne", "ambiguous": "Nevím"}
 with st.form(f"evaluation_{rid}"):
-    correct = st.radio("Je odpověď věcně správná?", correct_options,
-        index=correct_options.index(current["semantic_correct"]) if current.get("semantic_correct") in correct_options else None,
-        format_func=lambda x: {"correct":"Správná","incorrect":"Nesprávná","ambiguous":"Nelze určit"}[x])
-    suff = st.radio("Jsou důkazy dostatečné?", suff_options,
-        index=suff_options.index(current["evidence_sufficient"]) if current.get("evidence_sufficient") in suff_options else None,
-        format_func=lambda x: {"yes":"Ano","no":"Ne","unclear":"Nelze určit"}[x])
-    notes = st.text_area("Poznámka (povinná při nesprávném nebo nejednoznačném hodnocení)", value=current.get("notes",""))
+    correct = st.radio(
+        "Lze odpověď potvrdit podle podkladů?",
+        list(choices),
+        index=list(choices).index(current["semantic_correct"]) if current.get("semantic_correct") in choices else None,
+        format_func=lambda value: choices[value],
+        horizontal=True,
+    )
     left, right = st.columns(2)
-    prev = left.form_submit_button("Uložit a předchozí", disabled=idx == 0)
-    nxt = right.form_submit_button("Uložit a další", disabled=idx == len(rows)-1)
-    save = st.form_submit_button("Uložit hodnocení")
+    prev = left.form_submit_button("Předchozí", disabled=idx == 0)
+    nxt = right.form_submit_button("Uložit a pokračovat", disabled=idx == len(rows)-1)
+    save = st.form_submit_button("Uložit", disabled=False)
     if prev or nxt or save:
-        if correct is None or suff is None:
-            st.error("Vyplňte obě hodnocení.")
-        elif correct in ("incorrect","ambiguous") and not notes.strip():
-            st.error("Doplňte důvod hodnocení.")
+        if correct is None and not prev:
+            st.error("Vyberte Ano, Ne nebo Nevím.")
         else:
-            ratings[rid] = {"semantic_correct":correct,"evidence_sufficient":suff,"notes":notes.strip()}
-            if prev: st.session_state.idx -= 1
-            if nxt: st.session_state.idx += 1
+            if correct is not None:
+                # Retain legacy export schema; evidence sufficiency is not inferred.
+                ratings[rid] = {
+                    "semantic_correct": correct,
+                    "evidence_sufficient": "",
+                    "notes": current.get("notes", ""),
+                }
+            if prev:
+                st.session_state.idx -= 1
+            elif nxt:
+                st.session_state.idx += 1
             st.rerun()
 
 st.download_button("Stáhnout průběžnou zálohu", json.dumps(ratings,ensure_ascii=False,indent=2),
