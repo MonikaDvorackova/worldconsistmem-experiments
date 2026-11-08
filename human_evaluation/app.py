@@ -83,18 +83,70 @@ rid = row["response_id"]
 current = ratings.get(rid, {})
 st.subheader(f"Hodnocení {idx+1} / {len(rows)}")
 st.caption(f"Případ {row['case_id']} · {rid}")
+
+def readable(value):
+    if value is None: return "neuvedeno"
+    if isinstance(value, bool): return "ano" if value else "ne"
+    if isinstance(value, (dict, list)): return json.dumps(value, ensure_ascii=False)
+    return str(value)
+
+def render_evidence(raw):
+    try: evidence = json.loads(raw)
+    except (ValueError, TypeError):
+        st.warning("Důkazy nelze strukturovaně zobrazit.")
+        st.code(raw)
+        return
+    if not isinstance(evidence, list):
+        st.json(evidence)
+        return
+    events = []
+    for index, item in enumerate(evidence):
+        if not isinstance(item, dict):
+            st.write(readable(item))
+            continue
+        source = item.get("s") if isinstance(item.get("s"), dict) else {}
+        props = source.get("p") if isinstance(source.get("p"), dict) else {}
+        time = source.get("t", item.get("t"))
+        events.append((time, index, item, source, props))
+    def sort_key(entry):
+        time = entry[0]
+        return (0, time, entry[1]) if isinstance(time, (int, float)) and not isinstance(time, bool) else (1, str(time), entry[1])
+    st.caption("Seřazeno chronologicky podle t. Časový krok není kalendářní datum.")
+    for time, _, item, source, props in sorted(events, key=sort_key):
+        with st.container(border=True):
+            st.markdown(f"**Čas {readable(time)}** · Událost: `{readable(source.get('et'))}`")
+            for key, value in props.items():
+                st.write(f"**{key}:** {readable(value)}")
+            if item.get("id"): st.caption(f"Zdrojový záznam: {item['id']}")
+    st.info("Samotná chronologie neprokazuje, která revize je přechod v1 → v2. Neodvozujte verze pouze z čísel v identifikátorech.")
+
+def render_model_answer(raw):
+    try: response = json.loads(raw)
+    except (ValueError, TypeError):
+        st.write(raw)
+        return
+    if isinstance(response, dict):
+        if response.get("abstain") is True: st.info("Model se zdržel odpovědi.")
+        answer = response.get("answer", response)
+        if isinstance(answer, dict):
+            for key, value in answer.items(): st.write(f"**{key}:** {readable(value)}")
+        else: st.write(readable(answer))
+        if response.get("provenance") is not None: st.caption(f"Odkazovaný důkaz: {readable(response['provenance'])}")
+    else: st.write(readable(response))
+    with st.expander("Původní odpověď (JSON)"): st.json(response)
+
 st.markdown("**Otázka**")
 st.write(row["question"])
-with st.expander("Důkazy", expanded=True):
-    try:
-        st.json(json.loads(row["evidence_json"]))
-    except (TypeError, ValueError):
-        st.code(row["evidence_json"])
-st.markdown("**Odpověď modelu**")
-try:
-    st.json(json.loads(row["raw_model_response"]))
-except (TypeError, ValueError):
-    st.code(row["raw_model_response"])
+st.markdown("### Čitelný přehled důkazů")
+render_evidence(row["evidence_json"])
+with st.expander("Původní důkazy (JSON)"):
+    try: st.json(json.loads(row["evidence_json"]))
+    except (ValueError, TypeError): st.code(row["evidence_json"])
+st.markdown("### Odpověď modelu")
+render_model_answer(row["raw_model_response"])
+with st.expander("Jak hodnotit?"):
+    st.write("Správná: důkazy odpověď potvrzují. Nesprávná: důkazy jí odporují. Nelze určit: z dostupných důkazů nelze rozhodnout.")
+    st.write("Dostatečnost důkazů hodnoťte samostatně. I nesprávnou odpověď mohou důkazy jednoznačně vyvrátit.")
 
 correct_options = ["correct","incorrect","ambiguous"]
 suff_options = ["yes","no","unclear"]
