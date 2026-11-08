@@ -94,10 +94,10 @@ st.caption(f"{len(case_rows)} odpovědi ke stejné otázce")
 import re
 
 def plain_question(question):
-    match = re.fullmatch(r"When was .+ revised from v1 to v2\\?", question)
+    match = re.fullmatch(r"When was .+ revised from v1 to v2\?", question)
     if match:
         return "Kdy byl dokument změněn z verze 1 na verzi 2?"
-    match = re.fullmatch(r"When and how did the CEO of .+ change\\?", question)
+    match = re.fullmatch(r"When and how did the CEO of .+ change\?", question)
     if match:
         return "Kdy a jak se změnil generální ředitel organizace?"
     return question
