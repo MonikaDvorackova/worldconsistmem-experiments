@@ -190,7 +190,7 @@ if fact:
     st.info(fact)
     st.caption("Referenční skutečnost pochází z generovaného syntetického světa, nikoli z odpovědi modelu.")
 else:
-    st.error(f"Nelze bezpečně vyhodnotit tento případ: {reference_error}. Tento případ přeskočte.")
+    st.error(f"Nelze bezpečně vyhodnotit tento případ: {reference_error}. U tohoto případu lze zvolit „Nelze posoudit“ a pokračovat.")
 with st.expander("Technické informace (nepovinné)"):
     st.write(reference["question"])
     st.caption("Referenční svět: " + reference["question"].split(":")[0].split()[-1])
@@ -206,7 +206,7 @@ for position, record in enumerate(case_rows, start=1):
             st.caption("Zvoleno: " + {"correct": "Správně", "incorrect": "Špatně", "ambiguous": "Nelze posoudit"}[selected])
         cols = st.columns(3)
         for col, key, label in zip(cols, ("correct", "incorrect", "ambiguous"), ("Správně", "Špatně", "Nelze posoudit")):
-            if col.button(label, key=f"rate_{rid}_{key}", disabled=not fact, use_container_width=True, type="primary" if selected == key else "secondary"):
+            if col.button(label, key=f"rate_{rid}_{key}", disabled=(not fact and key != "ambiguous"), use_container_width=True, type="primary" if selected == key else "secondary"):
                 ratings[rid] = {"semantic_correct": key, "evidence_sufficient": "", "notes": ""}
                 st.rerun()
         with st.expander("Původní odpověď (nepovinné)"):
