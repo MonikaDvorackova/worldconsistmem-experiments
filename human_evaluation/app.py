@@ -12,7 +12,7 @@ if style_path.exists():
     st.markdown("<style>" + style_path.read_text(encoding="utf-8") + "</style>", unsafe_allow_html=True)
 st.caption("WORLD CONSIST MEM  /  HUMAN EVALUATION")
 st.title("Kontrola odpovědí")
-st.write("Přečtěte otázku a odpověď modelu. Podle podkladů vyberte Ano, Ne nebo Nevím.")
+st.write("Porovnejte odpovědi modelu s jednoduše popsanou skutečností. Vyberte Správně, Špatně nebo Nelze posoudit.")
 st.divider()
 
 code = os.environ.get("WCM_ACCESS_CODE", "")
@@ -93,14 +93,71 @@ st.caption(f"{len(case_rows)} odpovědi ke stejné otázce")
 
 import re
 
-def plain_question(question):
-    match = re.fullmatch(r"When was .+ revised from v1 to v2\?", question)
-    if match:
-        return "Kdy byl dokument změněn z verze 1 na verzi 2?"
-    match = re.fullmatch(r"When and how did the CEO of .+ change\?", question)
-    if match:
-        return "Kdy a jak se změnil generální ředitel organizace?"
-    return question
+def describe_case(question):
+    patterns = [
+        (r"When was (.+) revised from v1 to v2\\?", "Kdy byl dokument změněn z verze 1 na verzi 2?", "document_revision"),
+        (r"When and how did the CEO of (.+) change\\?", "Kdy a jak se změnil generální ředitel organizace?", "role_replacement"),
+        (r"When did (.+) leave (.+)\\?", "Kdy zaměstnanec opustil organizaci?", "person_leaves_org"),
+        (r"When was conflict (.+) resolved\\?", "Kdy byl vyřešen spor?", "conflict_resolution"),
+        (r"When did ownership of (.+) transfer\\?", "Kdy byl projekt převeden na jinou organizaci?", "project_ownership_transfer"),
+    ]
+    for pattern, label, event_type in patterns:
+        match = re.fullmatch(pattern, question)
+        if match:
+            return label, event_type, match.groups()
+    return question, None, ()
+
+def reference_fact(question):
+    label, event_type, identifiers = describe_case(question)
+    if not event_type:
+        return label, None, "Neznámý typ otázky"
+    world_id = identifiers[0].split(":")[0]
+    world_path = Path(__file__).resolve().parent.parent / "data" / "scaled" / "worlds" / (world_id + ".json")
+    if not world_path.is_file():
+        return label, None, "Chybí referenční svět"
+    try:
+        world = json.loads(world_path.read_text(encoding="utf-8"))
+        events = world["events"]
+    except (ValueError, KeyError, OSError):
+        return label, None, "Referenční svět nelze načíst"
+    matched = []
+    for event in events:
+        if event.get("event_type") != event_type:
+            continue
+        p = event.get("payload", {})
+        if event_type == "document_revision":
+            ok = p.get("base_doc_id") == identifiers[0] and p.get("expected_prev_version") == 1
+        elif event_type == "role_replacement":
+            ok = p.get("org_id") == identifiers[0] and p.get("role") == "CEO"
+        elif event_type == "person_leaves_org":
+            ok = p.get("person_id") == identifiers[0] and p.get("org_id") == identifiers[1]
+        elif event_type == "conflict_resolution":
+            ok = p.get("conflict_id") == identifiers[0]
+        else:
+            ok = p.get("project_id") == identifiers[0]
+        if ok:
+            matched.append(event)
+    if not matched:
+        return label, None, "Odpovídající událost nebyla nalezena"
+    # Ambiguous multiple matching events must not be presented as a single truth.
+    if len(matched) != 1:
+        return label, None, "Více odpovídajících událostí; nelze určit jedinou referenci"
+    event = matched[0]
+    p = event.get("payload", {})
+    t = event.get("t")
+    if not isinstance(t, int):
+        return label, None, "Chybí čas události"
+    if event_type == "document_revision":
+        fact = f"Dokument přešel z verze 1 na verzi 2 v čase {t}."
+    elif event_type == "role_replacement":
+        fact = f"V čase {t} byl generální ředitel nahrazen. Původní osoba: {p.get('old_person_id', '?').split(':')[-1]}; nová osoba: {p.get('new_person_id', '?').split(':')[-1]}."
+    elif event_type == "person_leaves_org":
+        fact = f"Zaměstnanec opustil organizaci v čase {t}."
+    elif event_type == "conflict_resolution":
+        fact = f"Spor byl vyřešen v čase {t}. Výsledek: {p.get('resolved_value', 'neuveden')}."
+    else:
+        fact = f"Projekt byl převeden v čase {t}. Původní organizace: {p.get('old_org_id', '?').split(':')[-1]}; nová organizace: {p.get('new_org_id', '?').split(':')[-1]}."
+    return label, fact, None
 
 def answer_summary(raw):
     try:
@@ -112,49 +169,44 @@ def answer_summary(raw):
             return "Model neodpověděl."
         answer = value.get("answer", value)
         if isinstance(answer, dict):
+            time = answer.get("t", answer.get("time"))
+            details = []
+            if time is not None:
+                details.append(f"Čas {time}")
+            for key, name in (("old_person_id", "Původní osoba"), ("new_person_id", "Nová osoba"), ("old_org_id", "Původní organizace"), ("new_org_id", "Nová organizace"), ("resolved_value", "Výsledek")):
+                if key in answer:
+                    details.append(f"{name}: {str(answer[key]).split(':')[-1]}")
+            if details:
+                return " · ".join(details)
             return " · ".join(f"{k}: {v}" for k, v in answer.items())
         return str(answer)
     return str(value)
 
+question_label, fact, reference_error = reference_fact(reference["question"])
 st.markdown("**Otázka**")
-st.write(plain_question(reference["question"]))
-st.markdown("**Co víme z podkladů**")
-try:
-    evidence = json.loads(reference["evidence_json"])
-except (ValueError, TypeError):
-    evidence = None
-if isinstance(evidence, list):
-    event_lines = []
-    for item in evidence:
-        if not isinstance(item, dict):
-            continue
-        source = item.get("s", {})
-        if not isinstance(source, dict):
-            continue
-        t = source.get("t", item.get("t"))
-        event_type = source.get("et", "událost")
-        event_lines.append((t, event_type))
-    for t, event_type in sorted(event_lines, key=lambda x: str(x[0]).zfill(12)):
-        st.write(f"Čas **{t}** — {event_type}")
+st.write(question_label)
+st.markdown("**Co se skutečně stalo**")
+if fact:
+    st.info(fact)
+    st.caption("Referenční skutečnost pochází z generovaného syntetického světa, nikoli z odpovědi modelu.")
 else:
-    st.warning("Podklady nemají standardní strukturu.")
-st.caption("Samotný seznam revizí nemusí určovat, která znamená přechod mezi verzemi. Pokud nelze odpověď ověřit, zvolte Nevím.")
-with st.expander("Technické podklady (nepovinné)"):
+    st.error(f"Nelze bezpečně vyhodnotit tento případ: {reference_error}. Tento případ přeskočte.")
+with st.expander("Technické informace (nepovinné)"):
     st.write(reference["question"])
-    st.json(evidence) if evidence is not None else st.code(reference["evidence_json"])
+    st.caption("Referenční svět: " + reference["question"].split(":")[0].split()[-1])
 
 st.markdown("### Posuďte jednotlivé odpovědi")
-st.caption("Ano = podklady potvrzují. Ne = podklady vyvracejí. Nevím = nelze rozhodnout. Každá volba se ihned uloží do průběhu této relace.")
+st.caption("Porovnejte odpověď modelu s uvedenou skutečností. Správně = shoduje se. Špatně = odporuje. Nelze posoudit = odpověď je nejasná.")
 for position, record in enumerate(case_rows, start=1):
     rid = record["response_id"]
     selected = ratings.get(rid, {}).get("semantic_correct")
     with st.container(border=True):
         st.markdown(f"**Odpověď {position}:** {answer_summary(record['raw_model_response'])}")
         if selected in ("correct", "incorrect", "ambiguous"):
-            st.caption("Zvoleno: " + {"correct": "Ano", "incorrect": "Ne", "ambiguous": "Nevím"}[selected])
+            st.caption("Zvoleno: " + {"correct": "Správně", "incorrect": "Špatně", "ambiguous": "Nelze posoudit"}[selected])
         cols = st.columns(3)
-        for col, key, label in zip(cols, ("correct", "incorrect", "ambiguous"), ("Ano", "Ne", "Nevím")):
-            if col.button(label, key=f"rate_{rid}_{key}", use_container_width=True, type="primary" if selected == key else "secondary"):
+        for col, key, label in zip(cols, ("correct", "incorrect", "ambiguous"), ("Správně", "Špatně", "Nelze posoudit")):
+            if col.button(label, key=f"rate_{rid}_{key}", disabled=not fact, use_container_width=True, type="primary" if selected == key else "secondary"):
                 ratings[rid] = {"semantic_correct": key, "evidence_sufficient": "", "notes": ""}
                 st.rerun()
         with st.expander("Původní odpověď (nepovinné)"):
