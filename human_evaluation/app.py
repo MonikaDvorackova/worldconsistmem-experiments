@@ -89,7 +89,9 @@ case_id = case_ids[idx]
 case_rows = cases[case_id]
 reference = case_rows[0]
 st.subheader(f"Případ {idx+1} / {len(case_ids)}")
-st.caption(f"{len(case_rows)} odpovědi ke stejné otázce")
+world_id = reference["question"].split(":")[0].split()[-1]
+st.caption(f"Scénář {case_id} · Svět {world_id} · {len(case_rows)} odpovědi ke stejné otázce")
+st.info("Každý scénář představuje jiný syntetický svět. Podobně formulované otázky nejsou totožné případy.")
 
 import re
 
@@ -197,7 +199,7 @@ def answer_summary(raw):
 
 question_label, fact, reference_error = reference_fact(reference["question"])
 st.markdown("**Otázka**")
-st.write(question_label)
+st.write(f"{question_label} (Scénář {case_id}, svět {world_id})")
 st.markdown("**Co se skutečně stalo**")
 if fact:
     st.info(fact)
