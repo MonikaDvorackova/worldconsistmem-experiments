@@ -12,7 +12,7 @@ if style_path.exists():
     st.markdown("<style>" + style_path.read_text(encoding="utf-8") + "</style>", unsafe_allow_html=True)
 st.caption("WORLD CONSIST MEM  /  HUMAN EVALUATION")
 st.title("Nezávislé hodnocení")
-st.write("Posuzujte věcnou správnost podle dostupných důkazů. Formát JSON sám o sobě není kritériem správnosti.")
+st.write("Vyberte hodnocení odpovědi a pokračujte. Bez povinného odůvodnění.")
 st.divider()
 
 code = os.environ.get("WCM_ACCESS_CODE", "")
@@ -30,14 +30,14 @@ if not st.session_state.authorized:
             st.rerun()
     st.stop()
 
-round_choice = st.radio("Kolo hodnocení", ["Round 2 — sporné odpovědi", "Round 1 — původní dataset"])
+round_choice = "Round 2 — sporné odpovědi"
 reviewer_choice = st.selectbox("Hodnotitel", ["reviewer_1", "reviewer_2"])
 round_two = round_choice.startswith("Round 2")
 if round_two:
     packet_path = Path(__file__).parent / "round_2" / reviewer_choice / "BLIND_REVIEW_PACKET.json"
     packet = json.loads(packet_path.read_text(encoding="utf-8"))
     rows = [{**item, "evidence_json": json.dumps(item["evidence_json"], ensure_ascii=False)} for item in packet]
-    st.caption("50 sporných odpovědí bez původních štítků.")
+    st.caption("Druhé kolo · 50 sporných odpovědí · původní hodnocení je skryté.")
 else:
     path = Path(__file__).resolve().parent.parent / "BLINDED_ANNOTATION.csv"
 if not round_two and path.is_file():
@@ -85,7 +85,7 @@ with st.expander("Obnovit rozpracované hodnocení"):
             st.error("Neplatný soubor průběhu.")
 
 ratings = st.session_state.ratings
-done = sum(bool(ratings.get(r["response_id"], {}).get("semantic_correct")) and bool(ratings.get(r["response_id"], {}).get("evidence_sufficient")) for r in rows)
+done = sum(bool(ratings.get(r["response_id"], {}).get("semantic_correct")) for r in rows)
 st.progress(done / len(rows), text=f"Vyplněno {done}/{len(rows)}")
 idx = st.session_state.idx
 row = rows[idx]
@@ -147,48 +147,42 @@ def render_model_answer(raw):
 
 st.markdown("**Otázka**")
 st.write(row["question"])
-st.markdown("### Čitelný přehled důkazů")
-render_evidence(row["evidence_json"])
-with st.expander("Původní důkazy (JSON)"):
-    try: st.json(json.loads(row["evidence_json"]))
-    except (ValueError, TypeError): st.code(row["evidence_json"])
-st.markdown("### Odpověď modelu")
+with st.expander("Podklady k ověření odpovědi", expanded=False):
+    render_evidence(row["evidence_json"])
+st.markdown("**Odpověď modelu**")
 render_model_answer(row["raw_model_response"])
-with st.expander("Jak hodnotit?"):
-    st.write("Správná: důkazy odpověď potvrzují. Nesprávná: důkazy jí odporují. Nelze určit: z dostupných důkazů nelze rozhodnout.")
-    st.write("Dostatečnost důkazů hodnoťte samostatně. I nesprávnou odpověď mohou důkazy jednoznačně vyvrátit.")
-    if round_two:
-        st.markdown((Path(__file__).parent / "round_2" / "RUBRIC_AND_PROTOCOL.md").read_text(encoding="utf-8"))
 
-correct_options = ["correct","incorrect","ambiguous"]
-suff_options = ["yes","no","unclear"]
 with st.form(f"evaluation_{rid}"):
-    correct = st.radio("Je odpověď věcně správná?", correct_options,
-        index=correct_options.index(current["semantic_correct"]) if current.get("semantic_correct") in correct_options else None,
-        format_func=lambda x: {"correct":"Správná","incorrect":"Nesprávná","ambiguous":"Nelze určit"}[x])
-    suff = st.radio("Jsou důkazy dostatečné?", suff_options,
-        index=suff_options.index(current["evidence_sufficient"]) if current.get("evidence_sufficient") in suff_options else None,
-        format_func=lambda x: {"yes":"Ano","no":"Ne","unclear":"Nelze určit"}[x])
-    notes = st.text_area("Odůvodnění (ve druhém kole vždy povinné)", value=current.get("notes",""))
-    reasons = ["factually_supported", "factually_contradicted", "multiple_plausible_answers", "insufficient_evidence", "unparseable_or_uninterpretable", "other"]
-    reason = st.selectbox("Důvod", reasons, index=reasons.index(current["rubric_reason"]) if current.get("rubric_reason") in reasons else None) if round_two else None
+    options = ["correct", "incorrect", "ambiguous"]
+    selected = st.radio(
+        "Hodnocení",
+        options,
+        index=options.index(current["semantic_correct"]) if current.get("semantic_correct") in options else None,
+        format_func=lambda value: {
+            "correct": "Správně",
+            "incorrect": "Špatně",
+            "ambiguous": "Nelze posoudit",
+        }[value],
+        horizontal=True,
+    )
     left, right = st.columns(2)
-    prev = left.form_submit_button("Uložit a předchozí", disabled=idx == 0)
-    nxt = right.form_submit_button("Uložit a další", disabled=idx == len(rows)-1)
-    save = st.form_submit_button("Uložit hodnocení")
-    if prev or nxt or save:
-        if correct is None or suff is None:
-            st.error("Vyplňte obě hodnocení.")
-        elif (round_two or correct in ("incorrect","ambiguous")) and not notes.strip():
-            st.error("Doplňte důvod hodnocení.")
-        elif round_two and reason is None:
-            st.error("Vyberte důvod hodnocení.")
+    previous = left.form_submit_button("← Předchozí", disabled=idx == 0)
+    next_item = right.form_submit_button("Uložit a další →", type="primary")
+    if previous:
+        st.session_state.idx -= 1
+        st.rerun()
+    if next_item:
+        if selected is None:
+            st.error("Vyberte jednu ze tří možností.")
         else:
-            ratings[rid] = {"semantic_correct":correct,"evidence_sufficient":suff,"notes":notes.strip()}
-            if round_two:
-                ratings[rid]["rubric_reason"] = reason
-            if prev: st.session_state.idx -= 1
-            if nxt: st.session_state.idx += 1
+            ratings[rid] = {
+                "semantic_correct": selected,
+                "evidence_sufficient": "unclear",
+                "notes": "",
+                "rubric_reason": "",
+            }
+            if idx < len(rows) - 1:
+                st.session_state.idx += 1
             st.rerun()
 
 st.download_button("Stáhnout průběžnou zálohu", json.dumps(ratings,ensure_ascii=False,indent=2),
