@@ -30,11 +30,20 @@ if not st.session_state.authorized:
             st.rerun()
     st.stop()
 
-path = Path(__file__).resolve().parent.parent / "BLINDED_ANNOTATION.csv"
-if path.is_file():
+round_choice = st.radio("Kolo hodnocení", ["Round 2 — sporné odpovědi", "Round 1 — původní dataset"])
+reviewer_choice = st.selectbox("Hodnotitel", ["reviewer_1", "reviewer_2"])
+round_two = round_choice.startswith("Round 2")
+if round_two:
+    packet_path = Path(__file__).parent / "round_2" / reviewer_choice / "BLIND_REVIEW_PACKET.json"
+    packet = json.loads(packet_path.read_text(encoding="utf-8"))
+    rows = [{**item, "evidence_json": json.dumps(item["evidence_json"], ensure_ascii=False)} for item in packet]
+    st.caption("50 sporných odpovědí bez původních štítků.")
+else:
+    path = Path(__file__).resolve().parent.parent / "BLINDED_ANNOTATION.csv"
+if not round_two and path.is_file():
     with path.open(encoding="utf-8-sig", newline="") as f:
         rows = list(csv.DictReader(f))
-else:
+elif not round_two:
     st.info("Dataset ještě není uložen na serveru. Můžete jej načíst přímo z CSV souboru.")
     uploaded_dataset = st.file_uploader(
         "Vyberte BLINDED_ANNOTATION.csv", type=["csv"], key="dataset_upload",
@@ -56,9 +65,10 @@ if len({r["response_id"] for r in rows}) != len(rows):
     st.error("Duplicitní response_id.")
     st.stop()
 
-if "ratings" not in st.session_state:
+dataset_key = (round_two, reviewer_choice)
+if st.session_state.get("dataset_key") != dataset_key:
+    st.session_state.dataset_key = dataset_key
     st.session_state.ratings = {}
-if "idx" not in st.session_state:
     st.session_state.idx = 0
 
 with st.expander("Obnovit rozpracované hodnocení"):
@@ -147,6 +157,8 @@ render_model_answer(row["raw_model_response"])
 with st.expander("Jak hodnotit?"):
     st.write("Správná: důkazy odpověď potvrzují. Nesprávná: důkazy jí odporují. Nelze určit: z dostupných důkazů nelze rozhodnout.")
     st.write("Dostatečnost důkazů hodnoťte samostatně. I nesprávnou odpověď mohou důkazy jednoznačně vyvrátit.")
+    if round_two:
+        st.markdown((Path(__file__).parent / "round_2" / "RUBRIC_AND_PROTOCOL.md").read_text(encoding="utf-8"))
 
 correct_options = ["correct","incorrect","ambiguous"]
 suff_options = ["yes","no","unclear"]
@@ -157,7 +169,9 @@ with st.form(f"evaluation_{rid}"):
     suff = st.radio("Jsou důkazy dostatečné?", suff_options,
         index=suff_options.index(current["evidence_sufficient"]) if current.get("evidence_sufficient") in suff_options else None,
         format_func=lambda x: {"yes":"Ano","no":"Ne","unclear":"Nelze určit"}[x])
-    notes = st.text_area("Poznámka (povinná při nesprávném nebo nejednoznačném hodnocení)", value=current.get("notes",""))
+    notes = st.text_area("Odůvodnění (ve druhém kole vždy povinné)", value=current.get("notes",""))
+    reasons = ["factually_supported", "factually_contradicted", "multiple_plausible_answers", "insufficient_evidence", "unparseable_or_uninterpretable", "other"]
+    reason = st.selectbox("Důvod", reasons, index=reasons.index(current["rubric_reason"]) if current.get("rubric_reason") in reasons else None) if round_two else None
     left, right = st.columns(2)
     prev = left.form_submit_button("Uložit a předchozí", disabled=idx == 0)
     nxt = right.form_submit_button("Uložit a další", disabled=idx == len(rows)-1)
@@ -165,20 +179,24 @@ with st.form(f"evaluation_{rid}"):
     if prev or nxt or save:
         if correct is None or suff is None:
             st.error("Vyplňte obě hodnocení.")
-        elif correct in ("incorrect","ambiguous") and not notes.strip():
+        elif (round_two or correct in ("incorrect","ambiguous")) and not notes.strip():
             st.error("Doplňte důvod hodnocení.")
+        elif round_two and reason is None:
+            st.error("Vyberte důvod hodnocení.")
         else:
             ratings[rid] = {"semantic_correct":correct,"evidence_sufficient":suff,"notes":notes.strip()}
+            if round_two:
+                ratings[rid]["rubric_reason"] = reason
             if prev: st.session_state.idx -= 1
             if nxt: st.session_state.idx += 1
             st.rerun()
 
 st.download_button("Stáhnout průběžnou zálohu", json.dumps(ratings,ensure_ascii=False,indent=2),
-                   file_name="wcm_annotation_progress.json", mime="application/json")
+                   file_name=f"wcm_round_{2 if round_two else 1}_{reviewer_choice}_progress.json", mime="application/json")
 if done == len(rows):
     output = io.StringIO()
     columns = list(rows[0].keys())
-    for c in ("semantic_correct","evidence_sufficient","notes"):
+    for c in ("semantic_correct","evidence_sufficient","notes","rubric_reason"):
         if c not in columns: columns.append(c)
     writer = csv.DictWriter(output, fieldnames=columns)
     writer.writeheader()
@@ -186,4 +204,4 @@ if done == len(rows):
         writer.writerow({**r, **ratings[r["response_id"]]})
     st.success("Všechna hodnocení jsou vyplněna.")
     st.download_button("Stáhnout dokončené CSV", output.getvalue().encode("utf-8-sig"),
-                       file_name="WCM_COMPLETED_ANNOTATION.csv", mime="text/csv")
+                       file_name=f"WCM_round_{2 if round_two else 1}_{reviewer_choice}_COMPLETED.csv", mime="text/csv")
