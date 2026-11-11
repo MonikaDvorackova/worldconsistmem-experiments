@@ -92,7 +92,7 @@ row = rows[idx]
 rid = row["response_id"]
 current = ratings.get(rid, {})
 st.subheader(f"Hodnocení {idx+1} / {len(rows)}")
-st.caption(f"Případ {row['case_id']} · {rid}")
+st.caption(f"Případ {row['case_id']} · {rid} · Každou odpověď posuzujte samostatně.")
 
 def readable(value):
     if value is None: return "neuvedeno"
@@ -100,35 +100,49 @@ def readable(value):
     if isinstance(value, (dict, list)): return json.dumps(value, ensure_ascii=False)
     return str(value)
 
+EVENT_NAMES = {
+    "role_replacement": "Výměna osoby v roli",
+    "role_assignment": "Přiřazení osoby k roli",
+    "conflict_introduction": "Vznik konfliktu",
+    "conflict_resolution": "Vyřešení konfliktu",
+    "document_revision": "Revize dokumentu",
+    "ownership_transfer": "Převod vlastnictví",
+}
+FIELD_NAMES = {
+    "org_id": "Organizace", "role": "Role", "person_id": "Osoba",
+    "old_person_id": "Původní osoba", "new_person_id": "Nová osoba",
+    "conflict_id": "Konflikt", "document_id": "Dokument",
+    "project_id": "Projekt", "old_owner_id": "Původní vlastník",
+    "new_owner_id": "Nový vlastník", "from_version": "Původní verze",
+    "to_version": "Nová verze", "exclusive": "Výhradní přiřazení",
+}
 def render_evidence(raw):
-    try: evidence = json.loads(raw)
+    try:
+        evidence = json.loads(raw) if isinstance(raw, str) else raw
     except (ValueError, TypeError):
-        st.warning("Důkazy nelze strukturovaně zobrazit.")
-        st.code(raw)
+        st.warning("Podklady nelze přečíst; zvolte Nelze posoudit.")
         return
     if not isinstance(evidence, list):
-        st.json(evidence)
+        st.write(evidence)
         return
-    events = []
-    for index, item in enumerate(evidence):
-        if not isinstance(item, dict):
-            st.write(readable(item))
+    st.caption("Čas je pořadové číslo události, nikoli datum. Každý řádek je samostatná událost.")
+    def order(item):
+        t = item.get("t", item.get("s", {}).get("t")) if isinstance(item, dict) else None
+        return (0, t) if isinstance(t, (int, float)) and not isinstance(t, bool) else (1, str(t))
+    for event in sorted(evidence, key=order):
+        if not isinstance(event, dict):
+            st.write(readable(event))
             continue
-        source = item.get("s") if isinstance(item.get("s"), dict) else {}
+        source = event.get("s") if isinstance(event.get("s"), dict) else {}
         props = source.get("p") if isinstance(source.get("p"), dict) else {}
-        time = source.get("t", item.get("t"))
-        events.append((time, index, item, source, props))
-    def sort_key(entry):
-        time = entry[0]
-        return (0, time, entry[1]) if isinstance(time, (int, float)) and not isinstance(time, bool) else (1, str(time), entry[1])
-    st.caption("Seřazeno chronologicky podle t. Časový krok není kalendářní datum.")
-    for time, _, item, source, props in sorted(events, key=sort_key):
-        with st.container(border=True):
-            st.markdown(f"**Čas {readable(time)}** · Událost: `{readable(source.get('et'))}`")
-            for key, value in props.items():
-                st.write(f"**{key}:** {readable(value)}")
-            if item.get("id"): st.caption(f"Zdrojový záznam: {item['id']}")
-    st.info("Samotná chronologie neprokazuje, která revize je přechod v1 → v2. Neodvozujte verze pouze z čísel v identifikátorech.")
+        time = source.get("t", event.get("t", "?"))
+        kind = source.get("et", "Neznámá událost")
+        description = " · ".join(f"{FIELD_NAMES.get(k, k)}: {readable(v)}" for k, v in props.items())
+        st.markdown(f"**Čas {time} — {EVENT_NAMES.get(kind, kind)}**")
+        if description:
+            st.write(description)
+    with st.expander("Technické podklady (JSON)"):
+        st.json(evidence)
 
 def render_model_answer(raw):
     try: response = json.loads(raw)
@@ -145,12 +159,14 @@ def render_model_answer(raw):
     else: st.write(readable(response))
     with st.expander("Původní odpověď (JSON)"): st.json(response)
 
-st.markdown("**Otázka**")
+st.markdown("### 1. Co se ptáme?")
 st.write(row["question"])
-with st.expander("Podklady k ověření odpovědi", expanded=False):
-    render_evidence(row["evidence_json"])
-st.markdown("**Odpověď modelu**")
+st.markdown("### 2. Co ukazují podklady?")
+render_evidence(row["evidence_json"])
+st.markdown("### 3. Co odpověděl model?")
 render_model_answer(row["raw_model_response"])
+st.markdown("### 4. Je odpověď správná?")
+st.caption("Správně = odpověď odpovídá doloženým událostem. Špatně = události jí odporují. Nelze posoudit = více možných časů, chybějící souvislost nebo nejasná otázka. Není potřeba hádat. Posuzujte význam odpovědi, ne JSON formát.")
 
 with st.form(f"evaluation_{rid}"):
     options = ["correct", "incorrect", "ambiguous"]
