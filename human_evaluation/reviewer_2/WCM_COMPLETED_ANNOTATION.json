@@ -1,0 +1,602 @@
+{
+  "C01-R1": {
+    "semantic_correct": "incorrect",
+    "evidence_sufficient": "",
+    "notes": ""
+  },
+  "C01-R2": {
+    "semantic_correct": "incorrect",
+    "evidence_sufficient": "",
+    "notes": ""
+  },
+  "C01-R3": {
+    "semantic_correct": "incorrect",
+    "evidence_sufficient": "",
+    "notes": ""
+  },
+  "C01-R4": {
+    "semantic_correct": "incorrect",
+    "evidence_sufficient": "",
+    "notes": ""
+  },
+  "C02-R1": {
+    "semantic_correct": "incorrect",
+    "evidence_sufficient": "",
+    "notes": ""
+  },
+  "C02-R2": {
+    "semantic_correct": "correct",
+    "evidence_sufficient": "",
+    "notes": ""
+  },
+  "C02-R3": {
+    "semantic_correct": "correct",
+    "evidence_sufficient": "",
+    "notes": ""
+  },
+  "C02-R4": {
+    "semantic_correct": "incorrect",
+    "evidence_sufficient": "",
+    "notes": ""
+  },
+  "C03-R1": {
+    "semantic_correct": "incorrect",
+    "evidence_sufficient": "",
+    "notes": ""
+  },
+  "C03-R2": {
+    "semantic_correct": "incorrect",
+    "evidence_sufficient": "",
+    "notes": ""
+  },
+  "C03-R3": {
+    "semantic_correct": "incorrect",
+    "evidence_sufficient": "",
+    "notes": ""
+  },
+  "C03-R4": {
+    "semantic_correct": "incorrect",
+    "evidence_sufficient": "",
+    "notes": ""
+  },
+  "C04-R1": {
+    "semantic_correct": "correct",
+    "evidence_sufficient": "",
+    "notes": ""
+  },
+  "C04-R2": {
+    "semantic_correct": "correct",
+    "evidence_sufficient": "",
+    "notes": ""
+  },
+  "C04-R3": {
+    "semantic_correct": "correct",
+    "evidence_sufficient": "",
+    "notes": ""
+  },
+  "C04-R4": {
+    "semantic_correct": "correct",
+    "evidence_sufficient": "",
+    "notes": ""
+  },
+  "C05-R1": {
+    "semantic_correct": "correct",
+    "evidence_sufficient": "",
+    "notes": ""
+  },
+  "C05-R2": {
+    "semantic_correct": "correct",
+    "evidence_sufficient": "",
+    "notes": ""
+  },
+  "C05-R3": {
+    "semantic_correct": "correct",
+    "evidence_sufficient": "",
+    "notes": ""
+  },
+  "C05-R4": {
+    "semantic_correct": "correct",
+    "evidence_sufficient": "",
+    "notes": ""
+  },
+  "C06-R1": {
+    "semantic_correct": "correct",
+    "evidence_sufficient": "",
+    "notes": ""
+  },
+  "C06-R2": {
+    "semantic_correct": "correct",
+    "evidence_sufficient": "",
+    "notes": ""
+  },
+  "C06-R3": {
+    "semantic_correct": "correct",
+    "evidence_sufficient": "",
+    "notes": ""
+  },
+  "C06-R4": {
+    "semantic_correct": "correct",
+    "evidence_sufficient": "",
+    "notes": ""
+  },
+  "C07-R1": {
+    "semantic_correct": "incorrect",
+    "evidence_sufficient": "",
+    "notes": ""
+  },
+  "C07-R2": {
+    "semantic_correct": "correct",
+    "evidence_sufficient": "",
+    "notes": ""
+  },
+  "C07-R3": {
+    "semantic_correct": "correct",
+    "evidence_sufficient": "",
+    "notes": ""
+  },
+  "C07-R4": {
+    "semantic_correct": "incorrect",
+    "evidence_sufficient": "",
+    "notes": ""
+  },
+  "C08-R1": {
+    "semantic_correct": "incorrect",
+    "evidence_sufficient": "",
+    "notes": ""
+  },
+  "C08-R2": {
+    "semantic_correct": "incorrect",
+    "evidence_sufficient": "",
+    "notes": ""
+  },
+  "C08-R3": {
+    "semantic_correct": "correct",
+    "evidence_sufficient": "",
+    "notes": ""
+  },
+  "C08-R4": {
+    "semantic_correct": "correct",
+    "evidence_sufficient": "",
+    "notes": ""
+  },
+  "C09-R1": {
+    "semantic_correct": "correct",
+    "evidence_sufficient": "",
+    "notes": ""
+  },
+  "C09-R2": {
+    "semantic_correct": "correct",
+    "evidence_sufficient": "",
+    "notes": ""
+  },
+  "C09-R3": {
+    "semantic_correct": "correct",
+    "evidence_sufficient": "",
+    "notes": ""
+  },
+  "C09-R4": {
+    "semantic_correct": "correct",
+    "evidence_sufficient": "",
+    "notes": ""
+  },
+  "C10-R1": {
+    "semantic_correct": "correct",
+    "evidence_sufficient": "",
+    "notes": ""
+  },
+  "C10-R2": {
+    "semantic_correct": "incorrect",
+    "evidence_sufficient": "",
+    "notes": ""
+  },
+  "C10-R3": {
+    "semantic_correct": "incorrect",
+    "evidence_sufficient": "",
+    "notes": ""
+  },
+  "C10-R4": {
+    "semantic_correct": "correct",
+    "evidence_sufficient": "",
+    "notes": ""
+  },
+  "C11-R1": {
+    "semantic_correct": "incorrect",
+    "evidence_sufficient": "",
+    "notes": ""
+  },
+  "C11-R2": {
+    "semantic_correct": "incorrect",
+    "evidence_sufficient": "",
+    "notes": ""
+  },
+  "C11-R3": {
+    "semantic_correct": "correct",
+    "evidence_sufficient": "",
+    "notes": ""
+  },
+  "C11-R4": {
+    "semantic_correct": "correct",
+    "evidence_sufficient": "",
+    "notes": ""
+  },
+  "C12-R1": {
+    "semantic_correct": "incorrect",
+    "evidence_sufficient": "",
+    "notes": ""
+  },
+  "C12-R2": {
+    "semantic_correct": "incorrect",
+    "evidence_sufficient": "",
+    "notes": ""
+  },
+  "C12-R3": {
+    "semantic_correct": "correct",
+    "evidence_sufficient": "",
+    "notes": ""
+  },
+  "C12-R4": {
+    "semantic_correct": "incorrect",
+    "evidence_sufficient": "",
+    "notes": ""
+  },
+  "C13-R1": {
+    "semantic_correct": "correct",
+    "evidence_sufficient": "",
+    "notes": ""
+  },
+  "C13-R2": {
+    "semantic_correct": "correct",
+    "evidence_sufficient": "",
+    "notes": ""
+  },
+  "C13-R3": {
+    "semantic_correct": "correct",
+    "evidence_sufficient": "",
+    "notes": ""
+  },
+  "C13-R4": {
+    "semantic_correct": "correct",
+    "evidence_sufficient": "",
+    "notes": ""
+  },
+  "C14-R1": {
+    "semantic_correct": "incorrect",
+    "evidence_sufficient": "",
+    "notes": ""
+  },
+  "C14-R2": {
+    "semantic_correct": "correct",
+    "evidence_sufficient": "",
+    "notes": ""
+  },
+  "C14-R3": {
+    "semantic_correct": "incorrect",
+    "evidence_sufficient": "",
+    "notes": ""
+  },
+  "C14-R4": {
+    "semantic_correct": "incorrect",
+    "evidence_sufficient": "",
+    "notes": ""
+  },
+  "C15-R1": {
+    "semantic_correct": "incorrect",
+    "evidence_sufficient": "",
+    "notes": ""
+  },
+  "C15-R2": {
+    "semantic_correct": "incorrect",
+    "evidence_sufficient": "",
+    "notes": ""
+  },
+  "C15-R3": {
+    "semantic_correct": "incorrect",
+    "evidence_sufficient": "",
+    "notes": ""
+  },
+  "C15-R4": {
+    "semantic_correct": "incorrect",
+    "evidence_sufficient": "",
+    "notes": ""
+  },
+  "C16-R1": {
+    "semantic_correct": "correct",
+    "evidence_sufficient": "",
+    "notes": ""
+  },
+  "C16-R2": {
+    "semantic_correct": "incorrect",
+    "evidence_sufficient": "",
+    "notes": ""
+  },
+  "C16-R3": {
+    "semantic_correct": "incorrect",
+    "evidence_sufficient": "",
+    "notes": ""
+  },
+  "C16-R4": {
+    "semantic_correct": "correct",
+    "evidence_sufficient": "",
+    "notes": ""
+  },
+  "C17-R1": {
+    "semantic_correct": "incorrect",
+    "evidence_sufficient": "",
+    "notes": ""
+  },
+  "C17-R2": {
+    "semantic_correct": "correct",
+    "evidence_sufficient": "",
+    "notes": ""
+  },
+  "C17-R3": {
+    "semantic_correct": "incorrect",
+    "evidence_sufficient": "",
+    "notes": ""
+  },
+  "C17-R4": {
+    "semantic_correct": "correct",
+    "evidence_sufficient": "",
+    "notes": ""
+  },
+  "C18-R1": {
+    "semantic_correct": "incorrect",
+    "evidence_sufficient": "",
+    "notes": ""
+  },
+  "C18-R2": {
+    "semantic_correct": "incorrect",
+    "evidence_sufficient": "",
+    "notes": ""
+  },
+  "C18-R3": {
+    "semantic_correct": "incorrect",
+    "evidence_sufficient": "",
+    "notes": ""
+  },
+  "C18-R4": {
+    "semantic_correct": "incorrect",
+    "evidence_sufficient": "",
+    "notes": ""
+  },
+  "C19-R1": {
+    "semantic_correct": "correct",
+    "evidence_sufficient": "",
+    "notes": ""
+  },
+  "C19-R2": {
+    "semantic_correct": "correct",
+    "evidence_sufficient": "",
+    "notes": ""
+  },
+  "C19-R3": {
+    "semantic_correct": "incorrect",
+    "evidence_sufficient": "",
+    "notes": ""
+  },
+  "C19-R4": {
+    "semantic_correct": "incorrect",
+    "evidence_sufficient": "",
+    "notes": ""
+  },
+  "C20-R1": {
+    "semantic_correct": "correct",
+    "evidence_sufficient": "",
+    "notes": ""
+  },
+  "C20-R2": {
+    "semantic_correct": "correct",
+    "evidence_sufficient": "",
+    "notes": ""
+  },
+  "C20-R3": {
+    "semantic_correct": "incorrect",
+    "evidence_sufficient": "",
+    "notes": ""
+  },
+  "C20-R4": {
+    "semantic_correct": "correct",
+    "evidence_sufficient": "",
+    "notes": ""
+  },
+  "C21-R1": {
+    "semantic_correct": "incorrect",
+    "evidence_sufficient": "",
+    "notes": ""
+  },
+  "C21-R2": {
+    "semantic_correct": "incorrect",
+    "evidence_sufficient": "",
+    "notes": ""
+  },
+  "C21-R3": {
+    "semantic_correct": "incorrect",
+    "evidence_sufficient": "",
+    "notes": ""
+  },
+  "C21-R4": {
+    "semantic_correct": "incorrect",
+    "evidence_sufficient": "",
+    "notes": ""
+  },
+  "C22-R1": {
+    "semantic_correct": "incorrect",
+    "evidence_sufficient": "",
+    "notes": ""
+  },
+  "C22-R2": {
+    "semantic_correct": "incorrect",
+    "evidence_sufficient": "",
+    "notes": ""
+  },
+  "C22-R3": {
+    "semantic_correct": "incorrect",
+    "evidence_sufficient": "",
+    "notes": ""
+  },
+  "C22-R4": {
+    "semantic_correct": "incorrect",
+    "evidence_sufficient": "",
+    "notes": ""
+  },
+  "C23-R1": {
+    "semantic_correct": "incorrect",
+    "evidence_sufficient": "",
+    "notes": ""
+  },
+  "C23-R2": {
+    "semantic_correct": "incorrect",
+    "evidence_sufficient": "",
+    "notes": ""
+  },
+  "C23-R3": {
+    "semantic_correct": "incorrect",
+    "evidence_sufficient": "",
+    "notes": ""
+  },
+  "C23-R4": {
+    "semantic_correct": "incorrect",
+    "evidence_sufficient": "",
+    "notes": ""
+  },
+  "C24-R1": {
+    "semantic_correct": "correct",
+    "evidence_sufficient": "",
+    "notes": ""
+  },
+  "C24-R2": {
+    "semantic_correct": "incorrect",
+    "evidence_sufficient": "",
+    "notes": ""
+  },
+  "C24-R3": {
+    "semantic_correct": "correct",
+    "evidence_sufficient": "",
+    "notes": ""
+  },
+  "C24-R4": {
+    "semantic_correct": "incorrect",
+    "evidence_sufficient": "",
+    "notes": ""
+  },
+  "C25-R1": {
+    "semantic_correct": "correct",
+    "evidence_sufficient": "",
+    "notes": ""
+  },
+  "C25-R2": {
+    "semantic_correct": "correct",
+    "evidence_sufficient": "",
+    "notes": ""
+  },
+  "C25-R3": {
+    "semantic_correct": "correct",
+    "evidence_sufficient": "",
+    "notes": ""
+  },
+  "C25-R4": {
+    "semantic_correct": "correct",
+    "evidence_sufficient": "",
+    "notes": ""
+  },
+  "C26-R1": {
+    "semantic_correct": "incorrect",
+    "evidence_sufficient": "",
+    "notes": ""
+  },
+  "C26-R2": {
+    "semantic_correct": "incorrect",
+    "evidence_sufficient": "",
+    "notes": ""
+  },
+  "C26-R3": {
+    "semantic_correct": "incorrect",
+    "evidence_sufficient": "",
+    "notes": ""
+  },
+  "C26-R4": {
+    "semantic_correct": "incorrect",
+    "evidence_sufficient": "",
+    "notes": ""
+  },
+  "C27-R1": {
+    "semantic_correct": "correct",
+    "evidence_sufficient": "",
+    "notes": ""
+  },
+  "C27-R2": {
+    "semantic_correct": "incorrect",
+    "evidence_sufficient": "",
+    "notes": ""
+  },
+  "C27-R3": {
+    "semantic_correct": "incorrect",
+    "evidence_sufficient": "",
+    "notes": ""
+  },
+  "C27-R4": {
+    "semantic_correct": "correct",
+    "evidence_sufficient": "",
+    "notes": ""
+  },
+  "C28-R1": {
+    "semantic_correct": "incorrect",
+    "evidence_sufficient": "",
+    "notes": ""
+  },
+  "C28-R2": {
+    "semantic_correct": "incorrect",
+    "evidence_sufficient": "",
+    "notes": ""
+  },
+  "C28-R3": {
+    "semantic_correct": "correct",
+    "evidence_sufficient": "",
+    "notes": ""
+  },
+  "C28-R4": {
+    "semantic_correct": "correct",
+    "evidence_sufficient": "",
+    "notes": ""
+  },
+  "C29-R1": {
+    "semantic_correct": "incorrect",
+    "evidence_sufficient": "",
+    "notes": ""
+  },
+  "C29-R2": {
+    "semantic_correct": "incorrect",
+    "evidence_sufficient": "",
+    "notes": ""
+  },
+  "C29-R3": {
+    "semantic_correct": "incorrect",
+    "evidence_sufficient": "",
+    "notes": ""
+  },
+  "C29-R4": {
+    "semantic_correct": "incorrect",
+    "evidence_sufficient": "",
+    "notes": ""
+  },
+  "C30-R1": {
+    "semantic_correct": "correct",
+    "evidence_sufficient": "",
+    "notes": ""
+  },
+  "C30-R2": {
+    "semantic_correct": "correct",
+    "evidence_sufficient": "",
+    "notes": ""
+  },
+  "C30-R3": {
+    "semantic_correct": "correct",
+    "evidence_sufficient": "",
+    "notes": ""
+  },
+  "C30-R4": {
+    "semantic_correct": "correct",
+    "evidence_sufficient": "",
+    "notes": ""
+  }
+}
