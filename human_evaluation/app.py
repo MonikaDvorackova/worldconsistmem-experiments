@@ -11,8 +11,8 @@ style_path = Path(__file__).parent / "style.css"
 if style_path.exists():
     st.markdown("<style>" + style_path.read_text(encoding="utf-8") + "</style>", unsafe_allow_html=True)
 st.caption("WORLD CONSIST MEM  /  HUMAN EVALUATION")
-st.title("Kontrola odpovědí")
-st.write("Porovnejte odpovědi modelu s jednoduše popsanou skutečností. Vyberte Správně, Špatně nebo Nelze posoudit.")
+st.title("Nezávislé hodnocení")
+st.write("Posuzujte věcnou správnost podle dostupných důkazů. Formát JSON sám o sobě není kritériem správnosti.")
 st.divider()
 
 code = os.environ.get("WCM_ACCESS_CODE", "")
@@ -30,11 +30,20 @@ if not st.session_state.authorized:
             st.rerun()
     st.stop()
 
-path = Path(__file__).resolve().parent.parent / "BLINDED_ANNOTATION.csv"
-if path.is_file():
+round_choice = st.radio("Kolo hodnocení", ["Round 2 — sporné odpovědi", "Round 1 — původní dataset"])
+reviewer_choice = st.selectbox("Hodnotitel", ["reviewer_1", "reviewer_2"])
+round_two = round_choice.startswith("Round 2")
+if round_two:
+    packet_path = Path(__file__).parent / "round_2" / reviewer_choice / "BLIND_REVIEW_PACKET.json"
+    packet = json.loads(packet_path.read_text(encoding="utf-8"))
+    rows = [{**item, "evidence_json": json.dumps(item["evidence_json"], ensure_ascii=False)} for item in packet]
+    st.caption("50 sporných odpovědí bez původních štítků.")
+else:
+    path = Path(__file__).resolve().parent.parent / "BLINDED_ANNOTATION.csv"
+if not round_two and path.is_file():
     with path.open(encoding="utf-8-sig", newline="") as f:
         rows = list(csv.DictReader(f))
-else:
+elif not round_two:
     st.info("Dataset ještě není uložen na serveru. Můžete jej načíst přímo z CSV souboru.")
     uploaded_dataset = st.file_uploader(
         "Vyberte BLINDED_ANNOTATION.csv", type=["csv"], key="dataset_upload",
@@ -56,9 +65,10 @@ if len({r["response_id"] for r in rows}) != len(rows):
     st.error("Duplicitní response_id.")
     st.stop()
 
-if "ratings" not in st.session_state:
+dataset_key = (round_two, reviewer_choice)
+if st.session_state.get("dataset_key") != dataset_key:
+    st.session_state.dataset_key = dataset_key
     st.session_state.ratings = {}
-if "idx" not in st.session_state:
     st.session_state.idx = 0
 
 with st.expander("Obnovit rozpracované hodnocení"):
@@ -75,175 +85,118 @@ with st.expander("Obnovit rozpracované hodnocení"):
             st.error("Neplatný soubor průběhu.")
 
 ratings = st.session_state.ratings
-done = sum(ratings.get(r["response_id"], {}).get("semantic_correct") in ("correct", "incorrect", "ambiguous") for r in rows)
-st.progress(done / len(rows), text=f"Vyplněno {done}/{len(rows)} odpovědí")
-
-# One case is shown once, with all its blinded candidate responses.
-cases = {}
-for record in rows:
-    cases.setdefault(record["case_id"], []).append(record)
-case_ids = list(cases)
-st.session_state.idx = min(st.session_state.idx, len(case_ids) - 1)
+done = sum(bool(ratings.get(r["response_id"], {}).get("semantic_correct")) and bool(ratings.get(r["response_id"], {}).get("evidence_sufficient")) for r in rows)
+st.progress(done / len(rows), text=f"Vyplněno {done}/{len(rows)}")
 idx = st.session_state.idx
-case_id = case_ids[idx]
-case_rows = cases[case_id]
-reference = case_rows[0]
-st.subheader(f"Případ {idx+1} / {len(case_ids)}")
-world_id = reference["question"].split(":")[0].split()[-1]
-st.caption(f"Scénář {case_id} · Svět {world_id} · {len(case_rows)} odpovědi ke stejné otázce")
-st.info("Každý scénář představuje jiný syntetický svět. Podobně formulované otázky nejsou totožné případy.")
+row = rows[idx]
+rid = row["response_id"]
+current = ratings.get(rid, {})
+st.subheader(f"Hodnocení {idx+1} / {len(rows)}")
+st.caption(f"Případ {row['case_id']} · {rid}")
 
-import re
-
-def describe_case(question):
-    patterns = [
-        (r"When was (.+) revised from v1 to v2\?", "Kdy byl dokument změněn z verze 1 na verzi 2?", "document_revision"),
-        (r"When and how did the CEO of (.+) change\?", "Kdy a jak se změnil generální ředitel organizace?", "role_replacement"),
-        (r"When did (.+) leave (.+)\?", "Kdy zaměstnanec opustil organizaci?", "person_leaves_org"),
-        (r"When was conflict (.+) resolved\?", "Kdy byl vyřešen spor?", "conflict_resolution"),
-        (r"When did ownership of (.+) transfer\?", "Kdy byl projekt převeden na jinou organizaci?", "project_ownership_transfer"),
-    ]
-    for pattern, label, event_type in patterns:
-        match = re.fullmatch(pattern, question)
-        if match:
-            return label, event_type, match.groups()
-    return question, None, ()
-
-def reference_fact(question):
-    label, event_type, identifiers = describe_case(question)
-    if not event_type:
-        return label, None, "Neznámý typ otázky"
-    world_id = identifiers[0].split(":")[0]
-    world_path = Path(__file__).resolve().parent.parent / "data" / "scaled" / "worlds" / (world_id + ".json")
-    if not world_path.is_file():
-        return label, None, "Chybí referenční svět"
-    try:
-        world = json.loads(world_path.read_text(encoding="utf-8"))
-        events = world["events"]
-    except (ValueError, KeyError, OSError):
-        return label, None, "Referenční svět nelze načíst"
-    matched = []
-    for event in events:
-        if event.get("event_type") != event_type:
-            continue
-        p = event.get("payload", {})
-        if event_type == "document_revision":
-            ok = p.get("base_doc_id") == identifiers[0] and p.get("expected_prev_version") == 1
-        elif event_type == "role_replacement":
-            ok = p.get("org_id") == identifiers[0] and p.get("role") == "CEO"
-        elif event_type == "person_leaves_org":
-            ok = p.get("person_id") == identifiers[0] and p.get("org_id") == identifiers[1]
-        elif event_type == "conflict_resolution":
-            ok = p.get("conflict_id") == identifiers[0]
-        else:
-            ok = p.get("project_id") == identifiers[0]
-        if ok:
-            matched.append(event)
-    if not matched:
-        return label, None, "Odpovídající událost nebyla nalezena"
-    # A changing world may legitimately have several matching transitions.
-    # Show the full timeline rather than falsely claiming that no reference exists.
-    if len(matched) > 1:
-        facts = []
-        for event in sorted(matched, key=lambda e: e.get("t", 0)):
-            p = event.get("payload", {})
-            t = event.get("t")
-            if event_type == "role_replacement":
-                facts.append(f"V čase {t} byl ředitel nahrazen: osoba {str(p.get('old_person_id', '?')).split(':')[-1]} → osoba {str(p.get('new_person_id', '?')).split(':')[-1]}.")
-            elif event_type == "project_ownership_transfer":
-                facts.append(f"V čase {t} byl projekt převeden: organizace {str(p.get('old_org_id', '?')).split(':')[-1]} → organizace {str(p.get('new_org_id', '?')).split(':')[-1]}.")
-            elif event_type == "document_revision":
-                facts.append(f"V čase {t} proběhla revize dokumentu.")
-            else:
-                facts.append(f"V čase {t} nastala odpovídající událost.")
-        return label, " ".join(facts), None
-    event = matched[0]
-    p = event.get("payload", {})
-    t = event.get("t")
-    if not isinstance(t, int):
-        return label, None, "Chybí čas události"
-    if event_type == "document_revision":
-        fact = f"Dokument přešel z verze 1 na verzi 2 v čase {t}."
-    elif event_type == "role_replacement":
-        fact = f"V čase {t} byl generální ředitel nahrazen. Původní osoba: {p.get('old_person_id', '?').split(':')[-1]}; nová osoba: {p.get('new_person_id', '?').split(':')[-1]}."
-    elif event_type == "person_leaves_org":
-        fact = f"Zaměstnanec opustil organizaci v čase {t}."
-    elif event_type == "conflict_resolution":
-        fact = f"Spor byl vyřešen v čase {t}. Výsledek: {p.get('resolved_value', 'neuveden')}."
-    else:
-        fact = f"Projekt byl převeden v čase {t}. Původní organizace: {p.get('old_org_id', '?').split(':')[-1]}; nová organizace: {p.get('new_org_id', '?').split(':')[-1]}."
-    return label, fact, None
-
-def answer_summary(raw):
-    try:
-        value = json.loads(raw)
-    except (ValueError, TypeError):
-        return str(raw)
-    if isinstance(value, dict):
-        if value.get("abstain") is True:
-            return "Model neodpověděl."
-        answer = value.get("answer", value)
-        if isinstance(answer, dict):
-            time = answer.get("t", answer.get("time"))
-            details = []
-            if time is not None:
-                details.append(f"Čas {time}")
-            for key, name in (("old_person_id", "Původní osoba"), ("new_person_id", "Nová osoba"), ("old_org_id", "Původní organizace"), ("new_org_id", "Nová organizace"), ("resolved_value", "Výsledek")):
-                if key in answer:
-                    details.append(f"{name}: {str(answer[key]).split(':')[-1]}")
-            if details:
-                return " · ".join(details)
-            return " · ".join(f"{k}: {v}" for k, v in answer.items())
-        return str(answer)
+def readable(value):
+    if value is None: return "neuvedeno"
+    if isinstance(value, bool): return "ano" if value else "ne"
+    if isinstance(value, (dict, list)): return json.dumps(value, ensure_ascii=False)
     return str(value)
 
-question_label, fact, reference_error = reference_fact(reference["question"])
+def render_evidence(raw):
+    try: evidence = json.loads(raw)
+    except (ValueError, TypeError):
+        st.warning("Důkazy nelze strukturovaně zobrazit.")
+        st.code(raw)
+        return
+    if not isinstance(evidence, list):
+        st.json(evidence)
+        return
+    events = []
+    for index, item in enumerate(evidence):
+        if not isinstance(item, dict):
+            st.write(readable(item))
+            continue
+        source = item.get("s") if isinstance(item.get("s"), dict) else {}
+        props = source.get("p") if isinstance(source.get("p"), dict) else {}
+        time = source.get("t", item.get("t"))
+        events.append((time, index, item, source, props))
+    def sort_key(entry):
+        time = entry[0]
+        return (0, time, entry[1]) if isinstance(time, (int, float)) and not isinstance(time, bool) else (1, str(time), entry[1])
+    st.caption("Seřazeno chronologicky podle t. Časový krok není kalendářní datum.")
+    for time, _, item, source, props in sorted(events, key=sort_key):
+        with st.container(border=True):
+            st.markdown(f"**Čas {readable(time)}** · Událost: `{readable(source.get('et'))}`")
+            for key, value in props.items():
+                st.write(f"**{key}:** {readable(value)}")
+            if item.get("id"): st.caption(f"Zdrojový záznam: {item['id']}")
+    st.info("Samotná chronologie neprokazuje, která revize je přechod v1 → v2. Neodvozujte verze pouze z čísel v identifikátorech.")
+
+def render_model_answer(raw):
+    try: response = json.loads(raw)
+    except (ValueError, TypeError):
+        st.write(raw)
+        return
+    if isinstance(response, dict):
+        if response.get("abstain") is True: st.info("Model se zdržel odpovědi.")
+        answer = response.get("answer", response)
+        if isinstance(answer, dict):
+            for key, value in answer.items(): st.write(f"**{key}:** {readable(value)}")
+        else: st.write(readable(answer))
+        if response.get("provenance") is not None: st.caption(f"Odkazovaný důkaz: {readable(response['provenance'])}")
+    else: st.write(readable(response))
+    with st.expander("Původní odpověď (JSON)"): st.json(response)
+
 st.markdown("**Otázka**")
-st.write(f"{question_label} (Scénář {case_id}, svět {world_id})")
-st.markdown("**Co se skutečně stalo**")
-if fact:
-    st.info(fact)
-    st.caption("Referenční skutečnost pochází ze syntetického světa. Pokud nastalo více změn, jsou uvedeny všechny v časovém pořadí.")
-else:
-    st.error(f"Nelze bezpečně vyhodnotit tento případ: {reference_error}. U tohoto případu lze zvolit „Nelze posoudit“ a pokračovat.")
-with st.expander("Technické informace (nepovinné)"):
-    st.write(reference["question"])
-    st.caption("Referenční svět: " + reference["question"].split(":")[0].split()[-1])
+st.write(row["question"])
+st.markdown("### Čitelný přehled důkazů")
+render_evidence(row["evidence_json"])
+with st.expander("Původní důkazy (JSON)"):
+    try: st.json(json.loads(row["evidence_json"]))
+    except (ValueError, TypeError): st.code(row["evidence_json"])
+st.markdown("### Odpověď modelu")
+render_model_answer(row["raw_model_response"])
+with st.expander("Jak hodnotit?"):
+    st.write("Správná: důkazy odpověď potvrzují. Nesprávná: důkazy jí odporují. Nelze určit: z dostupných důkazů nelze rozhodnout.")
+    st.write("Dostatečnost důkazů hodnoťte samostatně. I nesprávnou odpověď mohou důkazy jednoznačně vyvrátit.")
+    if round_two:
+        st.markdown((Path(__file__).parent / "round_2" / "RUBRIC_AND_PROTOCOL.md").read_text(encoding="utf-8"))
 
-st.markdown("### Posuďte jednotlivé odpovědi")
-st.caption("Porovnejte odpověď modelu s uvedenou skutečností. Správně = shoduje se. Špatně = odporuje. Nelze posoudit = odpověď je nejasná.")
-for position, record in enumerate(case_rows, start=1):
-    rid = record["response_id"]
-    selected = ratings.get(rid, {}).get("semantic_correct")
-    with st.container(border=True):
-        st.markdown(f"**Odpověď {position}:** {answer_summary(record['raw_model_response'])}")
-        if selected in ("correct", "incorrect", "ambiguous"):
-            st.caption("Zvoleno: " + {"correct": "Správně", "incorrect": "Špatně", "ambiguous": "Nelze posoudit"}[selected])
-        cols = st.columns(3)
-        for col, key, label in zip(cols, ("correct", "incorrect", "ambiguous"), ("Správně", "Špatně", "Nelze posoudit")):
-            if col.button(label, key=f"rate_{rid}_{key}", disabled=(not fact and key != "ambiguous"), use_container_width=True, type="primary" if selected == key else "secondary"):
-                ratings[rid] = {"semantic_correct": key, "evidence_sufficient": "", "notes": ""}
-                st.rerun()
-        with st.expander("Původní odpověď (nepovinné)"):
-            try:
-                st.json(json.loads(record["raw_model_response"]))
-            except (ValueError, TypeError):
-                st.code(record["raw_model_response"])
-
-previous, following = st.columns(2)
-if previous.button("Předchozí případ", disabled=idx == 0, use_container_width=True):
-    st.session_state.idx -= 1
-    st.rerun()
-if following.button("Další případ", disabled=idx == len(case_ids)-1, use_container_width=True):
-    st.session_state.idx += 1
-    st.rerun()
+correct_options = ["correct","incorrect","ambiguous"]
+suff_options = ["yes","no","unclear"]
+with st.form(f"evaluation_{rid}"):
+    correct = st.radio("Je odpověď věcně správná?", correct_options,
+        index=correct_options.index(current["semantic_correct"]) if current.get("semantic_correct") in correct_options else None,
+        format_func=lambda x: {"correct":"Správná","incorrect":"Nesprávná","ambiguous":"Nelze určit"}[x])
+    suff = st.radio("Jsou důkazy dostatečné?", suff_options,
+        index=suff_options.index(current["evidence_sufficient"]) if current.get("evidence_sufficient") in suff_options else None,
+        format_func=lambda x: {"yes":"Ano","no":"Ne","unclear":"Nelze určit"}[x])
+    notes = st.text_area("Odůvodnění (ve druhém kole vždy povinné)", value=current.get("notes",""))
+    reasons = ["factually_supported", "factually_contradicted", "multiple_plausible_answers", "insufficient_evidence", "unparseable_or_uninterpretable", "other"]
+    reason = st.selectbox("Důvod", reasons, index=reasons.index(current["rubric_reason"]) if current.get("rubric_reason") in reasons else None) if round_two else None
+    left, right = st.columns(2)
+    prev = left.form_submit_button("Uložit a předchozí", disabled=idx == 0)
+    nxt = right.form_submit_button("Uložit a další", disabled=idx == len(rows)-1)
+    save = st.form_submit_button("Uložit hodnocení")
+    if prev or nxt or save:
+        if correct is None or suff is None:
+            st.error("Vyplňte obě hodnocení.")
+        elif (round_two or correct in ("incorrect","ambiguous")) and not notes.strip():
+            st.error("Doplňte důvod hodnocení.")
+        elif round_two and reason is None:
+            st.error("Vyberte důvod hodnocení.")
+        else:
+            ratings[rid] = {"semantic_correct":correct,"evidence_sufficient":suff,"notes":notes.strip()}
+            if round_two:
+                ratings[rid]["rubric_reason"] = reason
+            if prev: st.session_state.idx -= 1
+            if nxt: st.session_state.idx += 1
+            st.rerun()
 
 st.download_button("Stáhnout průběžnou zálohu", json.dumps(ratings,ensure_ascii=False,indent=2),
-                   file_name="wcm_annotation_progress.json", mime="application/json")
+                   file_name=f"wcm_round_{2 if round_two else 1}_{reviewer_choice}_progress.json", mime="application/json")
 if done == len(rows):
     output = io.StringIO()
     columns = list(rows[0].keys())
-    for c in ("semantic_correct","evidence_sufficient","notes"):
+    for c in ("semantic_correct","evidence_sufficient","notes","rubric_reason"):
         if c not in columns: columns.append(c)
     writer = csv.DictWriter(output, fieldnames=columns)
     writer.writeheader()
@@ -251,4 +204,4 @@ if done == len(rows):
         writer.writerow({**r, **ratings[r["response_id"]]})
     st.success("Všechna hodnocení jsou vyplněna.")
     st.download_button("Stáhnout dokončené CSV", output.getvalue().encode("utf-8-sig"),
-                       file_name="WCM_COMPLETED_ANNOTATION.csv", mime="text/csv")
+                       file_name=f"WCM_round_{2 if round_two else 1}_{reviewer_choice}_COMPLETED.csv", mime="text/csv")
