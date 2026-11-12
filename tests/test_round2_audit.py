@@ -595,6 +595,34 @@ def test_unique_items_all_semantic_all_arms():
 
 
 @needs_rr_private
+def test_b1_nodoc_denominator_is_116():
+    """Regression guard: B1-nodoc population must be exactly 116 (150 total minus 34 doc items).
+
+    Protects against: (a) redefining 'doc' exclusion, (b) dropping additional slots,
+    (c) any filtering that would produce the phantom value of 125.
+    """
+    by_query = rr.load_items()
+    total = len(by_query)
+    assert total == 150, f"Expected 150 queries, got {total}"
+    doc_count = sum(1 for arms in by_query.values()
+                    if any(arms[a]["slot"] == "doc" for a in arms))
+    assert doc_count == 34, f"Expected 34 doc queries, got {doc_count}"
+    nondoc = sum(1 for arms in by_query.values()
+                 if any(arms[a]["slot"] != "doc" for a in arms if arms[a]["slot"] != "doc"))
+    # Correct count: items where slot != doc for all arms (no mismatches exist)
+    nondoc_strict = sum(1 for arms in by_query.values()
+                        if all(arms[a]["slot"] != "doc" for a in arms))
+    assert nondoc_strict == 116, (
+        f"B1-nodoc denominator is {nondoc_strict}, expected 116. "
+        f"If this fails with 125, check that doc exclusion uses slot=='doc' not a sufficiency label."
+    )
+    # Verify no slot mismatches across arms
+    for qid, arms in by_query.items():
+        slots = {arms[a]["slot"] for a in arms}
+        assert len(slots) == 1, f"Query {qid} has slot mismatch: {slots}"
+
+
+@needs_rr_private
 def test_csv_outputs_exist_and_correct_shape():
     case_csv = REPO / "analysis/round2/case_level_error_analysis.csv"
     temp_csv = REPO / "analysis/round2/temporal_state_analysis.csv"
