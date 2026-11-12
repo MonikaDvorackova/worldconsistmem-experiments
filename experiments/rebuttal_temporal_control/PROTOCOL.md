@@ -20,7 +20,7 @@ A, B, C and D must expose identical source facts, entity identifiers, ordering a
 Use the existing procedural generator to produce **100 new independent worlds** with deterministic seeds derived from a new fixed namespace (e.g. `rebuttal-temporal-v1`). Check for duplicate world IDs and overlap with existing frozen smoke/scaled and H4 evaluation data; if overlap occurs, abort. Include repeated CEO/ownership transitions, reversals, distractors, and at least three sequential updates where generator capabilities permit. Freeze and hash the generated worlds before inference. All questions must explicitly specify latest valid state at world end-time; unanswerable cases must be labelled and reported separately. No filtering based on model performance.
 
 ## Execution
-Use the same single model version, temperature=0, inference configuration, and prompt-independent deterministic ground truth for all arms. Randomize the order of conditions within each world using a recorded seed. Never include gold answers or future event information in prompts. Freeze complete prompt hashes, raw responses, token usage, model identifier and API cost. Do not call paid APIs without a separate explicit user-approved budget. If only local models are available, label results as local-model evidence and do not equate them with GPT-4.1.
+Use exclusively local inference with a pinned Qwen2.5-3B-Instruct 4-bit MLX checkpoint on Apple Silicon (M4 Pro, 24 GB RAM). No network/API model calls, no paid services, and no silent model downloads during the evaluation run. Record checkpoint revision, weights hash where practical, MLX/MLX-LM versions, temperature=0, generation settings, and prompt-independent deterministic ground truth for all arms. Verify model availability locally before running; if the weights are absent, mark execution blocked until the user installs them locally. Randomize the order of conditions within each world using a recorded seed. Never include gold answers or future event information in prompts. Freeze complete prompt hashes, raw responses, token usage, model identifier and API cost. All model inference must run locally. Zero paid API calls are authorized. Label findings as local Qwen evidence, not a replication of GPT-4.1. Record elapsed time, peak memory if measurable, and any OOM/retry behavior.
 
 ## Scoring and statistical plan
 Primary metric: semantic accuracy of the latest state, using deterministic answer normalization independent of the output schema; format failures are reported separately. Validate normalization on an arm-blinded stratified sample. Secondary: stale-state rate (old value instead of latest), bundle consistency (BCR, with number of eligible constraints), exact-match format compliance, and performance by transition depth. Missing responses count as incorrect in the intention-to-evaluate analysis, with a separately reported complete-case sensitivity analysis.
@@ -35,7 +35,7 @@ Compute per-world paired differences B − C; report world-level bootstrap 95% p
 5. Independent world-level inference; no treating queries as independent replicates.
 6. Scorer checks against known positive, stale, ambiguous and malformed examples.
 7. All data generation, scorer and analysis code tested.
-8. Paid inference budget explicitly approved.
+8. Offline local model and dependencies available; zero paid API calls.
 9. Existing audit discrepancy resolved: the published 23/42 vs 2/42 stale-state counts must not be conflated with the separate latest-selection paired table.
 
 ## Publication rule
