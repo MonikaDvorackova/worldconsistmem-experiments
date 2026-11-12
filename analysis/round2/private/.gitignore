@@ -1,0 +1,4 @@
+# Private inputs (arm mapping, frozen raw F0-F3 outputs, per-item arm scores).
+# Kept out of git to preserve reviewer/adjudicator blinding; see analysis/round2/README.md.
+*
+!.gitignore
