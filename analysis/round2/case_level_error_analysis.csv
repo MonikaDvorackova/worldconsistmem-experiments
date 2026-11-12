@@ -1,0 +1,151 @@
+query_id,slot,question_status,world_id,F0_error,F1_error,F2_error,F3_error,F0_exact,F1_exact,F2_exact,F3_exact,F0_semantic,F1_semantic,F2_semantic,F3_semantic,F0_positions,F1_positions,F2_positions,F3_positions,spurious_evidence_note
+sl0168_000:b:ceo:0:transition,ceo,multi_candidate,sl0168_000,STALE_STATE,MC_INCOMPLETE,CORRECT,CORRECT,0,0,1,1,0,0,1,1,earliest,middle,latest,latest,
+sl0168_000:b:conf:4:transition,conf,unique,sl0168_000,FORMAT_ONLY,CORRECT,FORMAT_ONLY,CORRECT,0,1,0,1,1,1,1,1,only,only,only,only,
+sl0168_000:b:doc:11:transition,doc,version_unidentifiable,sl0168_000,INSUF_EV_FAIL,INSUF_EV_FAIL,INSUF_EV_SPURIOUS,INSUF_EV_FAIL,0,0,0,0,0,0,1,0,earliest,middle,latest,middle,doc item: S2 insufficient evidence; any semantic credit is spurious
+sl0168_000:b:doc:6:transition,doc,version_unidentifiable,sl0168_000,INSUF_EV_FAIL,INSUF_EV_FAIL,INSUF_EV_SPURIOUS,INSUF_EV_FAIL,0,0,0,0,0,0,1,0,earliest,middle,latest,middle,doc item: S2 insufficient evidence; any semantic credit is spurious
+sl0168_000:b:emp:8:transition,emp,unique,sl0168_000,FORMAT_ONLY,CORRECT,FORMAT_ONLY,CORRECT,0,1,0,1,1,1,1,1,only,only,only,only,
+sl0168_000:b:own:1:transition,own,multi_candidate,sl0168_000,FORMAT_ONLY,CORRECT,FORMAT_ONLY,CORRECT,0,1,0,1,1,1,1,1,latest,latest,latest,latest,
+sl0168_000:b:own:5:transition,own,multi_candidate,sl0168_000,FORMAT_ONLY,CORRECT,CORRECT,CORRECT,0,1,1,1,1,1,1,1,latest,latest,latest,latest,
+sl0169_001:b:ceo:0:transition,ceo,multi_candidate,sl0169_001,CORRECT,STALE_STATE,MC_INCOMPLETE,CORRECT,1,0,0,1,1,0,0,1,latest,earliest,middle,latest,
+sl0169_001:b:ceo:7:transition,ceo,multi_candidate,sl0169_001,CORRECT,STALE_STATE,CORRECT,CORRECT,1,0,1,1,1,0,1,1,latest,earliest,latest,latest,
+sl0169_001:b:conf:9:transition,conf,unique,sl0169_001,FORMAT_ONLY,CORRECT,FORMAT_ONLY,CORRECT,0,1,0,1,1,1,1,1,only,only,only,only,
+sl0169_001:b:doc:11:transition,doc,version_unidentifiable,sl0169_001,INSUF_EV_FAIL,INSUF_EV_FAIL,INSUF_EV_SPURIOUS,INSUF_EV_FAIL,0,0,0,0,0,0,1,0,earliest,earliest,latest,middle,doc item: S2 insufficient evidence; any semantic credit is spurious
+sl0169_001:b:doc:2:transition,doc,version_unidentifiable,sl0169_001,INSUF_EV_FAIL,INSUF_EV_FAIL,INSUF_EV_SPURIOUS,INSUF_EV_FAIL,0,0,0,0,0,0,1,0,earliest,earliest,latest,middle,doc item: S2 insufficient evidence; any semantic credit is spurious
+sl0169_001:b:doc:6:transition,doc,version_unidentifiable,sl0169_001,INSUF_EV_FAIL,INSUF_EV_FAIL,INSUF_EV_SPURIOUS,INSUF_EV_FAIL,0,0,0,0,0,0,1,0,earliest,middle,latest,middle,doc item: S2 insufficient evidence; any semantic credit is spurious
+sl0169_001:b:emp:3:transition,emp,unique,sl0169_001,FORMAT_ONLY,CORRECT,FORMAT_ONLY,CORRECT,0,1,0,1,1,1,1,1,only,only,only,only,
+sl0169_001:b:emp:8:transition,emp,unique,sl0169_001,FORMAT_ONLY,CORRECT,FORMAT_ONLY,CORRECT,0,1,0,1,1,1,1,1,only,only,only,only,
+sl0169_001:b:own:10:transition,own,multi_candidate,sl0169_001,STALE_STATE,CORRECT,FORMAT_ONLY,CORRECT,0,1,0,1,0,1,1,1,earliest,latest,latest,latest,
+sl0169_001:b:own:5:transition,own,multi_candidate,sl0169_001,FORMAT_ONLY,MC_INCOMPLETE,CORRECT,CORRECT,0,0,1,1,1,0,1,1,latest,middle,latest,latest,
+sl0170_002:b:ceo:0:transition,ceo,multi_candidate,sl0170_002,STALE_STATE,MC_INCOMPLETE,CORRECT,CORRECT,0,0,1,1,0,0,1,1,earliest,middle,latest,latest,
+sl0170_002:b:ceo:7:transition,ceo,multi_candidate,sl0170_002,STALE_STATE,STALE_STATE,MC_INCOMPLETE,CORRECT,0,0,0,1,0,0,0,1,earliest,earliest,middle,latest,
+sl0170_002:b:conf:4:transition,conf,unique,sl0170_002,FORMAT_ONLY,CORRECT,FORMAT_ONLY,CORRECT,0,1,0,1,1,1,1,1,only,only,only,only,
+sl0170_002:b:conf:9:transition,conf,unique,sl0170_002,FORMAT_ONLY,CORRECT,FORMAT_ONLY,CORRECT,0,1,0,1,1,1,1,1,only,only,only,only,
+sl0170_002:b:doc:11:transition,doc,version_unidentifiable,sl0170_002,INSUF_EV_FAIL,INSUF_EV_FAIL,INSUF_EV_SPURIOUS,INSUF_EV_FAIL,0,0,0,0,0,0,1,0,earliest,middle,latest,middle,doc item: S2 insufficient evidence; any semantic credit is spurious
+sl0170_002:b:doc:6:transition,doc,version_unidentifiable,sl0170_002,INSUF_EV_FAIL,INSUF_EV_FAIL,INSUF_EV_SPURIOUS,INSUF_EV_FAIL,0,0,0,0,0,0,1,0,earliest,middle,latest,middle,doc item: S2 insufficient evidence; any semantic credit is spurious
+sl0170_002:b:emp:3:transition,emp,unique,sl0170_002,FORMAT_ONLY,CORRECT,FORMAT_ONLY,CORRECT,0,1,0,1,1,1,1,1,only,only,only,only,
+sl0170_002:b:emp:8:transition,emp,unique,sl0170_002,FORMAT_ONLY,CORRECT,FORMAT_ONLY,CORRECT,0,1,0,1,1,1,1,1,only,only,only,only,
+sl0170_002:b:own:10:transition,own,multi_candidate,sl0170_002,FORMAT_ONLY,CORRECT,FORMAT_ONLY,CORRECT,0,1,0,1,1,1,1,1,latest,latest,latest,latest,
+sl0170_002:b:own:1:transition,own,multi_candidate,sl0170_002,STALE_STATE,MC_INCOMPLETE,FORMAT_ONLY,CORRECT,0,0,0,1,0,0,1,1,earliest,middle,latest,latest,
+sl0170_002:b:own:5:transition,own,multi_candidate,sl0170_002,STALE_STATE,MC_INCOMPLETE,CORRECT,CORRECT,0,0,1,1,0,0,1,1,earliest,middle,latest,latest,
+sl0171_003:b:ceo:0:transition,ceo,multi_candidate,sl0171_003,STALE_STATE,STALE_STATE,CORRECT,CORRECT,0,0,1,1,0,0,1,1,earliest,earliest,latest,latest,
+sl0171_003:b:ceo:7:transition,ceo,multi_candidate,sl0171_003,STALE_STATE,MC_INCOMPLETE,CORRECT,CORRECT,0,0,1,1,0,0,1,1,earliest,,latest,latest,
+sl0171_003:b:conf:4:transition,conf,unique,sl0171_003,FORMAT_ONLY,CORRECT,FORMAT_ONLY,CORRECT,0,1,0,1,1,1,1,1,only,only,only,only,
+sl0171_003:b:doc:11:transition,doc,version_unidentifiable,sl0171_003,INSUF_EV_FAIL,INSUF_EV_FAIL,INSUF_EV_FAIL,INSUF_EV_FAIL,0,0,0,0,0,0,0,0,earliest,earliest,earliest,earliest,doc item: S2 insufficient evidence; any semantic credit is spurious
+sl0171_003:b:doc:2:transition,doc,version_unidentifiable,sl0171_003,INSUF_EV_FAIL,INSUF_EV_FAIL,INSUF_EV_FAIL,INSUF_EV_FAIL,0,0,0,0,0,0,0,0,earliest,earliest,earliest,middle,doc item: S2 insufficient evidence; any semantic credit is spurious
+sl0171_003:b:emp:3:transition,emp,unique,sl0171_003,FORMAT_ONLY,CORRECT,FORMAT_ONLY,CORRECT,0,1,0,1,1,1,1,1,only,only,only,only,
+sl0171_003:b:emp:8:transition,emp,unique,sl0171_003,FORMAT_ONLY,CORRECT,FORMAT_ONLY,CORRECT,0,1,0,1,1,1,1,1,only,only,only,only,
+sl0171_003:b:own:10:transition,own,multi_candidate,sl0171_003,FORMAT_ONLY,CORRECT,CORRECT,CORRECT,0,1,1,1,1,1,1,1,latest,latest,latest,latest,
+sl0171_003:b:own:5:transition,own,multi_candidate,sl0171_003,STALE_STATE,CORRECT,CORRECT,CORRECT,0,1,1,1,0,1,1,1,earliest,latest,latest,latest,
+sl0172_004:b:ceo:0:transition,ceo,multi_candidate,sl0172_004,STALE_STATE,STALE_STATE,CORRECT,CORRECT,0,0,1,1,0,0,1,1,earliest,earliest,latest,latest,
+sl0172_004:b:ceo:7:transition,ceo,multi_candidate,sl0172_004,STALE_STATE,STALE_STATE,CORRECT,CORRECT,0,0,1,1,0,0,1,1,earliest,earliest,latest,latest,
+sl0172_004:b:conf:4:transition,conf,unique,sl0172_004,FORMAT_ONLY,CORRECT,FORMAT_ONLY,CORRECT,0,1,0,1,1,1,1,1,only,only,only,only,
+sl0172_004:b:doc:11:transition,doc,version_unidentifiable,sl0172_004,INSUF_EV_FAIL,INSUF_EV_FAIL,INSUF_EV_SPURIOUS,INSUF_EV_FAIL,0,0,0,0,0,0,1,0,earliest,earliest,latest,middle,doc item: S2 insufficient evidence; any semantic credit is spurious
+sl0172_004:b:doc:2:transition,doc,version_unidentifiable,sl0172_004,INSUF_EV_FAIL,INSUF_EV_FAIL,INSUF_EV_SPURIOUS,INSUF_EV_FAIL,0,0,0,0,0,0,1,0,earliest,earliest,latest,middle,doc item: S2 insufficient evidence; any semantic credit is spurious
+sl0172_004:b:doc:6:transition,doc,version_unidentifiable,sl0172_004,INSUF_EV_FAIL,INSUF_EV_FAIL,INSUF_EV_SPURIOUS,INSUF_EV_FAIL,0,0,0,0,0,0,1,0,earliest,middle,latest,middle,doc item: S2 insufficient evidence; any semantic credit is spurious
+sl0172_004:b:emp:8:transition,emp,unique,sl0172_004,FORMAT_ONLY,CORRECT,FORMAT_ONLY,CORRECT,0,1,0,1,1,1,1,1,only,only,only,only,
+sl0172_004:b:own:10:transition,own,multi_candidate,sl0172_004,STALE_STATE,CORRECT,CORRECT,CORRECT,0,1,1,1,0,1,1,1,earliest,latest,latest,latest,
+sl0172_004:b:own:1:transition,own,multi_candidate,sl0172_004,STALE_STATE,MC_INCOMPLETE,CORRECT,CORRECT,0,0,1,1,0,0,1,1,earliest,middle,latest,latest,
+sl0172_004:b:own:5:transition,own,multi_candidate,sl0172_004,STALE_STATE,MC_INCOMPLETE,CORRECT,CORRECT,0,0,1,1,0,0,1,1,earliest,middle,latest,latest,
+sl0173_005:b:ceo:0:transition,ceo,multi_candidate,sl0173_005,STALE_STATE,STALE_STATE,STALE_STATE,CORRECT,0,0,0,1,0,0,0,1,earliest,earliest,earliest,latest,
+sl0173_005:b:conf:4:transition,conf,unique,sl0173_005,FORMAT_ONLY,CORRECT,FORMAT_ONLY,CORRECT,0,1,0,1,1,1,1,1,only,only,only,only,
+sl0173_005:b:conf:9:transition,conf,unique,sl0173_005,FORMAT_ONLY,CORRECT,FORMAT_ONLY,CORRECT,0,1,0,1,1,1,1,1,only,only,only,only,
+sl0173_005:b:doc:2:transition,doc,version_unidentifiable,sl0173_005,INSUF_EV_FAIL,INSUF_EV_FAIL,INSUF_EV_SPURIOUS,INSUF_EV_FAIL,0,0,0,0,0,0,1,0,earliest,middle,latest,middle,doc item: S2 insufficient evidence; any semantic credit is spurious
+sl0173_005:b:doc:6:transition,doc,version_unidentifiable,sl0173_005,INSUF_EV_FAIL,INSUF_EV_FAIL,INSUF_EV_SPURIOUS,INSUF_EV_FAIL,0,0,0,0,0,0,1,0,earliest,middle,latest,earliest,doc item: S2 insufficient evidence; any semantic credit is spurious
+sl0173_005:b:emp:3:transition,emp,unique,sl0173_005,FORMAT_ONLY,CORRECT,FORMAT_ONLY,CORRECT,0,1,0,1,1,1,1,1,only,only,only,only,
+sl0173_005:b:emp:8:transition,emp,unique,sl0173_005,FORMAT_ONLY,CORRECT,FORMAT_ONLY,CORRECT,0,1,0,1,1,1,1,1,only,only,only,only,
+sl0173_005:b:own:10:transition,own,multi_candidate,sl0173_005,FORMAT_ONLY,CORRECT,CORRECT,CORRECT,0,1,1,1,1,1,1,1,latest,latest,latest,latest,
+sl0173_005:b:own:5:transition,own,multi_candidate,sl0173_005,STALE_STATE,CORRECT,FORMAT_ONLY,CORRECT,0,1,0,1,0,1,1,1,earliest,latest,latest,latest,
+sm0134_000:b:ceo:0:transition,ceo,multi_candidate,sm0134_000,STALE_STATE,STALE_STATE,CORRECT,CORRECT,0,0,1,1,0,0,1,1,earliest,earliest,latest,latest,
+sm0134_000:b:conf:4:transition,conf,unique,sm0134_000,FORMAT_ONLY,CORRECT,FORMAT_ONLY,CORRECT,0,1,0,1,1,1,1,1,only,only,only,only,
+sm0134_000:b:conf:9:transition,conf,unique,sm0134_000,FORMAT_ONLY,CORRECT,FORMAT_ONLY,CORRECT,0,1,0,1,1,1,1,1,only,only,only,only,
+sm0134_000:b:doc:2:transition,doc,version_unidentifiable,sm0134_000,INSUF_EV_FAIL,INSUF_EV_FAIL,INSUF_EV_FAIL,INSUF_EV_FAIL,0,0,0,0,0,0,0,0,earliest,earliest,earliest,middle,doc item: S2 insufficient evidence; any semantic credit is spurious
+sm0134_000:b:emp:8:transition,emp,unique,sm0134_000,FORMAT_ONLY,CORRECT,FORMAT_ONLY,CORRECT,0,1,0,1,1,1,1,1,only,only,only,only,
+sm0134_000:b:own:5:transition,own,multi_candidate,sm0134_000,FORMAT_ONLY,CORRECT,FORMAT_ONLY,CORRECT,0,1,0,1,1,1,1,1,latest,latest,latest,latest,
+sm0135_001:b:ceo:0:transition,ceo,multi_candidate,sm0135_001,MC_INCOMPLETE,STALE_STATE,CORRECT,STALE_STATE,0,0,1,0,0,0,1,0,earliest|latest,earliest,latest,earliest,
+sm0135_001:b:ceo:7:transition,ceo,multi_candidate,sm0135_001,MC_INCOMPLETE,STALE_STATE,STALE_STATE,STALE_STATE,0,0,0,0,0,0,0,0,earliest|latest,earliest,earliest,earliest,
+sm0135_001:b:conf:4:transition,conf,unique,sm0135_001,FORMAT_ONLY,CORRECT,FORMAT_ONLY,CORRECT,0,1,0,1,1,1,1,1,only,only,only,only,
+sm0135_001:b:conf:9:transition,conf,unique,sm0135_001,FORMAT_ONLY,CORRECT,FORMAT_ONLY,CORRECT,0,1,0,1,1,1,1,1,only,only,only,only,
+sm0135_001:b:doc:6:transition,doc,version_unidentifiable,sm0135_001,INSUF_EV_FAIL,INSUF_EV_FAIL,INSUF_EV_FAIL,INSUF_EV_FAIL,0,0,0,0,0,0,0,0,earliest,earliest,earliest,earliest,doc item: S2 insufficient evidence; any semantic credit is spurious
+sm0135_001:b:emp:8:transition,emp,unique,sm0135_001,FORMAT_ONLY,CORRECT,FORMAT_ONLY,CORRECT,0,1,0,1,1,1,1,1,only,only,only,only,
+sm0135_001:b:own:5:transition,own,multi_candidate,sm0135_001,STALE_STATE,CORRECT,CORRECT,CORRECT,0,1,1,1,0,1,1,1,earliest,latest,latest,latest,
+sm0136_002:b:ceo:0:transition,ceo,multi_candidate,sm0136_002,MC_INCOMPLETE,STALE_STATE,CORRECT,CORRECT,0,0,1,1,0,0,1,1,earliest|latest,earliest,latest,latest,
+sm0136_002:b:ceo:7:transition,ceo,multi_candidate,sm0136_002,STALE_STATE,STALE_STATE,CORRECT,STALE_STATE,0,0,1,0,0,0,1,0,earliest,earliest,latest,earliest,
+sm0136_002:b:conf:4:transition,conf,unique,sm0136_002,FORMAT_ONLY,CORRECT,FORMAT_ONLY,CORRECT,0,1,0,1,1,1,1,1,only,only,only,only,
+sm0136_002:b:conf:9:transition,conf,unique,sm0136_002,FORMAT_ONLY,CORRECT,FORMAT_ONLY,CORRECT,0,1,0,1,1,1,1,1,only,only,only,only,
+sm0136_002:b:doc:2:transition,doc,version_unidentifiable,sm0136_002,INSUF_EV_FAIL,INSUF_EV_FAIL,INSUF_EV_FAIL,INSUF_EV_FAIL,0,0,0,0,0,0,0,0,earliest,earliest,earliest,earliest,doc item: S2 insufficient evidence; any semantic credit is spurious
+sm0136_002:b:doc:6:transition,doc,version_unidentifiable,sm0136_002,INSUF_EV_FAIL,INSUF_EV_FAIL,INSUF_EV_FAIL,INSUF_EV_FAIL,0,0,0,0,0,0,0,0,earliest,earliest,earliest,earliest,doc item: S2 insufficient evidence; any semantic credit is spurious
+sm0136_002:b:emp:8:transition,emp,unique,sm0136_002,FORMAT_ONLY,CORRECT,FORMAT_ONLY,CORRECT,0,1,0,1,1,1,1,1,only,only,only,only,
+sm0136_002:b:own:1:transition,own,multi_candidate,sm0136_002,FORMAT_ONLY,CORRECT,CORRECT,CORRECT,0,1,1,1,1,1,1,1,latest,latest,latest,latest,
+sm0136_002:b:own:5:transition,own,multi_candidate,sm0136_002,STALE_STATE,CORRECT,FORMAT_ONLY,CORRECT,0,1,0,1,0,1,1,1,earliest,latest,latest,latest,
+sm0137_003:b:ceo:0:transition,ceo,multi_candidate,sm0137_003,MC_INCOMPLETE,STALE_STATE,CORRECT,STALE_STATE,0,0,1,0,0,0,1,0,earliest|latest,earliest,latest,earliest,
+sm0137_003:b:ceo:7:transition,ceo,multi_candidate,sm0137_003,MC_INCOMPLETE,STALE_STATE,CORRECT,STALE_STATE,0,0,1,0,0,0,1,0,earliest|latest,earliest,latest,earliest,
+sm0137_003:b:conf:4:transition,conf,unique,sm0137_003,FORMAT_ONLY,CORRECT,FORMAT_ONLY,CORRECT,0,1,0,1,1,1,1,1,only,only,only,only,
+sm0137_003:b:conf:9:transition,conf,unique,sm0137_003,FORMAT_ONLY,CORRECT,FORMAT_ONLY,CORRECT,0,1,0,1,1,1,1,1,only,only,only,only,
+sm0137_003:b:doc:2:transition,doc,version_unidentifiable,sm0137_003,INSUF_EV_FAIL,INSUF_EV_FAIL,INSUF_EV_SPURIOUS,INSUF_EV_FAIL,0,0,0,0,0,0,1,0,earliest,earliest,latest,earliest,doc item: S2 insufficient evidence; any semantic credit is spurious
+sm0137_003:b:doc:6:transition,doc,version_unidentifiable,sm0137_003,INSUF_EV_FAIL,INSUF_EV_FAIL,INSUF_EV_SPURIOUS,INSUF_EV_FAIL,0,0,0,0,0,0,1,0,earliest,earliest,latest,earliest,doc item: S2 insufficient evidence; any semantic credit is spurious
+sm0137_003:b:emp:3:transition,emp,unique,sm0137_003,FORMAT_ONLY,CORRECT,FORMAT_ONLY,CORRECT,0,1,0,1,1,1,1,1,only,only,only,only,
+sm0137_003:b:emp:8:transition,emp,unique,sm0137_003,FORMAT_ONLY,CORRECT,FORMAT_ONLY,CORRECT,0,1,0,1,1,1,1,1,only,only,only,only,
+sm0137_003:b:own:1:transition,own,multi_candidate,sm0137_003,FORMAT_ONLY,CORRECT,FORMAT_ONLY,CORRECT,0,1,0,1,1,1,1,1,latest,latest,latest,latest,
+sm0138_004:b:ceo:0:transition,ceo,multi_candidate,sm0138_004,STALE_STATE,STALE_STATE,CORRECT,STALE_STATE,0,0,1,0,0,0,1,0,earliest,earliest,latest,earliest,
+sm0138_004:b:ceo:7:transition,ceo,multi_candidate,sm0138_004,CORRECT,STALE_STATE,CORRECT,STALE_STATE,1,0,1,0,1,0,1,0,latest,earliest,latest,earliest,
+sm0138_004:b:conf:4:transition,conf,unique,sm0138_004,FORMAT_ONLY,CORRECT,FORMAT_ONLY,CORRECT,0,1,0,1,1,1,1,1,only,only,only,only,
+sm0138_004:b:doc:2:transition,doc,version_unidentifiable,sm0138_004,INSUF_EV_FAIL,INSUF_EV_FAIL,INSUF_EV_SPURIOUS,INSUF_EV_FAIL,0,0,0,0,0,0,1,0,earliest,earliest,latest,earliest,doc item: S2 insufficient evidence; any semantic credit is spurious
+sm0138_004:b:doc:6:transition,doc,version_unidentifiable,sm0138_004,INSUF_EV_FAIL,INSUF_EV_FAIL,INSUF_EV_FAIL,INSUF_EV_FAIL,0,0,0,0,0,0,0,0,earliest,earliest,earliest,earliest,doc item: S2 insufficient evidence; any semantic credit is spurious
+sm0138_004:b:emp:8:transition,emp,unique,sm0138_004,FORMAT_ONLY,CORRECT,FORMAT_ONLY,CORRECT,0,1,0,1,1,1,1,1,only,only,only,only,
+sm0138_004:b:own:1:transition,own,multi_candidate,sm0138_004,FORMAT_ONLY,MC_INCOMPLETE,FORMAT_ONLY,CORRECT,0,0,0,1,1,0,1,1,latest,middle,latest,latest,
+sm0138_004:b:own:5:transition,own,multi_candidate,sm0138_004,STALE_STATE,CORRECT,FORMAT_ONLY,CORRECT,0,1,0,1,0,1,1,1,earliest,latest,latest,latest,
+sm0139_005:b:ceo:7:transition,ceo,multi_candidate,sm0139_005,MC_INCOMPLETE,STALE_STATE,CORRECT,CORRECT,0,0,1,1,0,0,1,1,earliest|latest,earliest,latest,latest,
+sm0139_005:b:conf:4:transition,conf,unique,sm0139_005,FORMAT_ONLY,CORRECT,FORMAT_ONLY,CORRECT,0,1,0,1,1,1,1,1,only,only,only,only,
+sm0139_005:b:conf:9:transition,conf,unique,sm0139_005,FORMAT_ONLY,CORRECT,FORMAT_ONLY,CORRECT,0,1,0,1,1,1,1,1,only,only,only,only,
+sm0139_005:b:doc:2:transition,doc,version_unidentifiable,sm0139_005,INSUF_EV_FAIL,INSUF_EV_FAIL,INSUF_EV_FAIL,INSUF_EV_FAIL,0,0,0,0,0,0,0,0,earliest,earliest,middle,earliest,doc item: S2 insufficient evidence; any semantic credit is spurious
+sm0139_005:b:doc:6:transition,doc,version_unidentifiable,sm0139_005,INSUF_EV_FAIL,INSUF_EV_FAIL,INSUF_EV_FAIL,INSUF_EV_FAIL,0,0,0,0,0,0,0,0,earliest,earliest,earliest,earliest,doc item: S2 insufficient evidence; any semantic credit is spurious
+sm0139_005:b:emp:3:transition,emp,unique,sm0139_005,FORMAT_ONLY,CORRECT,FORMAT_ONLY,CORRECT,0,1,0,1,1,1,1,1,only,only,only,only,
+sm0139_005:b:emp:8:transition,emp,unique,sm0139_005,FORMAT_ONLY,CORRECT,FORMAT_ONLY,CORRECT,0,1,0,1,1,1,1,1,only,only,only,only,
+sm0139_005:b:own:5:transition,own,multi_candidate,sm0139_005,STALE_STATE,CORRECT,FORMAT_ONLY,CORRECT,0,1,0,1,0,1,1,1,earliest,latest,latest,latest,
+ss0100_000:b:ceo:0:transition,ceo,unique,ss0100_000,CORRECT,CORRECT,CORRECT,CORRECT,1,1,1,1,1,1,1,1,only,only,only,only,
+ss0100_000:b:ceo:7:transition,ceo,unique,ss0100_000,CORRECT,CORRECT,CORRECT,CORRECT,1,1,1,1,1,1,1,1,only,only,only,only,
+ss0100_000:b:conf:4:transition,conf,unique,ss0100_000,FORMAT_ONLY,CORRECT,FORMAT_ONLY,CORRECT,0,1,0,1,1,1,1,1,only,only,only,only,
+ss0100_000:b:conf:9:transition,conf,unique,ss0100_000,FORMAT_ONLY,CORRECT,FORMAT_ONLY,CORRECT,0,1,0,1,1,1,1,1,only,only,only,only,
+ss0100_000:b:doc:2:transition,doc,version_unidentifiable,ss0100_000,INSUF_EV_FAIL,INSUF_EV_FAIL,INSUF_EV_SPURIOUS,INSUF_EV_FAIL,0,0,0,0,0,0,1,0,earliest,earliest,latest,earliest,doc item: S2 insufficient evidence; any semantic credit is spurious
+ss0100_000:b:doc:6:transition,doc,version_unidentifiable,ss0100_000,INSUF_EV_SPURIOUS,INSUF_EV_FAIL,INSUF_EV_FAIL,INSUF_EV_FAIL,0,0,0,0,1,0,0,0,latest,earliest,earliest,earliest,doc item: S2 insufficient evidence; any semantic credit is spurious
+ss0100_000:b:emp:3:transition,emp,unique,ss0100_000,FORMAT_ONLY,CORRECT,FORMAT_ONLY,CORRECT,0,1,0,1,1,1,1,1,only,only,only,only,
+ss0100_000:b:emp:8:transition,emp,unique,ss0100_000,FORMAT_ONLY,CORRECT,FORMAT_ONLY,CORRECT,0,1,0,1,1,1,1,1,only,only,only,only,
+ss0101_001:b:ceo:0:transition,ceo,unique,ss0101_001,CORRECT,CORRECT,CORRECT,CORRECT,1,1,1,1,1,1,1,1,only,only,only,only,
+ss0101_001:b:ceo:7:transition,ceo,unique,ss0101_001,CORRECT,CORRECT,CORRECT,CORRECT,1,1,1,1,1,1,1,1,only,only,only,only,
+ss0101_001:b:conf:4:transition,conf,unique,ss0101_001,FORMAT_ONLY,CORRECT,FORMAT_ONLY,CORRECT,0,1,0,1,1,1,1,1,only,only,only,only,
+ss0101_001:b:conf:9:transition,conf,unique,ss0101_001,FORMAT_ONLY,CORRECT,FORMAT_ONLY,CORRECT,0,1,0,1,1,1,1,1,only,only,only,only,
+ss0101_001:b:doc:6:transition,doc,version_unidentifiable,ss0101_001,INSUF_EV_SPURIOUS,INSUF_EV_FAIL,INSUF_EV_FAIL,INSUF_EV_FAIL,0,0,0,0,1,0,0,0,latest,earliest,earliest,earliest,doc item: S2 insufficient evidence; any semantic credit is spurious
+ss0101_001:b:emp:3:transition,emp,unique,ss0101_001,FORMAT_ONLY,CORRECT,FORMAT_ONLY,CORRECT,0,1,0,1,1,1,1,1,only,only,only,only,
+ss0101_001:b:emp:8:transition,emp,unique,ss0101_001,FORMAT_ONLY,CORRECT,FORMAT_ONLY,CORRECT,0,1,0,1,1,1,1,1,only,only,only,only,
+ss0101_001:b:own:1:transition,own,unique,ss0101_001,FORMAT_ONLY,CORRECT,CORRECT,CORRECT,0,1,1,1,1,1,1,1,only,only,only,only,
+ss0101_001:b:own:5:transition,own,unique,ss0101_001,FORMAT_ONLY,CORRECT,CORRECT,CORRECT,0,1,1,1,1,1,1,1,only,only,only,only,
+ss0102_002:b:conf:4:transition,conf,unique,ss0102_002,FORMAT_ONLY,CORRECT,FORMAT_ONLY,CORRECT,0,1,0,1,1,1,1,1,only,only,only,only,
+ss0102_002:b:conf:9:transition,conf,unique,ss0102_002,FORMAT_ONLY,CORRECT,FORMAT_ONLY,CORRECT,0,1,0,1,1,1,1,1,only,only,only,only,
+ss0102_002:b:doc:2:transition,doc,version_unidentifiable,ss0102_002,INSUF_EV_FAIL,INSUF_EV_FAIL,INSUF_EV_FAIL,INSUF_EV_SPURIOUS,0,0,0,0,0,0,0,1,earliest,earliest,earliest,latest,doc item: S2 insufficient evidence; any semantic credit is spurious
+ss0102_002:b:doc:6:transition,doc,version_unidentifiable,ss0102_002,INSUF_EV_FAIL,INSUF_EV_FAIL,INSUF_EV_FAIL,INSUF_EV_FAIL,0,0,0,0,0,0,0,0,earliest,earliest,earliest,earliest,doc item: S2 insufficient evidence; any semantic credit is spurious
+ss0102_002:b:emp:8:transition,emp,unique,ss0102_002,FORMAT_ONLY,CORRECT,FORMAT_ONLY,CORRECT,0,1,0,1,1,1,1,1,only,only,only,only,
+ss0102_002:b:own:1:transition,own,unique,ss0102_002,FORMAT_ONLY,CORRECT,FORMAT_ONLY,CORRECT,0,1,0,1,1,1,1,1,only,only,only,only,
+ss0102_002:b:own:5:transition,own,unique,ss0102_002,FORMAT_ONLY,CORRECT,FORMAT_ONLY,CORRECT,0,1,0,1,1,1,1,1,only,only,only,only,
+ss0103_003:b:ceo:0:transition,ceo,unique,ss0103_003,CORRECT,CORRECT,CORRECT,CORRECT,1,1,1,1,1,1,1,1,only,only,only,only,
+ss0103_003:b:ceo:7:transition,ceo,unique,ss0103_003,CORRECT,CORRECT,CORRECT,CORRECT,1,1,1,1,1,1,1,1,only,only,only,only,
+ss0103_003:b:conf:4:transition,conf,unique,ss0103_003,FORMAT_ONLY,CORRECT,FORMAT_ONLY,CORRECT,0,1,0,1,1,1,1,1,only,only,only,only,
+ss0103_003:b:doc:2:transition,doc,version_unidentifiable,ss0103_003,INSUF_EV_FAIL,INSUF_EV_FAIL,INSUF_EV_SPURIOUS,INSUF_EV_SPURIOUS,0,0,0,0,0,0,1,1,earliest,earliest,latest,latest,doc item: S2 insufficient evidence; any semantic credit is spurious
+ss0103_003:b:doc:6:transition,doc,version_unidentifiable,ss0103_003,INSUF_EV_SPURIOUS,INSUF_EV_FAIL,INSUF_EV_SPURIOUS,INSUF_EV_FAIL,0,0,0,0,1,0,1,0,latest,earliest,latest,earliest,doc item: S2 insufficient evidence; any semantic credit is spurious
+ss0103_003:b:emp:3:transition,emp,unique,ss0103_003,FORMAT_ONLY,CORRECT,FORMAT_ONLY,CORRECT,0,1,0,1,1,1,1,1,only,only,only,only,
+ss0103_003:b:own:1:transition,own,unique,ss0103_003,FORMAT_ONLY,CORRECT,FORMAT_ONLY,CORRECT,0,1,0,1,1,1,1,1,only,only,only,only,
+ss0104_004:b:ceo:0:transition,ceo,unique,ss0104_004,CORRECT,CORRECT,CORRECT,CORRECT,1,1,1,1,1,1,1,1,only,only,only,only,
+ss0104_004:b:ceo:7:transition,ceo,unique,ss0104_004,CORRECT,CORRECT,CORRECT,CORRECT,1,1,1,1,1,1,1,1,only,only,only,only,
+ss0104_004:b:conf:4:transition,conf,unique,ss0104_004,FORMAT_ONLY,CORRECT,FORMAT_ONLY,CORRECT,0,1,0,1,1,1,1,1,only,only,only,only,
+ss0104_004:b:doc:2:transition,doc,version_unidentifiable,ss0104_004,INSUF_EV_FAIL,INSUF_EV_FAIL,INSUF_EV_SPURIOUS,INSUF_EV_SPURIOUS,0,0,0,0,0,0,1,1,earliest,earliest,latest,latest,doc item: S2 insufficient evidence; any semantic credit is spurious
+ss0104_004:b:doc:6:transition,doc,version_unidentifiable,ss0104_004,INSUF_EV_FAIL,INSUF_EV_FAIL,INSUF_EV_SPURIOUS,INSUF_EV_SPURIOUS,0,0,0,0,0,0,1,1,earliest,earliest,latest,latest,doc item: S2 insufficient evidence; any semantic credit is spurious
+ss0104_004:b:emp:3:transition,emp,unique,ss0104_004,FORMAT_ONLY,CORRECT,FORMAT_ONLY,CORRECT,0,1,0,1,1,1,1,1,only,only,only,only,
+ss0104_004:b:emp:8:transition,emp,unique,ss0104_004,FORMAT_ONLY,CORRECT,FORMAT_ONLY,CORRECT,0,1,0,1,1,1,1,1,only,only,only,only,
+ss0104_004:b:own:5:transition,own,unique,ss0104_004,FORMAT_ONLY,CORRECT,FORMAT_ONLY,CORRECT,0,1,0,1,1,1,1,1,only,only,only,only,
+ss0105_005:b:ceo:0:transition,ceo,unique,ss0105_005,CORRECT,CORRECT,CORRECT,CORRECT,1,1,1,1,1,1,1,1,only,only,only,only,
+ss0105_005:b:ceo:7:transition,ceo,unique,ss0105_005,CORRECT,CORRECT,CORRECT,CORRECT,1,1,1,1,1,1,1,1,only,only,only,only,
+ss0105_005:b:conf:4:transition,conf,unique,ss0105_005,FORMAT_ONLY,CORRECT,FORMAT_ONLY,CORRECT,0,1,0,1,1,1,1,1,only,only,only,only,
+ss0105_005:b:conf:9:transition,conf,unique,ss0105_005,FORMAT_ONLY,CORRECT,FORMAT_ONLY,CORRECT,0,1,0,1,1,1,1,1,only,only,only,only,
+ss0105_005:b:doc:6:transition,doc,version_unidentifiable,ss0105_005,INSUF_EV_SPURIOUS,INSUF_EV_FAIL,INSUF_EV_FAIL,INSUF_EV_FAIL,0,0,0,0,1,0,0,0,latest,earliest,earliest,earliest,doc item: S2 insufficient evidence; any semantic credit is spurious
+ss0105_005:b:emp:3:transition,emp,unique,ss0105_005,FORMAT_ONLY,CORRECT,FORMAT_ONLY,CORRECT,0,1,0,1,1,1,1,1,only,only,only,only,
+ss0105_005:b:emp:8:transition,emp,unique,ss0105_005,FORMAT_ONLY,CORRECT,FORMAT_ONLY,CORRECT,0,1,0,1,1,1,1,1,only,only,only,only,
+ss0105_005:b:own:1:transition,own,unique,ss0105_005,FORMAT_ONLY,CORRECT,FORMAT_ONLY,CORRECT,0,1,0,1,1,1,1,1,only,only,only,only,

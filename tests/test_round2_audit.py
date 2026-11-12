@@ -316,3 +316,294 @@ def test_private_mapping_verified_against_frozen_outputs(pub):
     _, hsum = r2.human_subset(pub, priv, r2.audit_round2(pub), items)
     assert hsum["checks"]["sha_matches_frozen_output"] == 120 and hsum["checks"]["cases_with_all_four_arms"] == 30
     assert sum(sum(t.values()) for t in hsum["table"].values()) == 120
+
+
+# ---------------------------------------------------------------------------
+# adjudication_sensitivity.py tests
+# ---------------------------------------------------------------------------
+
+_sens_spec = importlib.util.spec_from_file_location(
+    "adjudication_sensitivity",
+    REPO / "scripts" / "adjudication_sensitivity.py",
+)
+sens = importlib.util.module_from_spec(_sens_spec)
+_sens_spec.loader.exec_module(sens)
+
+
+def test_mcnemar_exact_known_values():
+    # n01=5, n10=1: B(6, 0.5), P(X<=1)*2 = (C(6,0)+C(6,1)) * 0.5^6 * 2
+    # = (1+6)*0.5^6*2 = 7/64*2 = 14/64 = 0.21875
+    p = sens.mcnemar_exact_two_sided(5, 1)
+    assert abs(p - 0.21875) < 1e-9
+
+
+def test_mcnemar_exact_symmetric():
+    assert sens.mcnemar_exact_two_sided(3, 3) == pytest.approx(1.0, abs=0.01)
+
+
+def test_mcnemar_exact_zero():
+    assert sens.mcnemar_exact_two_sided(0, 0) == 1.0
+
+
+def test_wilson_ci_coverage():
+    lo, hi = sens.wilson_ci(44, 50)
+    assert 0.0 < lo < 0.88 < hi < 1.0
+    assert abs(lo - 0.7619) < 0.001
+    assert abs(hi - 0.9438) < 0.001
+
+
+def test_cohen_kappa_verified_round2():
+    # Hand-computed from confusion AA=25, AC=5, CA=1, CC=19
+    # po=44/50, pe=(30/50)*(26/50)+(20/50)*(24/50)
+    a = {}
+    b = {}
+    for i in range(25):
+        a[f"aa{i}"] = "ambiguous"; b[f"aa{i}"] = "ambiguous"
+    for i in range(5):
+        a[f"ac{i}"] = "ambiguous"; b[f"ac{i}"] = "correct"
+    for i in range(1):
+        a[f"ca{i}"] = "correct";   b[f"ca{i}"] = "ambiguous"
+    for i in range(19):
+        a[f"cc{i}"] = "correct";   b[f"cc{i}"] = "correct"
+    result = sens.cohen_kappa_2rater(a, b)
+    assert result["n"] == 50
+    assert result["n_agree"] == 44
+    assert abs(result["kappa"] - 0.758065) < 1e-5
+
+
+def test_verify_agreement_stats_matches_stored():
+    ag = sens.verify_agreement_stats()
+    assert ag["n"] == 50
+    assert ag["n_agree"] == 44
+    assert abs(ag["kappa"] - 0.758065) < 1e-5
+    # McNemar p for n01=5, n10=1
+    assert abs(ag["mcnemar_p_two_sided"] - 0.21875) < 1e-9
+    # Wilson CI
+    assert abs(ag["wilson_ci_lo"] - 0.7619) < 0.001
+    assert abs(ag["wilson_ci_hi"] - 0.9438) < 0.001
+
+
+def test_adjudication_scope_no_mechanical_impact():
+    scope = sens.verify_adjudication_scope()
+    # C21, C22, C29 have jointly-ambiguous siblings → already excluded from C1
+    already = set(scope["disc_cases_with_joint_ambig_sibling"])
+    assert {"C21", "C22", "C29"}.issubset(already)
+    # C24 is purely discordant (unique question, no joint-ambig sibling)
+    pure = set(scope["disc_cases_purely_discordant"])
+    assert "C24" in pure and "C21" not in pure
+
+
+def test_intra_rater_inconsistency_reviewer_b():
+    ir = sens.check_intra_rater_consistency()
+    assert ir["n_cases_with_inconsistency"] >= 3
+    cases = ir["cases"]
+    # C22, C24, C29 are documented inconsistencies for reviewer B
+    for c in ["C22", "C24", "C29"]:
+        assert c in cases, f"{c} should be intra-rater inconsistent for B"
+
+
+def test_adjudication_does_not_change_mechanical_scenarios():
+    """Adjudication only affects human-label consensus; not mechanical scenarios."""
+    scope = sens.verify_adjudication_scope()
+    analysis = scope["analysis"]
+    assert "NO effect" in analysis["mechanical_scenarios"]
+    assert "NO effect" in analysis["C1_scenarios"]
+
+
+@pytest.mark.skipif(not (PRIVATE / "item_scores.jsonl").exists(), reason="private snapshot not available")
+def test_mechanical_scenario_cross_check():
+    ms = sens.verify_mechanical_scenarios()
+    # Scenario A published values
+    assert ms["F0"]["exact_v2"] == 13
+    assert ms["F1"]["exact_v2"] == 90
+    assert ms["F2"]["exact_v2"] == 39
+    assert ms["F3"]["exact_v2"] == 109
+    # Semantic question-aligned (B1)
+    assert ms["F0"]["semantic_qa_all"] == 91
+    assert ms["F2"]["semantic_qa_all"] == 132
+    # Unique: all arms 74/74 semantically
+    for arm in ["F0", "F1", "F2", "F3"]:
+        assert ms[arm]["unique_semantic"] == ms[arm]["unique_n"] == 74
+    # Doc spurious: F2 has 20 spurious semantic credits
+    assert ms["F2"]["doc_semantic_spurious"] == 20
+    assert ms["F1"]["doc_semantic_spurious"] == 0
+
+
+# ---------------------------------------------------------------------------
+# rigorous_reanalysis.py tests
+# ---------------------------------------------------------------------------
+
+_rr_spec = importlib.util.spec_from_file_location(
+    "rigorous_reanalysis",
+    REPO / "scripts" / "rigorous_reanalysis.py",
+)
+rr = importlib.util.module_from_spec(_rr_spec)
+_rr_spec.loader.exec_module(rr)
+
+needs_rr_private = pytest.mark.skipif(
+    not (PRIVATE / "item_scores.jsonl").exists(),
+    reason="private item_scores snapshot not available",
+)
+
+
+def test_error_classify_correct():
+    item = {"exact_v2": True, "semantic_qa": True, "question_status": "unique",
+            "matched_positions": []}
+    assert rr.classify_error(item) == "CORRECT"
+
+
+def test_error_classify_format_only_unique():
+    item = {"exact_v2": False, "semantic_qa": True, "question_status": "unique",
+            "matched_positions": []}
+    assert rr.classify_error(item) == "FORMAT_ONLY"
+
+
+def test_error_classify_format_only_mc():
+    item = {"exact_v2": False, "semantic_qa": True, "question_status": "multi_candidate",
+            "matched_positions": ["latest"]}
+    assert rr.classify_error(item) == "FORMAT_ONLY"
+
+
+def test_error_classify_stale_state():
+    item = {"exact_v2": False, "semantic_qa": False, "question_status": "multi_candidate",
+            "matched_positions": ["earliest"]}
+    assert rr.classify_error(item) == "STALE_STATE"
+
+
+def test_error_classify_mc_incomplete():
+    item = {"exact_v2": False, "semantic_qa": False, "question_status": "multi_candidate",
+            "matched_positions": []}
+    assert rr.classify_error(item) == "MC_INCOMPLETE"
+
+
+def test_error_classify_insuf_ev_fail():
+    item = {"exact_v2": False, "semantic_qa": False, "question_status": "version_unidentifiable",
+            "matched_positions": []}
+    assert rr.classify_error(item) == "INSUF_EV_FAIL"
+
+
+def test_error_classify_insuf_ev_spurious():
+    item = {"exact_v2": False, "semantic_qa": True, "question_status": "version_unidentifiable",
+            "matched_positions": []}
+    assert rr.classify_error(item) == "INSUF_EV_SPURIOUS"
+
+
+def test_temporal_correct_unique():
+    item = {"exact_v2": False, "semantic_qa": True, "question_status": "unique",
+            "matched_positions": []}
+    assert rr.temporal_correct(item) is True
+
+
+def test_temporal_correct_mc_latest():
+    item = {"exact_v2": False, "semantic_qa": False, "question_status": "multi_candidate",
+            "matched_positions": ["latest"]}
+    assert rr.temporal_correct(item) is True
+
+
+def test_temporal_correct_mc_earliest_only():
+    item = {"exact_v2": False, "semantic_qa": False, "question_status": "multi_candidate",
+            "matched_positions": ["earliest"]}
+    assert rr.temporal_correct(item) is False
+
+
+def test_mcnemar_known_value():
+    # n01=6, n10=3: p should be ~0.508
+    p = rr.mcnemar_exact(6, 3)
+    assert 0.4 < p < 0.65
+
+
+def test_mcnemar_zero_zero():
+    assert rr.mcnemar_exact(0, 0) == 1.0
+
+
+def test_mcnemar_symmetric():
+    assert rr.mcnemar_exact(5, 5) == pytest.approx(1.0)
+
+
+@needs_rr_private
+def test_error_counts_sum_to_150():
+    by_query = rr.load_items()
+    for arm in rr.ARMS:
+        counts = {}
+        for arms in by_query.values():
+            if arm not in arms:
+                continue
+            et = rr.classify_error(arms[arm])
+            counts[et] = counts.get(et, 0) + 1
+        total = sum(counts.values())
+        assert total == 150, f"{arm}: error counts sum to {total}, not 150"
+
+
+@needs_rr_private
+def test_verified_error_taxonomy():
+    by_query = rr.load_items()
+    expected = {
+        "F0": {"CORRECT": 13, "FORMAT_ONLY": 74, "STALE_STATE": 23,
+               "MC_INCOMPLETE": 6, "INSUF_EV_FAIL": 30, "INSUF_EV_SPURIOUS": 4},
+        "F1": {"CORRECT": 90, "FORMAT_ONLY": 0, "STALE_STATE": 17,
+               "MC_INCOMPLETE": 9, "INSUF_EV_FAIL": 34, "INSUF_EV_SPURIOUS": 0},
+        "F2": {"CORRECT": 39, "FORMAT_ONLY": 73, "STALE_STATE": 2,
+               "MC_INCOMPLETE": 2, "INSUF_EV_FAIL": 14, "INSUF_EV_SPURIOUS": 20},
+        "F3": {"CORRECT": 109, "FORMAT_ONLY": 0, "STALE_STATE": 7,
+               "MC_INCOMPLETE": 0, "INSUF_EV_FAIL": 30, "INSUF_EV_SPURIOUS": 4},
+    }
+    for arm in rr.ARMS:
+        counts: dict[str, int] = {}
+        for arms in by_query.values():
+            if arm not in arms:
+                continue
+            et = rr.classify_error(arms[arm])
+            counts[et] = counts.get(et, 0) + 1
+        for et, n in expected[arm].items():
+            assert counts.get(et, 0) == n, f"{arm}/{et}: got {counts.get(et,0)}, expected {n}"
+
+
+@needs_rr_private
+def test_b1_nodoc_scores():
+    by_query = rr.load_items()
+    expected = {"F0": 87, "F1": 90, "F2": 112, "F3": 109}
+    for arm, exp in expected.items():
+        got = sum(1 for arms in by_query.values()
+                  if arm in arms and arms[arm]["slot"] != "doc" and arms[arm]["semantic_qa"])
+        assert got == exp, f"{arm} B1-nodoc: got {got}, expected {exp}"
+
+
+@needs_rr_private
+def test_f2_f3_mcnemar_nondoc_not_significant():
+    by_query = rr.load_items()
+    n01 = sum(1 for arms in by_query.values()
+              if "F2" in arms and "F3" in arms
+              and arms["F2"]["semantic_qa"] and not arms["F3"]["semantic_qa"]
+              and arms["F2"]["slot"] != "doc")
+    n10 = sum(1 for arms in by_query.values()
+              if "F2" in arms and "F3" in arms
+              and arms["F3"]["semantic_qa"] and not arms["F2"]["semantic_qa"]
+              and arms["F3"]["slot"] != "doc")
+    assert n01 == 6 and n10 == 3
+    p = rr.mcnemar_exact(n01, n10)
+    assert p > 0.05, f"Expected non-significant p, got {p}"
+
+
+@needs_rr_private
+def test_unique_items_all_semantic_all_arms():
+    by_query = rr.load_items()
+    for arm in rr.ARMS:
+        unique_sem = sum(1 for arms in by_query.values()
+                         if arm in arms and arms[arm]["question_status"] == "unique"
+                         and arms[arm]["semantic_qa"])
+        assert unique_sem == 74, f"{arm}: unique semantic = {unique_sem}, expected 74"
+
+
+@needs_rr_private
+def test_csv_outputs_exist_and_correct_shape():
+    case_csv = REPO / "analysis/round2/case_level_error_analysis.csv"
+    temp_csv = REPO / "analysis/round2/temporal_state_analysis.csv"
+    assert case_csv.exists(), "case_level_error_analysis.csv not found"
+    assert temp_csv.exists(), "temporal_state_analysis.csv not found"
+    with case_csv.open() as f:
+        rows = list(csv.DictReader(f))
+    assert len(rows) == 150, f"case_level CSV has {len(rows)} rows, expected 150"
+    with temp_csv.open() as f:
+        rows = list(csv.DictReader(f))
+    # 116 non-doc items
+    assert len(rows) == 116, f"temporal_state CSV has {len(rows)} rows, expected 116"
