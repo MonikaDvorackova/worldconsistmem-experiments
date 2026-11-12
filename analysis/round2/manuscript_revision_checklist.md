@@ -111,13 +111,33 @@ stated.
 
 ---
 
+## Additional REQUIRED items from rigorous reanalysis (2026-11-12)
+
+| # | Issue | Required change | Priority |
+|---|-------|-----------------|----------|
+| J1 | F2 B1 score (132/150) presented without disclosing doc-item artifact | Disclose: F2 receives 20 spurious semantic credits on unanswerable doc items; corrected B1-nodoc=112/116 | REQUIRED |
+| J2 | F3 semantic superiority stated without corrected comparison | Replace with: "F2 and F3 are statistically indistinguishable on semantic accuracy (B1-nodoc: 96.6% vs 94.0%, p=0.508)" | REQUIRED |
+| J3 | Error taxonomy not reported | Add error taxonomy table: CORRECT / FORMAT_ONLY / STALE_STATE / MC_INCOMPLETE / INSUF_EV per arm | RECOMMENDED |
+| J4 | Stale-state error rate not reported | Add: temporal representation reduces stale-state errors from 23/42 (F0) to 2/42 (F2); report as the actionable finding | REQUIRED |
+
+**Updated counts:**
+
+| Priority | Count |
+|----------|-------|
+| REQUIRED changes | 19 |
+| RECOMMENDED changes | 8 |
+| **Total** | **27** |
+
+---
+
 ## Suggested Revised Main Finding (replace abstract claim)
 
 > *"Under exact-match scoring, F3 outperforms F0 by 64.0 pp [57.8, 70.0] on the
-> full 150-item set. This advantage has two components: (1) on 74 uniquely
-> specified questions, the advantage is entirely output-contract compliance — all
-> four arms retrieve the correct content under schema-agnostic semantic scoring
-> (100% each); (2) on 42 multi-candidate questions, F2 and F3 achieve comparable
-> semantic accuracy (90.5% and 83.3% respectively, p = 0.508). These findings
-> qualify the original claims: structured prompting improves output format
-> compliance and temporal event selection, not necessarily world-state retrieval."*
+> full 150-item set. This advantage decomposes as: (1) on 74 uniquely specified
+> questions, the advantage is entirely output-contract compliance — all four arms
+> retrieve the correct content under semantic scoring (100% each); (2) on 42
+> multi-candidate questions, temporal representation reduces stale-state errors
+> from 55% (F0) to 5% (F2), while F2 and F3 are statistically indistinguishable
+> on semantic accuracy (96.6% vs 94.0%, p=0.508). Structured prompting improves
+> output-format compliance and temporal event selection; it does not improve
+> semantic world-state retrieval relative to the temporal representation alone."*

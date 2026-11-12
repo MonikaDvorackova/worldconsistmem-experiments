@@ -1,0 +1,117 @@
+query_id,slot,question_status,world_id,ground_truth_type,F0_temporal_correct,F1_temporal_correct,F2_temporal_correct,F3_temporal_correct,F0_format_ok,F1_format_ok,F2_format_ok,F3_format_ok,F0_positions,F1_positions,F2_positions,F3_positions,note
+sl0168_000:b:ceo:0:transition,ceo,multi_candidate,sl0168_000,latest_of_multiple,0,0,1,1,0,0,1,1,earliest,middle,latest,latest,gold = latest event per benchmark construction (ceo_replace_t or final ownership transfer)
+sl0168_000:b:conf:4:transition,conf,unique,sl0168_000,single_event,1,1,1,1,0,1,0,1,only,only,only,only,
+sl0168_000:b:emp:8:transition,emp,unique,sl0168_000,single_event,1,1,1,1,0,1,0,1,only,only,only,only,
+sl0168_000:b:own:1:transition,own,multi_candidate,sl0168_000,latest_of_multiple,1,1,1,1,0,1,0,1,latest,latest,latest,latest,gold = latest event per benchmark construction (ceo_replace_t or final ownership transfer)
+sl0168_000:b:own:5:transition,own,multi_candidate,sl0168_000,latest_of_multiple,1,1,1,1,0,1,1,1,latest,latest,latest,latest,gold = latest event per benchmark construction (ceo_replace_t or final ownership transfer)
+sl0169_001:b:ceo:0:transition,ceo,multi_candidate,sl0169_001,latest_of_multiple,1,0,0,1,1,0,0,1,latest,earliest,middle,latest,gold = latest event per benchmark construction (ceo_replace_t or final ownership transfer)
+sl0169_001:b:ceo:7:transition,ceo,multi_candidate,sl0169_001,latest_of_multiple,1,0,1,1,1,0,1,1,latest,earliest,latest,latest,gold = latest event per benchmark construction (ceo_replace_t or final ownership transfer)
+sl0169_001:b:conf:9:transition,conf,unique,sl0169_001,single_event,1,1,1,1,0,1,0,1,only,only,only,only,
+sl0169_001:b:emp:3:transition,emp,unique,sl0169_001,single_event,1,1,1,1,0,1,0,1,only,only,only,only,
+sl0169_001:b:emp:8:transition,emp,unique,sl0169_001,single_event,1,1,1,1,0,1,0,1,only,only,only,only,
+sl0169_001:b:own:10:transition,own,multi_candidate,sl0169_001,latest_of_multiple,0,1,1,1,0,1,0,1,earliest,latest,latest,latest,gold = latest event per benchmark construction (ceo_replace_t or final ownership transfer)
+sl0169_001:b:own:5:transition,own,multi_candidate,sl0169_001,latest_of_multiple,1,0,1,1,0,0,1,1,latest,middle,latest,latest,gold = latest event per benchmark construction (ceo_replace_t or final ownership transfer)
+sl0170_002:b:ceo:0:transition,ceo,multi_candidate,sl0170_002,latest_of_multiple,0,0,1,1,0,0,1,1,earliest,middle,latest,latest,gold = latest event per benchmark construction (ceo_replace_t or final ownership transfer)
+sl0170_002:b:ceo:7:transition,ceo,multi_candidate,sl0170_002,latest_of_multiple,0,0,0,1,0,0,0,1,earliest,earliest,middle,latest,gold = latest event per benchmark construction (ceo_replace_t or final ownership transfer)
+sl0170_002:b:conf:4:transition,conf,unique,sl0170_002,single_event,1,1,1,1,0,1,0,1,only,only,only,only,
+sl0170_002:b:conf:9:transition,conf,unique,sl0170_002,single_event,1,1,1,1,0,1,0,1,only,only,only,only,
+sl0170_002:b:emp:3:transition,emp,unique,sl0170_002,single_event,1,1,1,1,0,1,0,1,only,only,only,only,
+sl0170_002:b:emp:8:transition,emp,unique,sl0170_002,single_event,1,1,1,1,0,1,0,1,only,only,only,only,
+sl0170_002:b:own:10:transition,own,multi_candidate,sl0170_002,latest_of_multiple,1,1,1,1,0,1,0,1,latest,latest,latest,latest,gold = latest event per benchmark construction (ceo_replace_t or final ownership transfer)
+sl0170_002:b:own:1:transition,own,multi_candidate,sl0170_002,latest_of_multiple,0,0,1,1,0,0,0,1,earliest,middle,latest,latest,gold = latest event per benchmark construction (ceo_replace_t or final ownership transfer)
+sl0170_002:b:own:5:transition,own,multi_candidate,sl0170_002,latest_of_multiple,0,0,1,1,0,0,1,1,earliest,middle,latest,latest,gold = latest event per benchmark construction (ceo_replace_t or final ownership transfer)
+sl0171_003:b:ceo:0:transition,ceo,multi_candidate,sl0171_003,latest_of_multiple,0,0,1,1,0,0,1,1,earliest,earliest,latest,latest,gold = latest event per benchmark construction (ceo_replace_t or final ownership transfer)
+sl0171_003:b:ceo:7:transition,ceo,multi_candidate,sl0171_003,latest_of_multiple,0,0,1,1,0,0,1,1,earliest,,latest,latest,gold = latest event per benchmark construction (ceo_replace_t or final ownership transfer)
+sl0171_003:b:conf:4:transition,conf,unique,sl0171_003,single_event,1,1,1,1,0,1,0,1,only,only,only,only,
+sl0171_003:b:emp:3:transition,emp,unique,sl0171_003,single_event,1,1,1,1,0,1,0,1,only,only,only,only,
+sl0171_003:b:emp:8:transition,emp,unique,sl0171_003,single_event,1,1,1,1,0,1,0,1,only,only,only,only,
+sl0171_003:b:own:10:transition,own,multi_candidate,sl0171_003,latest_of_multiple,1,1,1,1,0,1,1,1,latest,latest,latest,latest,gold = latest event per benchmark construction (ceo_replace_t or final ownership transfer)
+sl0171_003:b:own:5:transition,own,multi_candidate,sl0171_003,latest_of_multiple,0,1,1,1,0,1,1,1,earliest,latest,latest,latest,gold = latest event per benchmark construction (ceo_replace_t or final ownership transfer)
+sl0172_004:b:ceo:0:transition,ceo,multi_candidate,sl0172_004,latest_of_multiple,0,0,1,1,0,0,1,1,earliest,earliest,latest,latest,gold = latest event per benchmark construction (ceo_replace_t or final ownership transfer)
+sl0172_004:b:ceo:7:transition,ceo,multi_candidate,sl0172_004,latest_of_multiple,0,0,1,1,0,0,1,1,earliest,earliest,latest,latest,gold = latest event per benchmark construction (ceo_replace_t or final ownership transfer)
+sl0172_004:b:conf:4:transition,conf,unique,sl0172_004,single_event,1,1,1,1,0,1,0,1,only,only,only,only,
+sl0172_004:b:emp:8:transition,emp,unique,sl0172_004,single_event,1,1,1,1,0,1,0,1,only,only,only,only,
+sl0172_004:b:own:10:transition,own,multi_candidate,sl0172_004,latest_of_multiple,0,1,1,1,0,1,1,1,earliest,latest,latest,latest,gold = latest event per benchmark construction (ceo_replace_t or final ownership transfer)
+sl0172_004:b:own:1:transition,own,multi_candidate,sl0172_004,latest_of_multiple,0,0,1,1,0,0,1,1,earliest,middle,latest,latest,gold = latest event per benchmark construction (ceo_replace_t or final ownership transfer)
+sl0172_004:b:own:5:transition,own,multi_candidate,sl0172_004,latest_of_multiple,0,0,1,1,0,0,1,1,earliest,middle,latest,latest,gold = latest event per benchmark construction (ceo_replace_t or final ownership transfer)
+sl0173_005:b:ceo:0:transition,ceo,multi_candidate,sl0173_005,latest_of_multiple,0,0,0,1,0,0,0,1,earliest,earliest,earliest,latest,gold = latest event per benchmark construction (ceo_replace_t or final ownership transfer)
+sl0173_005:b:conf:4:transition,conf,unique,sl0173_005,single_event,1,1,1,1,0,1,0,1,only,only,only,only,
+sl0173_005:b:conf:9:transition,conf,unique,sl0173_005,single_event,1,1,1,1,0,1,0,1,only,only,only,only,
+sl0173_005:b:emp:3:transition,emp,unique,sl0173_005,single_event,1,1,1,1,0,1,0,1,only,only,only,only,
+sl0173_005:b:emp:8:transition,emp,unique,sl0173_005,single_event,1,1,1,1,0,1,0,1,only,only,only,only,
+sl0173_005:b:own:10:transition,own,multi_candidate,sl0173_005,latest_of_multiple,1,1,1,1,0,1,1,1,latest,latest,latest,latest,gold = latest event per benchmark construction (ceo_replace_t or final ownership transfer)
+sl0173_005:b:own:5:transition,own,multi_candidate,sl0173_005,latest_of_multiple,0,1,1,1,0,1,0,1,earliest,latest,latest,latest,gold = latest event per benchmark construction (ceo_replace_t or final ownership transfer)
+sm0134_000:b:ceo:0:transition,ceo,multi_candidate,sm0134_000,latest_of_multiple,0,0,1,1,0,0,1,1,earliest,earliest,latest,latest,gold = latest event per benchmark construction (ceo_replace_t or final ownership transfer)
+sm0134_000:b:conf:4:transition,conf,unique,sm0134_000,single_event,1,1,1,1,0,1,0,1,only,only,only,only,
+sm0134_000:b:conf:9:transition,conf,unique,sm0134_000,single_event,1,1,1,1,0,1,0,1,only,only,only,only,
+sm0134_000:b:emp:8:transition,emp,unique,sm0134_000,single_event,1,1,1,1,0,1,0,1,only,only,only,only,
+sm0134_000:b:own:5:transition,own,multi_candidate,sm0134_000,latest_of_multiple,1,1,1,1,0,1,0,1,latest,latest,latest,latest,gold = latest event per benchmark construction (ceo_replace_t or final ownership transfer)
+sm0135_001:b:ceo:0:transition,ceo,multi_candidate,sm0135_001,latest_of_multiple,1,0,1,0,0,0,1,0,earliest|latest,earliest,latest,earliest,gold = latest event per benchmark construction (ceo_replace_t or final ownership transfer)
+sm0135_001:b:ceo:7:transition,ceo,multi_candidate,sm0135_001,latest_of_multiple,1,0,0,0,0,0,0,0,earliest|latest,earliest,earliest,earliest,gold = latest event per benchmark construction (ceo_replace_t or final ownership transfer)
+sm0135_001:b:conf:4:transition,conf,unique,sm0135_001,single_event,1,1,1,1,0,1,0,1,only,only,only,only,
+sm0135_001:b:conf:9:transition,conf,unique,sm0135_001,single_event,1,1,1,1,0,1,0,1,only,only,only,only,
+sm0135_001:b:emp:8:transition,emp,unique,sm0135_001,single_event,1,1,1,1,0,1,0,1,only,only,only,only,
+sm0135_001:b:own:5:transition,own,multi_candidate,sm0135_001,latest_of_multiple,0,1,1,1,0,1,1,1,earliest,latest,latest,latest,gold = latest event per benchmark construction (ceo_replace_t or final ownership transfer)
+sm0136_002:b:ceo:0:transition,ceo,multi_candidate,sm0136_002,latest_of_multiple,1,0,1,1,0,0,1,1,earliest|latest,earliest,latest,latest,gold = latest event per benchmark construction (ceo_replace_t or final ownership transfer)
+sm0136_002:b:ceo:7:transition,ceo,multi_candidate,sm0136_002,latest_of_multiple,0,0,1,0,0,0,1,0,earliest,earliest,latest,earliest,gold = latest event per benchmark construction (ceo_replace_t or final ownership transfer)
+sm0136_002:b:conf:4:transition,conf,unique,sm0136_002,single_event,1,1,1,1,0,1,0,1,only,only,only,only,
+sm0136_002:b:conf:9:transition,conf,unique,sm0136_002,single_event,1,1,1,1,0,1,0,1,only,only,only,only,
+sm0136_002:b:emp:8:transition,emp,unique,sm0136_002,single_event,1,1,1,1,0,1,0,1,only,only,only,only,
+sm0136_002:b:own:1:transition,own,multi_candidate,sm0136_002,latest_of_multiple,1,1,1,1,0,1,1,1,latest,latest,latest,latest,gold = latest event per benchmark construction (ceo_replace_t or final ownership transfer)
+sm0136_002:b:own:5:transition,own,multi_candidate,sm0136_002,latest_of_multiple,0,1,1,1,0,1,0,1,earliest,latest,latest,latest,gold = latest event per benchmark construction (ceo_replace_t or final ownership transfer)
+sm0137_003:b:ceo:0:transition,ceo,multi_candidate,sm0137_003,latest_of_multiple,1,0,1,0,0,0,1,0,earliest|latest,earliest,latest,earliest,gold = latest event per benchmark construction (ceo_replace_t or final ownership transfer)
+sm0137_003:b:ceo:7:transition,ceo,multi_candidate,sm0137_003,latest_of_multiple,1,0,1,0,0,0,1,0,earliest|latest,earliest,latest,earliest,gold = latest event per benchmark construction (ceo_replace_t or final ownership transfer)
+sm0137_003:b:conf:4:transition,conf,unique,sm0137_003,single_event,1,1,1,1,0,1,0,1,only,only,only,only,
+sm0137_003:b:conf:9:transition,conf,unique,sm0137_003,single_event,1,1,1,1,0,1,0,1,only,only,only,only,
+sm0137_003:b:emp:3:transition,emp,unique,sm0137_003,single_event,1,1,1,1,0,1,0,1,only,only,only,only,
+sm0137_003:b:emp:8:transition,emp,unique,sm0137_003,single_event,1,1,1,1,0,1,0,1,only,only,only,only,
+sm0137_003:b:own:1:transition,own,multi_candidate,sm0137_003,latest_of_multiple,1,1,1,1,0,1,0,1,latest,latest,latest,latest,gold = latest event per benchmark construction (ceo_replace_t or final ownership transfer)
+sm0138_004:b:ceo:0:transition,ceo,multi_candidate,sm0138_004,latest_of_multiple,0,0,1,0,0,0,1,0,earliest,earliest,latest,earliest,gold = latest event per benchmark construction (ceo_replace_t or final ownership transfer)
+sm0138_004:b:ceo:7:transition,ceo,multi_candidate,sm0138_004,latest_of_multiple,1,0,1,0,1,0,1,0,latest,earliest,latest,earliest,gold = latest event per benchmark construction (ceo_replace_t or final ownership transfer)
+sm0138_004:b:conf:4:transition,conf,unique,sm0138_004,single_event,1,1,1,1,0,1,0,1,only,only,only,only,
+sm0138_004:b:emp:8:transition,emp,unique,sm0138_004,single_event,1,1,1,1,0,1,0,1,only,only,only,only,
+sm0138_004:b:own:1:transition,own,multi_candidate,sm0138_004,latest_of_multiple,1,0,1,1,0,0,0,1,latest,middle,latest,latest,gold = latest event per benchmark construction (ceo_replace_t or final ownership transfer)
+sm0138_004:b:own:5:transition,own,multi_candidate,sm0138_004,latest_of_multiple,0,1,1,1,0,1,0,1,earliest,latest,latest,latest,gold = latest event per benchmark construction (ceo_replace_t or final ownership transfer)
+sm0139_005:b:ceo:7:transition,ceo,multi_candidate,sm0139_005,latest_of_multiple,1,0,1,1,0,0,1,1,earliest|latest,earliest,latest,latest,gold = latest event per benchmark construction (ceo_replace_t or final ownership transfer)
+sm0139_005:b:conf:4:transition,conf,unique,sm0139_005,single_event,1,1,1,1,0,1,0,1,only,only,only,only,
+sm0139_005:b:conf:9:transition,conf,unique,sm0139_005,single_event,1,1,1,1,0,1,0,1,only,only,only,only,
+sm0139_005:b:emp:3:transition,emp,unique,sm0139_005,single_event,1,1,1,1,0,1,0,1,only,only,only,only,
+sm0139_005:b:emp:8:transition,emp,unique,sm0139_005,single_event,1,1,1,1,0,1,0,1,only,only,only,only,
+sm0139_005:b:own:5:transition,own,multi_candidate,sm0139_005,latest_of_multiple,0,1,1,1,0,1,0,1,earliest,latest,latest,latest,gold = latest event per benchmark construction (ceo_replace_t or final ownership transfer)
+ss0100_000:b:ceo:0:transition,ceo,unique,ss0100_000,single_event,1,1,1,1,1,1,1,1,only,only,only,only,
+ss0100_000:b:ceo:7:transition,ceo,unique,ss0100_000,single_event,1,1,1,1,1,1,1,1,only,only,only,only,
+ss0100_000:b:conf:4:transition,conf,unique,ss0100_000,single_event,1,1,1,1,0,1,0,1,only,only,only,only,
+ss0100_000:b:conf:9:transition,conf,unique,ss0100_000,single_event,1,1,1,1,0,1,0,1,only,only,only,only,
+ss0100_000:b:emp:3:transition,emp,unique,ss0100_000,single_event,1,1,1,1,0,1,0,1,only,only,only,only,
+ss0100_000:b:emp:8:transition,emp,unique,ss0100_000,single_event,1,1,1,1,0,1,0,1,only,only,only,only,
+ss0101_001:b:ceo:0:transition,ceo,unique,ss0101_001,single_event,1,1,1,1,1,1,1,1,only,only,only,only,
+ss0101_001:b:ceo:7:transition,ceo,unique,ss0101_001,single_event,1,1,1,1,1,1,1,1,only,only,only,only,
+ss0101_001:b:conf:4:transition,conf,unique,ss0101_001,single_event,1,1,1,1,0,1,0,1,only,only,only,only,
+ss0101_001:b:conf:9:transition,conf,unique,ss0101_001,single_event,1,1,1,1,0,1,0,1,only,only,only,only,
+ss0101_001:b:emp:3:transition,emp,unique,ss0101_001,single_event,1,1,1,1,0,1,0,1,only,only,only,only,
+ss0101_001:b:emp:8:transition,emp,unique,ss0101_001,single_event,1,1,1,1,0,1,0,1,only,only,only,only,
+ss0101_001:b:own:1:transition,own,unique,ss0101_001,single_event,1,1,1,1,0,1,1,1,only,only,only,only,
+ss0101_001:b:own:5:transition,own,unique,ss0101_001,single_event,1,1,1,1,0,1,1,1,only,only,only,only,
+ss0102_002:b:conf:4:transition,conf,unique,ss0102_002,single_event,1,1,1,1,0,1,0,1,only,only,only,only,
+ss0102_002:b:conf:9:transition,conf,unique,ss0102_002,single_event,1,1,1,1,0,1,0,1,only,only,only,only,
+ss0102_002:b:emp:8:transition,emp,unique,ss0102_002,single_event,1,1,1,1,0,1,0,1,only,only,only,only,
+ss0102_002:b:own:1:transition,own,unique,ss0102_002,single_event,1,1,1,1,0,1,0,1,only,only,only,only,
+ss0102_002:b:own:5:transition,own,unique,ss0102_002,single_event,1,1,1,1,0,1,0,1,only,only,only,only,
+ss0103_003:b:ceo:0:transition,ceo,unique,ss0103_003,single_event,1,1,1,1,1,1,1,1,only,only,only,only,
+ss0103_003:b:ceo:7:transition,ceo,unique,ss0103_003,single_event,1,1,1,1,1,1,1,1,only,only,only,only,
+ss0103_003:b:conf:4:transition,conf,unique,ss0103_003,single_event,1,1,1,1,0,1,0,1,only,only,only,only,
+ss0103_003:b:emp:3:transition,emp,unique,ss0103_003,single_event,1,1,1,1,0,1,0,1,only,only,only,only,
+ss0103_003:b:own:1:transition,own,unique,ss0103_003,single_event,1,1,1,1,0,1,0,1,only,only,only,only,
+ss0104_004:b:ceo:0:transition,ceo,unique,ss0104_004,single_event,1,1,1,1,1,1,1,1,only,only,only,only,
+ss0104_004:b:ceo:7:transition,ceo,unique,ss0104_004,single_event,1,1,1,1,1,1,1,1,only,only,only,only,
+ss0104_004:b:conf:4:transition,conf,unique,ss0104_004,single_event,1,1,1,1,0,1,0,1,only,only,only,only,
+ss0104_004:b:emp:3:transition,emp,unique,ss0104_004,single_event,1,1,1,1,0,1,0,1,only,only,only,only,
+ss0104_004:b:emp:8:transition,emp,unique,ss0104_004,single_event,1,1,1,1,0,1,0,1,only,only,only,only,
+ss0104_004:b:own:5:transition,own,unique,ss0104_004,single_event,1,1,1,1,0,1,0,1,only,only,only,only,
+ss0105_005:b:ceo:0:transition,ceo,unique,ss0105_005,single_event,1,1,1,1,1,1,1,1,only,only,only,only,
+ss0105_005:b:ceo:7:transition,ceo,unique,ss0105_005,single_event,1,1,1,1,1,1,1,1,only,only,only,only,
+ss0105_005:b:conf:4:transition,conf,unique,ss0105_005,single_event,1,1,1,1,0,1,0,1,only,only,only,only,
+ss0105_005:b:conf:9:transition,conf,unique,ss0105_005,single_event,1,1,1,1,0,1,0,1,only,only,only,only,
+ss0105_005:b:emp:3:transition,emp,unique,ss0105_005,single_event,1,1,1,1,0,1,0,1,only,only,only,only,
+ss0105_005:b:emp:8:transition,emp,unique,ss0105_005,single_event,1,1,1,1,0,1,0,1,only,only,only,only,
+ss0105_005:b:own:1:transition,own,unique,ss0105_005,single_event,1,1,1,1,0,1,0,1,only,only,only,only,
