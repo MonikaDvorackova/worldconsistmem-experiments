@@ -28,10 +28,12 @@ Stale-state = model selects an earlier event (matches 'earliest' position but no
 
 | Arm | Stale | Latest | n |
 |-----|-------|--------|---|
-| F0 | 23/42 (54.8%) | 17/42 | 42 |
+| F0 | 23/42 (54.8%) | 19/42 | 42 |
 | F1 | 17/42 (40.5%) | 16/42 | 42 |
-| F2 | 2/42 (4.8%) | 32/42 | 42 |
+| F2 | 2/42 (4.8%) | 38/42 | 42 |
 | F3 | 7/42 (16.7%) | 35/42 | 42 |
+
+The `Latest` column is the marginal count of responses matching the latest event, including responses that also match the earliest event. `Stale` counts responses matching the earliest but not the latest. These columns are therefore not complements. The F0 row has six responses matching both positions; the F2 paired-table margins also give 38 latest selections (32 both-correct with F3 plus 6 F2-only). This replaces the earlier 17 and 32 values, which copied concordant-pair cells into the arm-level marginal column.
 
 **Paired McNemar (temporal correctness = selects latest):**
 
