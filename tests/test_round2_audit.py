@@ -316,3 +316,114 @@ def test_private_mapping_verified_against_frozen_outputs(pub):
     _, hsum = r2.human_subset(pub, priv, r2.audit_round2(pub), items)
     assert hsum["checks"]["sha_matches_frozen_output"] == 120 and hsum["checks"]["cases_with_all_four_arms"] == 30
     assert sum(sum(t.values()) for t in hsum["table"].values()) == 120
+
+
+# ---------------------------------------------------------------------------
+# adjudication_sensitivity.py tests
+# ---------------------------------------------------------------------------
+
+_sens_spec = importlib.util.spec_from_file_location(
+    "adjudication_sensitivity",
+    REPO / "scripts" / "adjudication_sensitivity.py",
+)
+sens = importlib.util.module_from_spec(_sens_spec)
+_sens_spec.loader.exec_module(sens)
+
+
+def test_mcnemar_exact_known_values():
+    # n01=5, n10=1: B(6, 0.5), P(X<=1)*2 = (C(6,0)+C(6,1)) * 0.5^6 * 2
+    # = (1+6)*0.5^6*2 = 7/64*2 = 14/64 = 0.21875
+    p = sens.mcnemar_exact_two_sided(5, 1)
+    assert abs(p - 0.21875) < 1e-9
+
+
+def test_mcnemar_exact_symmetric():
+    assert sens.mcnemar_exact_two_sided(3, 3) == pytest.approx(1.0, abs=0.01)
+
+
+def test_mcnemar_exact_zero():
+    assert sens.mcnemar_exact_two_sided(0, 0) == 1.0
+
+
+def test_wilson_ci_coverage():
+    lo, hi = sens.wilson_ci(44, 50)
+    assert 0.0 < lo < 0.88 < hi < 1.0
+    assert abs(lo - 0.7619) < 0.001
+    assert abs(hi - 0.9438) < 0.001
+
+
+def test_cohen_kappa_verified_round2():
+    # Hand-computed from confusion AA=25, AC=5, CA=1, CC=19
+    # po=44/50, pe=(30/50)*(26/50)+(20/50)*(24/50)
+    a = {}
+    b = {}
+    for i in range(25):
+        a[f"aa{i}"] = "ambiguous"; b[f"aa{i}"] = "ambiguous"
+    for i in range(5):
+        a[f"ac{i}"] = "ambiguous"; b[f"ac{i}"] = "correct"
+    for i in range(1):
+        a[f"ca{i}"] = "correct";   b[f"ca{i}"] = "ambiguous"
+    for i in range(19):
+        a[f"cc{i}"] = "correct";   b[f"cc{i}"] = "correct"
+    result = sens.cohen_kappa_2rater(a, b)
+    assert result["n"] == 50
+    assert result["n_agree"] == 44
+    assert abs(result["kappa"] - 0.758065) < 1e-5
+
+
+def test_verify_agreement_stats_matches_stored():
+    ag = sens.verify_agreement_stats()
+    assert ag["n"] == 50
+    assert ag["n_agree"] == 44
+    assert abs(ag["kappa"] - 0.758065) < 1e-5
+    # McNemar p for n01=5, n10=1
+    assert abs(ag["mcnemar_p_two_sided"] - 0.21875) < 1e-9
+    # Wilson CI
+    assert abs(ag["wilson_ci_lo"] - 0.7619) < 0.001
+    assert abs(ag["wilson_ci_hi"] - 0.9438) < 0.001
+
+
+def test_adjudication_scope_no_mechanical_impact():
+    scope = sens.verify_adjudication_scope()
+    # C21, C22, C29 have jointly-ambiguous siblings → already excluded from C1
+    already = set(scope["disc_cases_with_joint_ambig_sibling"])
+    assert {"C21", "C22", "C29"}.issubset(already)
+    # C24 is purely discordant (unique question, no joint-ambig sibling)
+    pure = set(scope["disc_cases_purely_discordant"])
+    assert "C24" in pure and "C21" not in pure
+
+
+def test_intra_rater_inconsistency_reviewer_b():
+    ir = sens.check_intra_rater_consistency()
+    assert ir["n_cases_with_inconsistency"] >= 3
+    cases = ir["cases"]
+    # C22, C24, C29 are documented inconsistencies for reviewer B
+    for c in ["C22", "C24", "C29"]:
+        assert c in cases, f"{c} should be intra-rater inconsistent for B"
+
+
+def test_adjudication_does_not_change_mechanical_scenarios():
+    """Adjudication only affects human-label consensus; not mechanical scenarios."""
+    scope = sens.verify_adjudication_scope()
+    analysis = scope["analysis"]
+    assert "NO effect" in analysis["mechanical_scenarios"]
+    assert "NO effect" in analysis["C1_scenarios"]
+
+
+@pytest.mark.skipif(not (PRIVATE / "item_scores.jsonl").exists(), reason="private snapshot not available")
+def test_mechanical_scenario_cross_check():
+    ms = sens.verify_mechanical_scenarios()
+    # Scenario A published values
+    assert ms["F0"]["exact_v2"] == 13
+    assert ms["F1"]["exact_v2"] == 90
+    assert ms["F2"]["exact_v2"] == 39
+    assert ms["F3"]["exact_v2"] == 109
+    # Semantic question-aligned (B1)
+    assert ms["F0"]["semantic_qa_all"] == 91
+    assert ms["F2"]["semantic_qa_all"] == 132
+    # Unique: all arms 74/74 semantically
+    for arm in ["F0", "F1", "F2", "F3"]:
+        assert ms[arm]["unique_semantic"] == ms[arm]["unique_n"] == 74
+    # Doc spurious: F2 has 20 spurious semantic credits
+    assert ms["F2"]["doc_semantic_spurious"] == 20
+    assert ms["F1"]["doc_semantic_spurious"] == 0

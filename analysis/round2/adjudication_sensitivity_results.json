@@ -1,0 +1,169 @@
+{
+  "agreement": {
+    "n": 50,
+    "n_agree": 44,
+    "po": 0.88,
+    "pe": 0.504,
+    "kappa": 0.7580645161290323,
+    "n_discordant": 6,
+    "n_A_amb_B_corr": 5,
+    "n_A_corr_B_amb": 1,
+    "mcnemar_p_two_sided": 0.21875,
+    "wilson_ci_lo": 0.7619492111337642,
+    "wilson_ci_hi": 0.9438247628937535,
+    "specific_agreement_ambiguous": 0.8928571428571429,
+    "specific_agreement_correct": 0.8636363636363636,
+    "discordant_ids": [
+      "C21-R1",
+      "C22-R3",
+      "C22-R4",
+      "C24-R2",
+      "C29-R3",
+      "C29-R4"
+    ]
+  },
+  "adjudication_scope": {
+    "jointly_ambiguous_cases": [
+      "C11",
+      "C12",
+      "C14",
+      "C15",
+      "C18",
+      "C23",
+      "C26"
+    ],
+    "disc_cases": [
+      "C21",
+      "C22",
+      "C24",
+      "C29"
+    ],
+    "disc_cases_with_joint_ambig_sibling": [
+      "C21",
+      "C22",
+      "C29"
+    ],
+    "disc_cases_purely_discordant": [
+      "C24"
+    ],
+    "analysis": {
+      "mechanical_scenarios": "Scenarios A, B1, B2, C2-A, C2-B1, NU-latest, E-lower/mid/upper use the mechanical scorer only. Human labels are not an input. Adjudication has NO effect on these scenarios.",
+      "C1_scenarios": "C1 scenarios exclude questions where at least one Round-2 response was jointly labeled ambiguous (both reviewers = ambiguous). C21, C22, C29 each have at least one jointly-ambiguous sibling response \u2014 so they are already excluded from C1 regardless of how the discordant items are adjudicated. C24 is a unique question with no jointly-ambiguous responses and would NOT be excluded under any adjudication treatment. Adjudication has NO effect on C1 scenario membership.",
+      "agreement_stats": "\u03ba, po, pe are computed from the 50 paired labels. The 6 discordant items drive the disagreement count (12% = 6/50). Adjudication by a third reviewer would add evidence for each item's consensus label; until then, the agreement statistics are computed on the full 50 pairs as observed."
+    }
+  },
+  "mechanical_scenarios": {
+    "F0": {
+      "n": 150,
+      "exact_v2": 13,
+      "semantic_qa_all": 91,
+      "semantic_qa_nodoc": 87,
+      "n_nodoc": 116,
+      "unique_n": 74,
+      "unique_exact": 10,
+      "unique_semantic": 74,
+      "mc_n": 42,
+      "mc_exact": 3,
+      "mc_semantic_qa": 13,
+      "mc_matches_latest": 19,
+      "mc_multi_event_list": 6,
+      "doc_n": 34,
+      "doc_semantic_spurious": 4
+    },
+    "F1": {
+      "n": 150,
+      "exact_v2": 90,
+      "semantic_qa_all": 90,
+      "semantic_qa_nodoc": 90,
+      "n_nodoc": 116,
+      "unique_n": 74,
+      "unique_exact": 74,
+      "unique_semantic": 74,
+      "mc_n": 42,
+      "mc_exact": 16,
+      "mc_semantic_qa": 16,
+      "mc_matches_latest": 16,
+      "mc_multi_event_list": 0,
+      "doc_n": 34,
+      "doc_semantic_spurious": 0
+    },
+    "F2": {
+      "n": 150,
+      "exact_v2": 39,
+      "semantic_qa_all": 132,
+      "semantic_qa_nodoc": 112,
+      "n_nodoc": 116,
+      "unique_n": 74,
+      "unique_exact": 12,
+      "unique_semantic": 74,
+      "mc_n": 42,
+      "mc_exact": 27,
+      "mc_semantic_qa": 38,
+      "mc_matches_latest": 38,
+      "mc_multi_event_list": 0,
+      "doc_n": 34,
+      "doc_semantic_spurious": 20
+    },
+    "F3": {
+      "n": 150,
+      "exact_v2": 109,
+      "semantic_qa_all": 113,
+      "semantic_qa_nodoc": 109,
+      "n_nodoc": 116,
+      "unique_n": 74,
+      "unique_exact": 74,
+      "unique_semantic": 74,
+      "mc_n": 42,
+      "mc_exact": 35,
+      "mc_semantic_qa": 35,
+      "mc_matches_latest": 35,
+      "mc_multi_event_list": 0,
+      "doc_n": 34,
+      "doc_semantic_spurious": 4
+    }
+  },
+  "intra_rater": {
+    "n_cases_reviewed_by_B": 20,
+    "n_cases_with_inconsistency": 4,
+    "cases": {
+      "C21": {
+        "labels": {
+          "C21-R1": "correct",
+          "C21-R3": "ambiguous",
+          "C21-R4": "ambiguous"
+        },
+        "note": "Reviewer B assigned different labels within the same case"
+      },
+      "C22": {
+        "labels": {
+          "C22-R1": "ambiguous",
+          "C22-R3": "correct",
+          "C22-R4": "correct"
+        },
+        "note": "Reviewer B assigned different labels within the same case"
+      },
+      "C24": {
+        "labels": {
+          "C24-R2": "ambiguous",
+          "C24-R4": "correct"
+        },
+        "note": "Reviewer B assigned different labels within the same case"
+      },
+      "C29": {
+        "labels": {
+          "C29-R1": "ambiguous",
+          "C29-R2": "ambiguous",
+          "C29-R3": "correct",
+          "C29-R4": "correct"
+        },
+        "note": "Reviewer B assigned different labels within the same case"
+      }
+    }
+  },
+  "cross_check": {
+    "kappa_matches": true,
+    "agree_matches": true,
+    "stored_kappa": 0.7580645161290323,
+    "computed_kappa": 0.7580645161290323
+  }
+}
