@@ -74,7 +74,7 @@
 | F2 stale-state 5% (2/42) | 2/42=4.8% | item_scores.jsonl |
 | F3 stale-state 17% (7/42) | 7/42=16.7% | item_scores.jsonl |
 | F1 vs F2 McNemar p<0.001 | p<0.0001 | Computed above |
-| World-level sign test p=0.001 | 0.001 | Computed above |
+| World-level exact sign test | 10/10 non-tied worlds favor F2; 2 ties; one-sided p=0.00098 | `final_statistical_audit.md` |
 | B1-nodoc F2=96.6%, F3=94.0% | 112/116, 109/116 | item_scores.jsonl |
 | F2 vs F3 McNemar p=0.508 | 0.508 | item_scores.jsonl |
 | RD=+2.6pp [−2.5, +7.6] | +0.026 [−0.025, +0.076] | item_scores.jsonl |
