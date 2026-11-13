@@ -1,0 +1,123 @@
+{
+  "status": "COMPLETED_LOCAL_INFERENCE_REPORTED_PENDING_RAW_ARTIFACT_AUDIT",
+  "n_predictions": 800,
+  "n_worlds": 100,
+  "n_queries": 200,
+  "elapsed_seconds": 19956.244043291998,
+  "elapsed_hms": "05:32:36",
+  "model": {
+    "model_id": "mlx-community/Qwen2.5-3B-Instruct-4bit",
+    "revision": "4f83f8f146fdf28b512a06562b671d7af4fab457",
+    "quantization": "4-bit",
+    "group_size": 64,
+    "weights_sha256": "f212cf6fb9923281a09c135e05d43a052ee5ef7121f5b1dc0b0fb2de80f97cfd",
+    "platform": "macOS 26.2 arm64",
+    "mlx": "0.32.4",
+    "mlx_lm_conda": "0.32.2",
+    "mlx_lm_python_distribution_metadata": "0.0.0"
+  },
+  "decoding": {
+    "temperature": 0,
+    "max_tokens": 48,
+    "api_cost_usd": 0,
+    "local_only": true
+  },
+  "primary": {
+    "comparison": "B_minus_C",
+    "n_worlds": 100,
+    "n_queries": 200,
+    "mean_world_paired_difference": -0.36,
+    "world_bootstrap_95_percentile_ci": [
+      -0.405,
+      -0.315
+    ],
+    "paired_sign_flip_two_sided_p": 0.00000999990000099999,
+    "bootstrap_draws": 10000,
+    "signflip_draws": 100000,
+    "seed": 20261112
+  },
+  "conditions": {
+    "A": {
+      "correct": 100,
+      "total": 200,
+      "accuracy": 0.5,
+      "stale_state": 95,
+      "format_valid": 200,
+      "mean_prompt_tokens": 4998.85,
+      "mean_generation_tokens": 35.05
+    },
+    "B": {
+      "correct": 1,
+      "total": 200,
+      "accuracy": 0.005,
+      "stale_state": 128,
+      "format_valid": 200,
+      "mean_prompt_tokens": 28227.61,
+      "mean_generation_tokens": 33.605
+    },
+    "C": {
+      "correct": 73,
+      "total": 200,
+      "accuracy": 0.365,
+      "stale_state": 66,
+      "format_valid": 200,
+      "mean_prompt_tokens": 13577.15,
+      "mean_generation_tokens": 34.27
+    },
+    "D": {
+      "correct": 98,
+      "total": 200,
+      "accuracy": 0.49,
+      "stale_state": 74,
+      "format_valid": 200,
+      "mean_prompt_tokens": 6607.36,
+      "mean_generation_tokens": 34.04
+    }
+  },
+  "by_query_type": {
+    "A_ceo": {
+      "correct": 0,
+      "stale": 95
+    },
+    "A_owner": {
+      "correct": 100,
+      "stale": 0
+    },
+    "B_ceo": {
+      "correct": 0,
+      "stale": 29
+    },
+    "B_owner": {
+      "correct": 1,
+      "stale": 99
+    },
+    "C_ceo": {
+      "correct": 0,
+      "stale": 39
+    },
+    "C_owner": {
+      "correct": 73,
+      "stale": 27
+    },
+    "D_ceo": {
+      "correct": 0,
+      "stale": 74
+    },
+    "D_owner": {
+      "correct": 98,
+      "stale": 0
+    }
+  },
+  "prompt_length_effect_association": {
+    "method": "Pearson r between per-world paired accuracy and per-world B-C mean prompt-token difference; two-sided permutation",
+    "pearson_r": -0.12813124289696887,
+    "permutation_p": 0.2033179668203318,
+    "n_worlds": 100,
+    "mean_prompt_token_difference": 14650.46,
+    "permutations": 100000
+  },
+  "audit_notes": [
+    "Prompt-length imbalance is large (B 28,227.61 tokens vs C 13,577.15 tokens); the nonsignificant across-world association does not identify or exclude a length effect.",
+    "Raw and scored predictions were saved on the user's Mac by the runner but have not been transferred to this PR; results remain pending raw-row re-audit."
+  ]
+}
