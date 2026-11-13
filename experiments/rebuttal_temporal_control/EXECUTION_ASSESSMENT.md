@@ -1,40 +1,35 @@
 # Execution and audit assessment
 
-Date: 2026-11-12. Recorded before any model inference.
+Date: 2026-11-12 assessment before inference; local run completed afterward.
 
-## Runtime and model availability
+## Work runtime and checkpoint preparation
 
-- Work execution host: Linux x86_64, 9.7 GiB RAM, 58 GiB free workspace disk; no Apple Silicon or Metal device.
-- Initially installed: no `mlx`, `mlx-lm`, PyTorch, Transformers, llama.cpp, Ollama, or cached Qwen checkpoint. A zero-cost CPU MLX software check was later run in an isolated `uv` environment.
-- The repository's earlier model-download report records the model identifier and file size, but does not record a Hub revision or a weights checksum. The requested protocol names `mlx-community/Qwen2.5-3B-Instruct-4bit` but does not contain an immutable model revision. The public checkpoint page currently identifies commit `4f83f8f146fdf28b512a06562b671d7af4fab457`; the repository's earlier run artifacts do not establish that this was their revision.
-- The local cache scan found no `model.safetensors` or GGUF model weights. No model weights were downloaded.
+- Work execution host: Linux x86_64, 9.7 GiB RAM, no Apple Silicon or Metal device. It had no local checkpoint, so no inference was run there.
+- The protocol names `mlx-community/Qwen2.5-3B-Instruct-4bit` but did not freeze an immutable Hub revision. Before inference, the local run pinned revision `4f83f8f146fdf28b512a06562b671d7af4fab457`.
+- Local checkpoint SHA-256: `f212cf6fb9923281a09c135e05d43a052ee5ef7121f5b1dc0b0fb2de80f97cfd`. Its configuration was verified as Qwen2, 4-bit, group size 64.
+- Model was fetched explicitly to the user's Mac before inference. The runner then set Hub/Transformers offline flags and loaded the local directory only.
+- The initial Conda environment command resolution selected Homebrew Python. This was diagnosed from `sys.executable` and resolved by invoking `/opt/miniconda3/envs/wcm-rebuttal/bin/python` directly. The correct environment imported MLX and MLX-LM, passed preflight and a short local generation smoke test.
+- Local platform reported by preflight: macOS 26.2 arm64. Conda package list reported MLX 0.32.4 and MLX-LM 0.32.2. Preflight's Python distribution metadata reported MLX-LM as 0.0.0; the Conda package list is the available package-version evidence, and the discrepancy should be retained in reproducibility notes.
+- No paid model API or remote inference was used.
 
 ## CPU backend assessment
 
-The local CPU route can use MLX itself rather than convert the checkpoint to another format. For assessment only, an isolated `uv` invocation installed `mlx-lm[cpu]==0.32.2` and its `mlx-cpu==0.32.4` dependency. On this x86_64 host, the MLX default device was CPU, an MLX array computation passed, and the `mlx_lm.load`, `stream_generate`, and temperature-zero sampler APIs imported successfully. The official model card identifies the checkpoint as Qwen2.5-3B-Instruct converted to MLX format; its config specifies Qwen2 (`model_type=qwen2`), 4-bit weights and group size 64. The MLX-LM loader is the native loader documented for this checkpoint.
+Before the local Mac checkpoint became available, an isolated `uv` invocation installed `mlx-lm[cpu]==0.32.2` and `mlx-cpu==0.32.4` on this Linux host. MLX CPU array operations and MLX-LM APIs imported successfully. This only established software plausibility; it was not used for the experimental inference. `llama.cpp` was not selected because converting the MLX checkpoint to GGUF would change the model representation and quantization could not be verified equivalent.
 
-The isolated CPU check reported `mlx=0.32.4`, `mlx-lm=0.32.2`, `default_device=Device(cpu, 0)`, and `[1,2,3] + 1 = [2,3,4]`; `mlx_lm.load`, `stream_generate`, and the temperature-zero sampler imported successfully. This establishes a technically plausible zero-cost, same-format CPU execution route. It does **not** verify loading or generating with the target checkpoint here: the exact weights are absent, the previously used revision was not recorded, and the frozen protocol says to stop and have the user install absent weights locally. The optional CPU route would also be a documented hardware/runtime deviation from Apple Silicon + MLX-LM 0.31.3, and would need a real local model smoke test before the full run. No model inference was attempted.
+## Synthetic preparation and integrity
 
-`llama.cpp` was not selected. Its native input format is GGUF; converting the MLX checkpoint would change the representation and might alter quantization. No exact same-quantization GGUF file was found, so equivalence could not be verified.
+The fixed namespace generated 100 unique worlds, 200 latest-state questions, and 800 prompts. There was no overlap with the existing scaled-world index or 18 H4 reference worlds. Gold labels were stored separately from prompts. The scorer's five known examples passed. A/B/C/D renderings were checked for source-fact equivalence and answer-label leakage before inference. All prompts passed context-fit preflight. The full test suite before the local run reported 154 passed, 11 skipped.
 
-## Deviation status
+## Local model run
 
-No deviation was used for model execution. The experiment implementation is backend-independent at the prompt/scoring layers and includes a local-only MLX runner. It accepts only a local model directory plus a manifest with a pinned revision and weight SHA-256, sets Hub offline flags, and never passes a repository identifier to the loader. The CPU MLX assessment is documented as an unexecuted fallback. The full run remains blocked until the exact intended model snapshot and immutable revision/checksum are available locally and pass the runner's preflight and smoke test.
+The user's Mac run completed 800 predictions in 19,956.244 seconds (5 h 32 min 36 s), with 100 worlds and 200 queries. Model: `mlx-community/Qwen2.5-3B-Instruct-4bit`, pinned revision above, verified weight SHA-256 above, temperature 0, max 48 tokens, local MLX-LM. The 8-token generic smoke test returned `local-inference-ok`.
 
-Official compatibility references:
+Primary result from the terminal report: world-clustered B−C semantic accuracy difference −0.360, 95% world bootstrap percentile CI [−0.405, −0.315], two-sided paired sign-flip Monte Carlo p=0.000010 (100,000 draws; +1 correction). B accuracy was 1/200; C accuracy was 73/200. All four conditions had 200/200 schema-valid outputs. B's average prompt length was 28,227.61 tokens versus C's 13,577.15 (mean paired token difference +14,650.46). The across-world correlation of paired accuracy and token-length differences was r=−0.128, permutation p=0.203; this does not remove the between-condition length confound. CEO accuracy was 0/100 in both B and C; ownership accuracy was 1/100 in B and 73/100 in C.
 
-- MLX-LM documents model loading and its optional CPU dependency: <https://github.com/ml-explore/mlx-lm/blob/main/pyproject.toml>
-- The checkpoint card documents MLX-LM loading and its model configuration: <https://huggingface.co/mlx-community/Qwen2.5-3B-Instruct-4bit/tree/4f83f8f146fdf28b512a06562b671d7af4fab457>
-- llama.cpp documents that its model input must be GGUF: <https://github.com/ggml-org/llama.cpp/blob/master/docs/models.md>
+**Interpretation:** The observed result does not support the directional hypothesis for the implemented prompt variants. It also does not establish that temporal edges themselves reduce accuracy, because B and C differed substantially in input length. Do not claim causal isolation or equivalence. The effect is concentrated in ownership questions; CEO latest-state accuracy was zero in both primary arms.
 
-## Synthetic preparation
-
-The fixed namespace generated 100 new large-tier worlds, 200 latest-state questions (CEO and owner), and 800 prompts (four conditions per question). Every world has at least three realized CEO replacements and three focal-project ownership transfers. Each prompt includes all CEO/ownership records from its generated world plus eight deterministic distractor events. No world ID overlapped either the existing scaled-world index or the 18 H4 evaluation world IDs in `analysis/round2/temporal_state_analysis.csv`. Gold labels are stored separately from prompt inputs. Condition renderings are round-trip checked against the same normalized initial facts and complete selected event facts. Prompt hashes, input lengths, generation seeds, and randomized per-world inference order are recorded in `data/generation_manifest.json` and the JSONL files. The local runner records tokenizer counts and tests whether within-world B−C accuracy differences track within-world token-count differences; this check cannot be performed until inference exists.
+The runner is designed to save `raw_predictions.jsonl`, `scored_predictions.jsonl`, and `evaluation_results.json` after completing the run. These files currently reside on the user's Mac and have not yet been transferred to this PR; the summary should be treated as reported output pending raw-row hash, coverage, and scorer re-audit.
 
 ## Existing stale-state count audit
 
-The tracked summary supports stale-state counts of F0 23/42, F1 17/42, F2 2/42, and F3 7/42. Stale is defined as matching an earlier position without matching the latest. The separate paired latest-selection tables imply arm-level latest-selection margins of 19/42, 16/42, 38/42, and 35/42. These are not complements of stale counts: a response may match both earliest and latest, or neither. `analysis/round2/final/FINAL_CLAIMS_VERIFIED.md` previously listed 17 and 32 as the F0 and F2 latest margins; these are concordant-pair cells, not arm margins, and have been corrected to 19 and 38. The private item-level source used for the earlier audit is intentionally absent from this checkout, so this reconciliation is from the committed audit summary and paired tables, not a new raw-record reproduction.
-
-## Result status
-
-No model outputs, treatment effects, confidence intervals, or p-values exist for this follow-up. Do not present the synthetic generator or scorer tests as empirical model evidence. The manuscript and reviewer text in `DRAFT_REBUTTAL.md` explicitly state this limitation.
+The tracked summary supports stale-state counts F0 23/42, F1 17/42, F2 2/42, and F3 7/42. Stale means matching an earlier position without matching the latest. Separate paired latest-selection tables imply margins F0 19/42, F1 16/42, F2 38/42, F3 35/42. They are not complements of stale counts. Earlier F0=17 and F2=32 values copied concordant-pair cells, not arm margins; the summary was corrected to 19 and 38. The private item-level source is absent from this checkout, so this reconciliation uses committed audit summaries and paired tables rather than fresh raw-record reanalysis.
