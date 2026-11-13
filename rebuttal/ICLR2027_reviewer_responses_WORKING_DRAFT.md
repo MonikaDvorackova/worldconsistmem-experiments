@@ -1,4 +1,4 @@
-# ICLR 2027 rebuttal working draft — WorldConsistMem (Submission 49130)
+> **Superseded (2026-11-13):** This working draft predates completion of the semantic reanalysis and the local temporal-control run. Use `analysis/round2/final_rebuttal_openreview.md` as the current reconciled draft. Neither file has been submitted to OpenReview.\n\n# ICLR 2027 rebuttal working draft — WorldConsistMem (Submission 49130)
 
 **Status:** evidence-backed draft, **NOT submitted to OpenReview**. Last updated 2026-11-11. Do not assert that semantic grading of all 150 cases, cross-model replication, evidence-sufficiency adjudication, or manuscript corrections have been completed: they have not been verified here.
 

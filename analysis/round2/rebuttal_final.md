@@ -1,4 +1,4 @@
-# ICLR 2027 Rebuttal — WorldConsistMem (Submission 49130)
+> **Superseded draft (2026-11-13):** Use `analysis/round2/final_rebuttal_openreview.md` as the reconciled response. This earlier file contained an incorrect statement that all four arms were prespecified; only F3 vs F0 was prespecified, and F1/F2 are exploratory post-result factorizations.\n\n# ICLR 2027 Rebuttal — WorldConsistMem (Submission 49130)
 
 **Authors' Response to Reviewers Rkeo, vfz3, and EdSa**
 
@@ -97,7 +97,7 @@ Pre-registration hash on file. All four arms reported together in all 17 sensiti
 
 > *"F1 and F2 appear post-hoc."*
 
-F0–F3 are a 2×2 ablation designed before data collection. The design is in the pre-registration.
+Only F3 vs F0 was prespecified. F1 and F2 are exploratory post-result factorizations and are not confirmatory comparisons.
 
 ---
 

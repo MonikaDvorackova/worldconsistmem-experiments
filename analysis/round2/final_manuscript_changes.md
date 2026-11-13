@@ -95,3 +95,17 @@
 2. Any statement implying F1/F2 were pre-registered — revise
 3. Any statement implying BCR=0 proves absence of a world model — revise
 4. "F2 leads all arms semantically (88.0%)" without doc-item disclosure — remove or qualify
+
+
+## Rebuttal alignment addendum — 2026-11-13
+
+Before preparing the revised PDF, align the manuscript with the response draft:
+
+- State that F3 vs F0 was the prespecified comparison; label F1/F2 as exploratory post-result factorizations. Do not describe all four as a prespecified 2×2 design.
+- Distinguish stale-state error counts (F0 23, F1 17, F2 2, F3 7 of 42) from latest-selection counts (19, 16, 38, 35 of 42).
+- Report the clustered sign test precisely: 10 non-tied worlds favor F2, none favor F0, two tie; one-sided exact p=0.00098 over the 10 non-tied worlds. Identify item-level McNemar tests as approximations that do not account for within-world clustering.
+- State that the latest-event gold convention is not stated in the original questions and include the any-documented-event sensitivity scores (F0 144/150; F1 149/150; F2/F3 150/150).
+- State that BCR=0 at approximately 18.5% per-query accuracy is consistent with the independence baseline; do not treat it as evidence of an internal world model or excess dependence.
+- If the post-review Qwen run is mentioned, label it exploratory and negative for the tested prompts, identify the B/C prompt-length imbalance (28,228 vs 13,577 mean tokens), and state that it does not isolate temporal-edge effects or replicate the original GPT-4.1 H4 result.
+
+The manuscript source/PDF was not present in this repository during this revision; these are required edit instructions, not a claim that the manuscript has already been updated.
