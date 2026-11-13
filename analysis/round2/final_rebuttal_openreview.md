@@ -32,4 +32,4 @@ As an exploratory follow-up, we ran 100 new worlds and 800 local predictions wit
 
 ## Revisions to the paper
 
-We will distinguish exact-match compliance, question-aligned semantic scoring, and temporal selection; disclose the implicit latest-event convention and the 34 unidentifiable document items; label F1/F2 exploratory; report the BCR independence caveat; remove semantic-superiority claims for F3; and limit H4 conclusions to the tested model and worlds. The manuscript source/PDF is not in this repository, so these edits still need to be applied to and checked against the final submission file.
+We will distinguish exact-match compliance, question-aligned semantic scoring, and temporal selection; disclose the implicit latest-event convention and the 34 unidentifiable document items; label F1/F2 exploratory; report the BCR independence caveat; remove semantic-superiority claims for F3; and limit H4 conclusions to the tested model and worlds. 
