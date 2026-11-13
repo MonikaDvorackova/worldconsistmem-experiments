@@ -1,4 +1,4 @@
-# ICLR 2027 Rebuttal — WorldConsistMem (Submission 49130)
+> **Superseded draft (2026-11-13):** This earlier response incorrectly described F1/F2 as prespecified. Use `analysis/round2/final_rebuttal_openreview.md`; it identifies F3 vs F0 as prespecified and F1/F2 as exploratory post-result factorizations.\n\n# ICLR 2027 Rebuttal — WorldConsistMem (Submission 49130)
 
 **Authors' Response to Reviewers Rkeo, vfz3, and EdSa**
 **Version 2 — revised after Round 2 human evaluation and sensitivity analysis**
