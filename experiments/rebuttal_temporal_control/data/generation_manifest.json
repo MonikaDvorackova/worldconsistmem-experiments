@@ -1,0 +1,44 @@
+{
+  "conditions": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "existing_h4_world_overlap": 0,
+  "existing_h4_worlds_checked": 18,
+  "existing_scaled_world_overlap": 0,
+  "fixed_seed_rule": "candidate seed = 1,000,000 + int(SHA256(namespace:index:attempt)[0:12],16) mod 8,000,000; accept first candidate meeting >=3 realized CEO replacements and >=3 ownership transfers",
+  "generation_elapsed_seconds": 30.116958470999634,
+  "gold_labels_are_separate_from_prompts": true,
+  "gold_labels_sha256": "5fd04333511787d04d08c8ef08f0ddc5f3a76340400fcbb6e1c3d03a4f892016",
+  "max_seed_attempt": 0,
+  "mean_prompt_characters_by_condition": {
+    "A": 10717.94,
+    "B": 63116.83,
+    "C": 31014.66,
+    "D": 15163.59
+  },
+  "min_realized_ceo_replacements": 4,
+  "min_realized_ownership_transfers": 5,
+  "n_worlds": 100,
+  "namespace": "rebuttal-temporal-v1",
+  "prompt_index_sha256": "01a48f49e8f692a9ba0153a06b34152488cdc57867486267f2d963c6a87be230",
+  "prompt_rows": 800,
+  "prompt_sha256": "746c41b3badc71e403621f3310653767ede2d5c329249e5cd1b2510793dbfce5",
+  "protocol": "experiments/rebuttal_temporal_control/PROTOCOL.md",
+  "queries_per_world": 2,
+  "randomization": "seed derived per world from frozen namespace; all 8 query-condition calls shuffled within world with Python Random(selected_world_seed XOR 0x5A17C0DE)",
+  "scorer_validation": {
+    "examples": 5,
+    "labels_seen": [
+      "correct",
+      "stale",
+      "other",
+      "malformed",
+      "abstain"
+    ],
+    "passed": true
+  },
+  "status": "GENERATED_NO_MODEL_INFERENCE"
+}
