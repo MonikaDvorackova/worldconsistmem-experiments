@@ -6,6 +6,7 @@ from __future__ import annotations
 import argparse
 import gzip
 import hashlib
+import io
 import json
 import sys
 from pathlib import Path
@@ -50,8 +51,9 @@ def main() -> None:
     args = parser.parse_args()
 
     raw, scored = read_jsonl(args.raw), read_jsonl(args.scored)
-    prompts = read_jsonl(DATA / "prompts.jsonl.gz")
-    gold = read_jsonl(DATA / "gold_labels.jsonl")
+    # Rebuild the frozen prompt set from its deterministic generator. The large
+    # prompt file is intentionally not required as a checked-in artifact.
+    prompts, gold = generate_experiment(100)
     manifest = json.loads((DATA / "generation_manifest.json").read_text())
     result = json.loads(args.results.read_text())
 
@@ -86,7 +88,11 @@ def main() -> None:
 
     stats = world_clustered_analysis(scored)
     assert stats == result["primary"]
-    assert hashlib.sha256((DATA / "prompts.jsonl.gz").read_bytes()).hexdigest() == manifest["prompt_sha256"]
+    prompt_jsonl = "".join(json.dumps(row, sort_keys=True, ensure_ascii=False) + "\n" for row in prompts).encode()
+    compressed = io.BytesIO()
+    with gzip.GzipFile(filename="", mode="wb", fileobj=compressed, mtime=0) as stream:
+        stream.write(prompt_jsonl)
+    assert hashlib.sha256(compressed.getvalue()).hexdigest() == manifest["prompt_sha256"]
     print(json.dumps({
         "audit": "PASS",
         "worlds": 100,
