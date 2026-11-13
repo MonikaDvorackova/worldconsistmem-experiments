@@ -1,0 +1,21 @@
+{
+  "model_id": "mlx-community/Qwen2.5-3B-Instruct-4bit",
+  "revision": "4f83f8f146fdf28b512a06562b671d7af4fab457",
+  "architecture": "Qwen2",
+  "quantization": "4-bit",
+  "group_size": 64,
+  "weights_sha256": "f212cf6fb9923281a09c135e05d43a052ee5ef7121f5b1dc0b0fb2de80f97cfd",
+  "platform": "macOS 26.2 arm64; Apple M4 Pro; 24 GB RAM",
+  "inference_backend": "local MLX-LM",
+  "mlx_version": "0.32.4",
+  "mlx_lm_conda_package_version": "0.32.2",
+  "mlx_lm_python_distribution_metadata_version": "0.0.0",
+  "decoding": {
+    "temperature": 0,
+    "max_tokens": 48,
+    "api_cost_usd": 0,
+    "offline_local_path_only": true
+  },
+  "elapsed_seconds": 19956.244043291998,
+  "note": "Version mismatch is retained as reported: Conda package list showed mlx-lm 0.32.2 while importlib.metadata.version('mlx-lm') logged 0.0.0."
+}
