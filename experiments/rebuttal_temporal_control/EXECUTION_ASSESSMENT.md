@@ -28,7 +28,11 @@ Primary result from the terminal report: world-clustered B−C semantic accuracy
 
 **Interpretation:** The observed result does not support the directional hypothesis for the implemented prompt variants. It also does not establish that temporal edges themselves reduce accuracy, because B and C differed substantially in input length. Do not claim causal isolation or equivalence. The effect is concentrated in ownership questions; CEO latest-state accuracy was zero in both primary arms.
 
-The runner is designed to save `raw_predictions.jsonl`, `scored_predictions.jsonl`, and `evaluation_results.json` after completing the run. These files currently reside on the user's Mac and have not yet been transferred to this PR; the summary should be treated as reported output pending raw-row hash, coverage, and scorer re-audit.
+## Transferred artifact audit
+
+The user-provided raw and scored JSONL files were independently audited against the committed generator, prompt index, gold labels, and frozen scorer. Both files contain 800 unique rows covering exactly the expected 100 worlds × 2 queries × 4 conditions. All raw prompt hashes match their generated prompt rows, and deterministic regeneration reproduces the prompt gzip SHA-256 recorded in the generation manifest (`746c41b3badc71e403621f3310653767ede2d5c329249e5cd1b2510793dbfce5`). The prompt audit found no gold-answer metadata markers. Re-scoring all 800 raw outputs against the separate gold table produced zero mismatches with the transferred scored file. Recomputed world-clustered statistics exactly match the stored primary result.
+
+Artifact SHA-256 (uncompressed JSONL): raw `09a0c15fb58cffa76be275a6f38e0ed594edc2b924c881f9a7111334b11bbdc4`; scored `68211cd1c963820e147f5925909ff7d982789eed41b6fef139f649e499abc085`. Compressed archival files are committed alongside model metadata and `scripts/audit_rebuttal_temporal_outputs.py`. The audit script passes locally. This Work runtime does not include pytest (`No module named pytest`); the earlier complete test run recorded 154 passed and 11 skipped.
 
 ## Existing stale-state count audit
 

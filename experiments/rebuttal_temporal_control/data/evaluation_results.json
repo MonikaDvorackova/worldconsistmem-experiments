@@ -1,5 +1,5 @@
 {
-  "status": "COMPLETED_LOCAL_INFERENCE_REPORTED_PENDING_RAW_ARTIFACT_AUDIT",
+  "status": "COMPLETED_LOCAL_INFERENCE_AUDITED",
   "n_predictions": 800,
   "n_worlds": 100,
   "n_queries": 200,
@@ -118,6 +118,34 @@
   },
   "audit_notes": [
     "Prompt-length imbalance is large (B 28,227.61 tokens vs C 13,577.15 tokens); the nonsignificant across-world association does not identify or exclude a length effect.",
-    "Raw and scored predictions were saved on the user's Mac by the runner but have not been transferred to this PR; results remain pending raw-row re-audit."
-  ]
+    "Raw and scored outputs were transferred and independently audited: 800 unique rows each, full coverage, all prompt hashes matched, zero scorer mismatches, and exact reproduction of primary statistics."
+  ],
+  "artifact_hashes": {
+    "raw_predictions_jsonl_sha256": "09a0c15fb58cffa76be275a6f38e0ed594edc2b924c881f9a7111334b11bbdc4",
+    "raw_predictions_jsonl_gz_sha256": "3a6367f416dc7820e1b4a9ddb8dbac799aaa07e2d35189e7ac97b557f7e66d99",
+    "scored_predictions_jsonl_sha256": "68211cd1c963820e147f5925909ff7d982789eed41b6fef139f649e499abc085",
+    "scored_predictions_jsonl_gz_sha256": "55578341cb28734f14718d92866aad8f32e95fcc2e395052aabdd4fdb34fc527",
+    "prompts_gzip_sha256": "746c41b3badc71e403621f3310653767ede2d5c329249e5cd1b2510793dbfce5",
+    "evaluation_results_json_sha256": "beb5ad5a15fbd8ad475f4e6e74107561ef2086404ad9c5874b6179630413bfa8"
+  },
+  "audit": {
+    "status": "PASS",
+    "raw_rows": 800,
+    "scored_rows": 800,
+    "unique_worlds": 100,
+    "unique_queries": 200,
+    "condition_rows": {
+      "A": 200,
+      "B": 200,
+      "C": 200,
+      "D": 200
+    },
+    "raw_coverage_matches_prompts": true,
+    "prompt_hashes_match": true,
+    "prompt_gold_leakage": false,
+    "scorer_mismatches": 0,
+    "recomputed_primary_matches_saved": true,
+    "audit_script": "scripts/audit_rebuttal_temporal_outputs.py",
+    "audit_script_result": "PASS"
+  }
 }
