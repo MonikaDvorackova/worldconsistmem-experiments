@@ -30,7 +30,7 @@
 
 ---
 
-**To Rkeo: leakage, analysis choices, scorer changes, and an exploratory follow-up**
+**To Rkeo: leakage, analysis choices, and post-hoc arms**
 
 **Concern and answer.** The concern is leakage, analysis degrees of freedom, and scorer changes. **Leakage.** We have not located a forensic leakage audit or a preregistration hash, so we do not claim that a leakage audit passed. We will add one to the supplement only after it is re-run and checked. Round 2 item-level outputs are in a git-ignored private snapshot; the committed per-item tables reproduce the reported counts.
 
