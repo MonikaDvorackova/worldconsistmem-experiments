@@ -1,6 +1,6 @@
 # ICLR 2027 Rebuttal — WorldConsistMem (Submission 49130)
 
-**Canonical draft (PR #10). Not submitted to OpenReview.** This file contains the three reviewer comments only, revised against the reviewer texts supplied for this round. Word counts include headings. Verify each comment against the full OpenReview review text before posting; that text is not in the repository, so the concerns quoted here come from the authors' response drafts. Numbers are traced in `analysis/round2/REBUTTAL_NUMBER_AUDIT.md`. The Qwen temporal-control result is not included in any reviewer reply because no quoted reviewer concern asks about it; it is documented in the audit file.
+**Canonical draft (PR #10). Not submitted to OpenReview.** This file contains the three reviewer comments only, revised against the reviewer texts supplied for this round. Word counts include headings. Verify each comment against the full OpenReview review text before posting; that text is not in the repository, so the concerns quoted here come from the authors' response drafts. Numbers are traced in `analysis/round2/REBUTTAL_NUMBER_AUDIT.md`. The Qwen temporal-control result appears only in the EdSa reply, as a non-replication note; its full record is in the audit file.
 
 ---
 
@@ -14,7 +14,7 @@ The 77/150 figure: we withdraw it as unreproducible. No repository table support
 
 The 34 document-version items are the original S2 items. They cannot be answered from the evidence packs, which contain no version identifiers, so we report them separately and do not count them as reasoning failures.
 
-Scorer/parser: under the v1 scorer (strict keys), exact match is F0 0/150, F1 86/150, F2 7/150, F3 109/150. The original online parser marked all 150 F3 outputs malformed, because they are bare JSON without the wrapper. The 109/150 figure comes from offline rescoring with a corrected parser, not from the online run.
+Scorer/parser: F3 109/150 comes from offline v1 rescoring (strict keys) of saved outputs with a corrected parser. Offline v1 gives exact match F0 0/150, F1 86/150, F2 7/150, F3 109/150. This is not the original online pipeline. That pipeline's parser marked all 150 F3 outputs malformed (bare JSON without the wrapper), so it recorded no valid F3 outputs. The offline figures do not show an F0-F3 gain from the original online pipeline.
 
 ---
 
@@ -24,7 +24,7 @@ B1 is a deterministic rule-based scorer applied to all 600 outputs. We report B1
 
 Latest-event convention: the question wording does not state it, and the gold labels use the most recent event at world end-time. Every comparison on the 42 multi-candidate questions depends on it.
 
-B1-nodoc (n = 116) excludes the 34 document items. These are the original S2 items and are unanswerable from the evidence packs, which contain no version identifiers. The exclusion was decided after Round 2, so this subset is post hoc. Semantic correctness is F0 87/116, F1 90/116, F2 112/116, F3 109/116. The F3-F0 contrast is +19.0 pp (world-cluster bootstrap 95% CI [+9.6, +29.1], 18 worlds). Its item-level exact McNemar p = 3x10^-6 ignores clustering and multiple comparisons. All arms are 74/74 on uniquely specified items, so the contrast comes entirely from the multi-candidate questions and depends on the convention. On all 150 items under B1, the contrast is +14.7 pp (world-cluster bootstrap 95% CI [+6.2, +22.9]).
+B1-nodoc (n = 116) excludes the 34 document items. These are the original S2 items and are unanswerable from the evidence packs, which contain no version identifiers. The exclusion was decided after Round 2, so this subset is post hoc. Semantic correctness is F0 87/116, F1 90/116, F2 112/116, F3 109/116. The F3-F0 contrast is +19.0 pp (world-cluster bootstrap 95% CI [+9.6, +29.1], 18 worlds). Its item-level exact McNemar p = 3x10^-6 ignores clustering and multiple comparisons. All arms are 74/74 on uniquely specified items, so the contrast comes entirely from the multi-candidate questions and depends on the convention. On all 150 items under B1, semantic counts are F0 91/150, F1 90/150, F2 132/150, F3 113/150; the F3-F0 contrast is +14.7 pp (world-cluster bootstrap 95% CI [+6.2, +22.9]). The F2 count includes the 20 document credits noted below.
 
 F2 minus F3 on B1-nodoc is +2.6 pp (world-cluster CI [-3.2, +9.0]; item-level paired CI [-2.5, +7.6]; exact McNemar p = 0.508). The evidence does not establish a difference.
 
@@ -38,12 +38,12 @@ We will remove the claim that F3 has the highest semantic accuracy.
 
 **To Rkeo: leakage, post-result arms, scorer/parser, and typography**
 
-Leakage: no repository artifact substantiates a 26-check forensic audit, so we do not cite one, and nothing here rules out leakage in subtype-schema selection. What the artifacts do show: the response-to-arm mapping and the evidence blocks were checked in a git-ignored private snapshot, and evaluation_report.md reports identical evidence blocks for all 150 queries. That snapshot is not public, so the check cannot be reproduced from this repository.
+Frozen setup: all four arms used gpt-4.1-2025-04-14, temperature 0, max_tokens 256, the same 150 query IDs, and identical evidence blocks for every query (`evaluation_report.md`). The public artifacts do not verify subtype-schema routing and do not rule out leakage there. We have not located a 26-check forensic audit, so we do not cite one. The response-to-arm mapping was checked in a git-ignored private snapshot that is not public, so that check cannot be reproduced from this repository.
 
 Blinding: the arm can often be guessed from the answer format (F3 is bare JSON; F2 is prev/event/next), so human review was not blind to arm in practice.
 
 Post-result arms: F1 and F2 were designed after observing F3 and are exploratory post-result factorizations. F3 versus F0 is the comparison designated primary. We cannot verify when that designation was fixed, so we do not call it preregistered.
 
-Scorer/parser: under the v1 scorer (strict keys), exact match is F0 0/150, F1 86/150, F2 7/150, F3 109/150. The original online parser marked all 150 F3 outputs malformed, because they are bare JSON without the wrapper. The 109/150 figure comes from offline rescoring with a corrected parser; the online run and the offline rescoring are different measurements.
+Scorer/parser: the 109/150 F3 figure is offline v1 rescoring (strict keys) with a corrected parser: F0 0/150, F1 86/150, F2 7/150, F3 109/150. The original online parser marked all 150 F3 outputs malformed (bare JSON without the wrapper), so the online pipeline recorded no valid F3 outputs. The two are different measurements and should not be compared as one pipeline.
 
 Typography: we commit to correcting the PDF's typography, figure labelling, float placement, and notation before camera-ready. The correction has not been made yet.
