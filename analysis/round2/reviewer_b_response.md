@@ -1,3 +1,5 @@
+> **SUPERSEDED, do not paste.** Canonical rebuttal: `analysis/round2/final_rebuttal_openreview.md` (PR #10). Errors in this file are listed in `analysis/round2/REBUTTAL_NUMBER_AUDIT.md`.
+
 > **Superseded draft (2026-11-13):** Use `analysis/round2/final_rebuttal_openreview.md`. This file's older RK3 answer incorrectly described F1/F2 as prespecified. The reconciled response identifies F3 vs F0 as the prespecified comparison and F1/F2 as exploratory post-result factorizations.\n\n# Response to Reviewers EdSa and Rkeo
 
 ---

@@ -1,3 +1,5 @@
+> **SUPERSEDED, do not paste.** Canonical rebuttal: `analysis/round2/final_rebuttal_openreview.md` (PR #10). Errors in this file are listed in `analysis/round2/REBUTTAL_NUMBER_AUDIT.md`.
+
 # F2 vs F3 Paired Analysis — Corrected
 
 Generated: 2026-11-12  

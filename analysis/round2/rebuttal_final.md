@@ -1,3 +1,5 @@
+> **SUPERSEDED, do not paste.** Canonical rebuttal: `analysis/round2/final_rebuttal_openreview.md` (PR #10). Errors in this file are listed in `analysis/round2/REBUTTAL_NUMBER_AUDIT.md`.
+
 > **Superseded draft (2026-11-13):** Use `analysis/round2/final_rebuttal_openreview.md` as the reconciled response. This earlier file contained an incorrect statement that all four arms were prespecified; only F3 vs F0 was prespecified, and F1/F2 are exploratory post-result factorizations.\n\n# ICLR 2027 Rebuttal — WorldConsistMem (Submission 49130)
 
 **Authors' Response to Reviewers Rkeo, vfz3, and EdSa**

@@ -1,3 +1,5 @@
+> **Supporting manuscript text only.** Rebuttal wording is in `analysis/round2/final_rebuttal_openreview.md`. Qwen numbers verified in `analysis/round2/REBUTTAL_NUMBER_AUDIT.md` §6.
+
 # Rebuttal and manuscript text — local run completed
 
 **Status:** The frozen 100-world run completed locally on Apple Silicon. The result is negative for the prespecified B−C contrast. The difference is large, but B prompts were substantially longer than C prompts, so this result does not identify a causal effect of temporal-transition structure alone.

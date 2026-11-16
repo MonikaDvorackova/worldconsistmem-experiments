@@ -87,7 +87,10 @@ def main() -> None:
     assert not mismatches, mismatches[:5]
 
     stats = world_clustered_analysis(scored)
-    assert stats == result["primary"]
+    # The committed audited summary omits the prompt-length association block;
+    # compare the committed primary fields only and report the length check separately.
+    assert {k: stats[k] for k in result["primary"]} == result["primary"]
+    print("prompt_length_effect_association (recomputed):", stats["prompt_length_effect_association"])
     prompt_jsonl = "".join(json.dumps(row, sort_keys=True, ensure_ascii=False) + "\n" for row in prompts).encode()
     compressed = io.BytesIO()
     with gzip.GzipFile(filename="", mode="wb", fileobj=compressed, mtime=0) as stream:
