@@ -14,7 +14,7 @@ The 77/150 figure: we withdraw it as unreproducible. No repository table support
 
 The 34 document-version items are the original S2 items. They cannot be answered from the evidence packs, which contain no version identifiers, so we report them separately and do not count them as reasoning failures.
 
-Scorer/parser: F3 109/150 comes from offline v1 rescoring (strict keys) of saved outputs with a corrected parser. Offline v1 gives exact match F0 0/150, F1 86/150, F2 7/150, F3 109/150. This is not the original online pipeline. That pipeline's parser marked all 150 F3 outputs malformed (bare JSON without the wrapper), so it recorded no valid F3 outputs. The offline figures do not show an F0-F3 gain from the original online pipeline.
+Scorer/parser: F3 109/150 comes from offline v1 rescoring (strict keys) of saved outputs with a corrected parser. Offline v1 gives exact match F0 0/150, F1 86/150, F2 7/150, F3 109/150. This is not the original online pipeline. That pipeline's parser marked all 150 F3 outputs malformed (bare JSON without the wrapper), so it recorded no valid F3 outputs. The offline figures do not show an F0-F3 gain from the original online pipeline. The published F2 39/150 under scorer v2 requires extracting the event sub-object, which is an arm-specific parser accommodation: without that unwrapping F2 scores 0/150, and strict-key v1 gives 7/150. It is therefore not a clean representation-only comparison.
 
 ---
 
@@ -44,6 +44,6 @@ Blinding: the arm can often be guessed from the answer format (F3 is bare JSON; 
 
 Post-result arms: F1 and F2 were designed after observing F3 and are exploratory post-result factorizations. F3 versus F0 is the comparison designated primary. We cannot verify when that designation was fixed, so we do not call it preregistered.
 
-Scorer/parser: the 109/150 F3 figure is offline v1 rescoring (strict keys) with a corrected parser: F0 0/150, F1 86/150, F2 7/150, F3 109/150. The original online parser marked all 150 F3 outputs malformed (bare JSON without the wrapper), so the online pipeline recorded no valid F3 outputs. The two are different measurements and should not be compared as one pipeline.
+Scorer/parser: the 109/150 F3 figure is offline v1 rescoring (strict keys) with a corrected parser: F0 0/150, F1 86/150, F2 7/150, F3 109/150. The original online parser marked all 150 F3 outputs malformed (bare JSON without the wrapper), so the online pipeline recorded no valid F3 outputs. The two are different measurements and should not be compared as one pipeline. The published F2 39/150 under scorer v2 requires extracting the event sub-object, which is an arm-specific parser accommodation: without that unwrapping F2 scores 0/150, and strict-key v1 gives 7/150. It is therefore not a clean representation-only comparison.
 
 Typography: we commit to correcting the PDF's typography, figure labelling, float placement, and notation before camera-ready. The correction has not been made yet.
