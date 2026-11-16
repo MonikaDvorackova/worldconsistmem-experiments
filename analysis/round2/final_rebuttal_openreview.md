@@ -20,7 +20,7 @@
 
 **Concern and answer.** The concern is that semantic grading is not yet established. Our semantic results are sensitivity analyses. B1 is a deterministic rule-based scorer applied to all 600 outputs. Human review covered only 50 Round 2 responses, with six unresolved disagreements.
 
-**B1-nodoc (sensitivity; n = 116).** We excluded the 34 document items after Round 2 showed they lack version identifiers, so this subset was chosen post hoc. Semantic correctness is F0 87/116, F1 90/116, F2 112/116, F3 109/116. The prespecified F3–F0 contrast is +19.0 pp (world-cluster bootstrap 95% CI [+9.6, +29.1], 18 worlds). Its item-level exact McNemar p = 3x10^-6 ignores clustering and multiple comparisons. All arms are 74/74 on uniquely specified items, so the contrast comes entirely from the 42 multi-candidate questions and depends on the latest-event convention. It is convention-dependent sensitivity evidence, not evidence of general semantic reasoning. On all 150 items under B1 the contrast is +14.7 pp (CI [+6.2, +22.9]).
+**B1-nodoc (sensitivity; n = 116).** We excluded the 34 document items after Round 2 showed they lack version identifiers, so this subset was chosen post hoc. Semantic correctness is F0 87/116, F1 90/116, F2 112/116, F3 109/116. The F3–F0 contrast is +19.0 pp (world-cluster bootstrap 95% CI [+9.6, +29.1], 18 worlds). Its item-level exact McNemar p = 3x10^-6 ignores clustering and multiple comparisons. All arms are 74/74 on uniquely specified items, so the contrast comes entirely from the 42 multi-candidate questions and depends on the latest-event convention. It is convention-dependent sensitivity evidence, not evidence of general semantic reasoning. On all 150 items under B1, the contrast is +14.7 pp (world-cluster bootstrap 95% CI [+6.2, +22.9]).
 
 **F2 versus F3 (B1-nodoc).** F2 minus F3 is +2.6 pp: world-cluster CI [-3.2, +9.0]; item-level paired CI [-2.5, +7.6]; exact McNemar p = 0.508. The evidence does not establish a difference.
 
@@ -32,7 +32,7 @@
 
 **To Rkeo: leakage, analysis choices, and post-hoc arms**
 
-**Concern and answer.** The concern is leakage, analysis degrees of freedom, and scorer changes. **Leakage.** We have not located a forensic leakage audit or a preregistration hash, so we do not claim that a leakage audit passed. We will add one to the supplement only after it is re-run and checked. Round 2 item-level outputs are in a git-ignored private snapshot; the committed per-item tables reproduce the reported counts.
+**Concern and answer.** The concern is leakage, analysis degrees of freedom, and scorer changes. **Leakage.** We have not located a forensic leakage audit or a preregistration hash, so we do not claim that a leakage audit passed. Round 2 item-level outputs are in a git-ignored private snapshot; the committed per-item tables reproduce the reported counts.
 
 **Analysis timeline.** F3 versus F0 is the primary comparison. F1 and F2 were designed after the F3 results and are exploratory. We cannot verify when the F3–F0 designation was fixed, so we do not call it preregistered, and we will not describe the arms as a prespecified 2x2 design.
 
