@@ -14,7 +14,7 @@ The 77/150 figure: we withdraw it as unreproducible. No repository table support
 
 The 34 document-version items are the original S2 items. They cannot be answered from the evidence packs, which contain no version identifiers, so we report them separately and do not count them as reasoning failures.
 
-Scorer/parser: F3 109/150 comes from offline v1 rescoring (strict keys) of saved outputs with a corrected parser. Offline v1 gives exact match F0 0/150, F1 86/150, F2 7/150, F3 109/150. This is not the original online pipeline. That pipeline's parser marked all 150 F3 outputs malformed (bare JSON without the wrapper), so it recorded no valid F3 outputs. The offline figures do not show an F0-F3 gain from the original online pipeline. The published F2 39/150 under scorer v2 requires extracting the event sub-object, which is an arm-specific parser accommodation: without that unwrapping F2 scores 0/150, and strict-key v1 gives 7/150. It is therefore not a clean representation-only comparison.
+Scorer/parser: F3 109/150 is offline v1 rescoring (strict keys) of saved outputs with a corrected parser; offline v1 gives F0 0/150, F1 86/150, F2 7/150, F3 109/150. It is not the original online pipeline, whose parser marked all 150 F3 outputs malformed (bare JSON without the wrapper), so it recorded no valid F3 outputs and shows no F0-F3 gain. The published F2 39/150 under scorer v2 requires extracting the event sub-object, a parser accommodation: without that unwrapping F2 scores 0/150, and strict-key v1 gives 7/150. It is not a clean representation-only comparison.
 
 ---
 
