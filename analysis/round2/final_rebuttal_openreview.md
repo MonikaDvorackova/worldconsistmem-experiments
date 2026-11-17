@@ -1,6 +1,6 @@
 # ICLR 2027 Rebuttal — WorldConsistMem (Submission 49130)
 
-**Canonical draft (PR #10). Not submitted to OpenReview.** This file contains the three reviewer comments only, revised against the reviewer texts supplied for this round. Word counts include headings. Verify each comment against the full OpenReview review text before posting; that text is not in the repository, so the concerns quoted here come from the authors' response drafts. Numbers are traced in `analysis/round2/REBUTTAL_NUMBER_AUDIT.md`. The Qwen temporal-control result appears only in the EdSa reply, as a non-replication note; its full record is in the audit file.
+**Canonical draft (PR #10). Not submitted to OpenReview.** This file contains the three reviewer comments, checked against the full review texts supplied by the author. Word counts include headings. Numbers are traced in `analysis/round2/REBUTTAL_NUMBER_AUDIT.md`. The Qwen temporal-control result appears only in the EdSa reply, as a non-replication note; its full record is in the audit file.
 
 ---
 
@@ -46,4 +46,4 @@ Post-result arms: F1 and F2 were designed after observing F3 and are exploratory
 
 Scorer/parser: the 109/150 F3 figure is offline v1 rescoring (strict keys) with a corrected parser: F0 0/150, F1 86/150, F2 7/150, F3 109/150. The original online parser marked all 150 F3 outputs malformed (bare JSON without the wrapper), so the online pipeline recorded no valid F3 outputs. The two are different measurements and should not be compared as one pipeline. The published F2 39/150 under scorer v2 requires extracting the event sub-object, which is an arm-specific parser accommodation: without that unwrapping F2 scores 0/150, and strict-key v1 gives 7/150. It is therefore not a clean representation-only comparison.
 
-Typography: we commit to correcting the PDF's typography, figure labelling, float placement, and notation before camera-ready. The correction has not been made yet.
+Typography: since review, we prepared a revised 20-page local candidate with fixes to link styling, float placement, Table 6, Figure 2 labels, and long identifiers. Figure 3 is legible but remains small relative to body text. We could not verify this candidate against the PDF uploaded to OpenReview, so we do not claim that the submitted manuscript was changed.
