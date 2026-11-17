@@ -1,3 +1,5 @@
+> **SUPERSEDED, do not paste.** Canonical rebuttal: `analysis/round2/final_rebuttal_openreview.md` (PR #10). Errors in this file are listed in `analysis/round2/REBUTTAL_NUMBER_AUDIT.md`.
+
 # Final Claims — Verified Against Raw Records
 
 **Date:** 2026-11-12  
@@ -46,7 +48,7 @@ The `Latest` column is the marginal count of responses matching the latest event
 
 **Conclusion:** Temporal evidence structure (F2, F3) is associated with substantially fewer stale-state errors vs generic prompting (F0, F1). F2 and F3 are not significantly different in temporal event selection. **VERIFIED.**
 
-**Clustering caveat:** 42 items span 12 worlds (mean 3.5/world). World-level sign test: 10/12 worlds favor F2 over F0 (p=0.001). Item-level CIs are approximate due to within-world correlation.
+**Clustering caveat:** 42 items span 12 worlds (mean 3.5/world). World-level sign test: 10 of 10 non-tied worlds favor F2 over F0, two tie (one-sided exact p=0.00098). Item-level CIs are approximate due to within-world correlation.
 
 ### 3. B1-nodoc semantic comparison (n = 116)
 

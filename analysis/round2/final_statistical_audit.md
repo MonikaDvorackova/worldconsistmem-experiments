@@ -51,7 +51,7 @@ All numerical claims below were computed from raw item records, not from prior M
 | F2 wins, F1 wins | 22, 0 | +0.524 | [+0.373, +0.675] | <0.0001 |
 | F3 wins, F2 wins | 3, 6 | −0.071 | [−0.210, +0.067] | 0.508 |
 
-**Clustering caveat:** 42 items span 12 worlds (mean 3.5 items/world). Item-level McNemar treats items as independent, which is approximate. World-level sign test: F2 has fewer stale than F0 in 10/12 non-tied worlds, more in 0/12 (sign test p=0.001 one-sided). The item-level direction is robust but confidence intervals should be interpreted with awareness of within-world correlation.
+**Clustering caveat:** 42 items span 12 worlds (mean 3.5 items/world). Item-level McNemar treats items as independent, which is approximate. World-level sign test: F2 has fewer stale than F0 in 10 of 10 non-tied worlds, more in 0; two worlds tie (one-sided exact sign-test p=0.00098). The item-level direction is robust but confidence intervals should be interpreted with awareness of within-world correlation.
 
 ### Slot-level asymmetry (critical finding)
 

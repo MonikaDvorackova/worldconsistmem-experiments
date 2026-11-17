@@ -1,3 +1,5 @@
+> **SUPERSEDED, do not paste.** Canonical rebuttal: `analysis/round2/final_rebuttal_openreview.md` (PR #10). Errors in this file are listed in `analysis/round2/REBUTTAL_NUMBER_AUDIT.md`.
+
 # Final Claim–Evidence Matrix — WorldConsistMem
 
 **Date:** 2026-11-12  
@@ -50,7 +52,7 @@
 | Calculation | STALE_STATE = `matched_positions` contains 'earliest' but not 'latest' |
 | Result | F0=23, F1=17, F2=2, F3=7 |
 | Paired effects | F0 vs F2: RD=+0.452 [+0.275, +0.629], p=0.0001; F0 vs F3: RD=+0.381 [+0.173, +0.589], p=0.0025; F1 vs F2: RD=+0.524 [+0.373, +0.675], p<0.0001; F2 vs F3: RD=−0.071 [−0.210, +0.067], p=0.508 |
-| Uncertainty | 42 items in 12 worlds; CI is approximate under item-level independence. World-level sign test confirms direction (p=0.001). |
+| Uncertainty | 42 items in 12 worlds; CI is approximate under item-level independence. World-level sign test (10 of 10 non-tied worlds, two ties; one-sided exact p=0.00098) confirms direction. |
 | Limitation | (a) F1 asymmetry: F1/CEO-mc stale=85%, F1/own-mc stale=0%. The improvement from F1→F2 is entirely on CEO questions. For own-mc, schema-only (F1) already avoids stale-state. (b) F2 vs F3 is not significant (p=0.508) — both temporal-representation arms perform comparably. (c) Mechanism is unidentified: could be positional-cue exploitation rather than temporal reasoning. |
 | Rebuttal sentence | "Including temporal structure in evidence presentation is associated with substantially fewer stale-state CEO errors (F2: 10%, F3: 35% vs F1: 85%, F0: 55%; McNemar p<0.001 for F1 vs F2). F2 and F3 perform comparably on temporal accuracy (McNemar p=0.508)." |
 | Status | VERIFIED with F1-asymmetry qualification |

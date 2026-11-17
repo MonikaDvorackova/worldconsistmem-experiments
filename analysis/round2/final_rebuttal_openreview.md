@@ -1,35 +1,49 @@
 # ICLR 2027 Rebuttal — WorldConsistMem (Submission 49130)
 
-**Revised draft — not submitted.** Check the final manuscript and current OpenReview word/page limit before use. This replaces older, conflicting rebuttal drafts.
+**Canonical draft (PR #10). Not submitted to OpenReview.** This file contains the three reviewer comments, checked against the full review texts supplied by the author. Word counts include headings. Numbers are traced in `analysis/round2/REBUTTAL_NUMBER_AUDIT.md`. The Qwen temporal-control result appears only in the EdSa reply, as a non-replication note; its full record is in the audit file.
 
-We thank reviewers Rkeo, vfz3, and EdSa. We agree that exact-match tuple accuracy, question-aligned semantic correctness, and cross-query consistency are distinct outcomes. We have narrowed our interpretation accordingly. The H4 findings are limited to one model snapshot, 18 worlds, and 150 questions.
+---
 
-## vfz3: schema compliance and label stability
+**To vfz3: schema compliance, the 77/150 issue, and the scorer/parser question**
 
-We re-scored all 600 outputs with the schema-agnostic, question-aligned B1 rule. On the 74 structurally unique questions, every arm is semantically correct on 74/74, while exact-match is F0 10/74, F1 74/74, F2 12/74, and F3 74/74. Thus the F3–F0 exact-match gap on this subset is 64 items, while the semantic difference is zero. We will describe this as an output-contract effect on these questions, not a semantic-reasoning gain.
+Schema compliance: on the 74 uniquely specified questions, all four arms are semantically correct in 74/74 cases under the schema-agnostic, question-aligned rule B1. Exact match is F0 10/74, F1 74/74, F2 12/74, F3 74/74. F0 was prompted with schema=transition_tuple, but that prompt did not enumerate every gold field. Its exact-match failures on these items therefore reflect output format, since its answers are semantically correct. The 64-item F3-F0 exact-match gap on this subset is an output-format effect, not a semantic gain.
 
-For 42 multi-candidate questions, the gold convention selects the latest event, but the question text does not state that convention. Under that convention, stale-state counts are F0 23/42, F1 17/42, F2 2/42, and F3 7/42; the separate latest-selection counts are 19/42, 16/42, 38/42, and 35/42. These measures are reported separately. F0 versus F2 latest selection has item-level RD +45.2 pp (95% CI [+27.5, +62.9], exact McNemar p=0.000066). Because the 42 items cluster in 12 worlds, we also report the world-level sign test: 10 non-tied worlds favor F2, none favor F0, and two tie; the one-sided exact p-value over the 10 non-tied worlds is 0.00098. The item-level result is not treated as 42 independent replications.
+Multi-candidate questions (42): the wording does not state the latest-event convention the gold labels use. Stale-state errors are F0 23/42, F1 17/42, F2 2/42, F3 7/42. Under that convention, 10 of 10 non-tied worlds favour F2 over F0, none favour F0, and two tie (one-sided exact sign-test p = 0.00098). This is an association under an implicit convention, not evidence of temporal reasoning.
 
-This is an association under an implicit gold convention, not proof of temporal reasoning. F1, which has no temporal structure, has zero stale ownership answers among 22 ownership items but 17/20 stale CEO answers, indicating substantial question-template asymmetry. Under a sensitivity rule crediting any single documented candidate event, semantic scores are F0 144/150, F1 149/150, F2 150/150, and F3 150/150. We will disclose the dependence on this scoring convention.
+The 77/150 figure: we withdraw it as unreproducible. No repository table supports it. Round 2 did not rate evidence sufficiency. It re-rated semantic correctness for the 50 Round 1 disagreements: 44/50 agreement (kappa = 0.758; case-cluster bootstrap 95% CI [0.517, 0.957] over 20 cases), with six unresolved. Because the sample was selected on disagreement, this is not a before-after reliability comparison.
 
-Round 2 agreement was 44/50 (κ=0.758; clustered bootstrap 95% CI [0.517, 0.957]) under a revised rubric. Six disagreements remain unresolved. This is evidence about agreement under that rubric, not independent validation of every gold label; we do not characterize Round 1 κ=0.336 as “noise” or as fully resolved by the second round.
+The 34 document-version items are the original S2 items. They cannot be answered from the evidence packs, which contain no version identifiers, so we report them separately and do not count them as reasoning failures.
 
-## EdSa: semantic grading, document items, and generalization
+Scorer/parser: F3 109/150 is offline v1 rescoring (strict keys) of saved outputs with a corrected parser; offline v1 gives F0 0/150, F1 86/150, F2 7/150, F3 109/150. It is not the original online pipeline, whose parser marked all 150 F3 outputs malformed (bare JSON without the wrapper), so it recorded no valid F3 outputs and shows no F0-F3 gain. The published F2 39/150 under scorer v2 requires extracting the event sub-object, a parser accommodation: without that unwrapping F2 scores 0/150, and strict-key v1 gives 7/150. It is not a clean representation-only comparison.
 
-On B1-nodoc, excluding the 34 document questions whose requested version transition cannot be identified from the supplied evidence, semantic scores are F0 87/116 (75.0%), F1 90/116 (77.6%), F2 112/116 (96.6%), and F3 109/116 (94.0%). The paired F2–F3 difference is +2.6 pp (95% CI [−2.5, +7.6], exact McNemar p=0.508); the evidence does not establish a difference. Under full B1 scoring, F2 receives 20 spurious document credits because of the prev/event/next format. We will separate these items and remove any claim that F3 has the highest semantic accuracy.
+---
 
-B1 is a deterministic rule-based scorer, not human grading of all 600 outputs. Human review covered a 50-response Round 2 sample, with six unresolved disagreements. Cross-model generalization remains untested.
+**To EdSa: sensitivity analyses, the latest-event convention, and generalization**
 
-## Rkeo: leakage, analysis choices, and presentation
+B1 is a deterministic rule-based scorer applied to all 600 outputs. We report B1 and B1-nodoc as sensitivity analyses. Human review covered 50 Round 2 responses, with six unresolved disagreements.
 
-The forensic audit passed its 26 checks. The 17-scenario sensitivity analysis is reported with the limitations above. We clarify the analysis timeline: **F3 versus F0 is the prespecified comparison; F1 and F2 are exploratory post-result factorizations.** We will not describe the four arms as a prespecified 2×2 design. This replaces an earlier draft that said otherwise.
+Latest-event convention: the question wording does not state it, and the gold labels use the most recent event at world end-time. Every comparison on the 42 multi-candidate questions depends on it.
 
-BCR is a stricter bundle-level metric than per-query accuracy, but BCR=0 at per-query accuracy around 18.5% is not surprising under independent errors. We therefore do not use BCR=0 as evidence that models lack an internal world model or as evidence of excess dependence beyond an independence baseline. We will frame BCR as a complementary joint-success measure and state what the current results do and do not establish.
+B1-nodoc (n = 116) excludes the 34 document items. These are the original S2 items and are unanswerable from the evidence packs, which contain no version identifiers. The exclusion was decided after Round 2, so this subset is post hoc. Semantic correctness is F0 87/116, F1 90/116, F2 112/116, F3 109/116. The F3-F0 contrast is +19.0 pp (world-cluster bootstrap 95% CI [+9.6, +29.1], 18 worlds). Its item-level exact McNemar p = 3x10^-6 ignores clustering and multiple comparisons. All arms are 74/74 on uniquely specified items, so the contrast comes entirely from the multi-candidate questions and depends on the convention. On all 150 items under B1, semantic counts are F0 91/150, F1 90/150, F2 132/150, F3 113/150; the F3-F0 contrast is +14.7 pp (world-cluster bootstrap 95% CI [+6.2, +22.9]). The F2 count includes the 20 document credits noted below.
 
-## Post-review local temporal-control experiment
+F2 minus F3 on B1-nodoc is +2.6 pp (world-cluster CI [-3.2, +9.0]; item-level paired CI [-2.5, +7.6]; exact McNemar p = 0.508). The evidence does not establish a difference.
 
-As an exploratory follow-up, we ran 100 new worlds and 800 local predictions with Qwen2.5-3B-Instruct-4bit. The prespecified B–C world-paired difference was −36.0 pp (95% CI [−40.5, −31.5], sign-flip p=0.000010); accuracies were 0.5% for B and 36.5% for C. This does not support the directional hypothesis for these prompt implementations. B prompts averaged 28,228 tokens versus 13,577 for C, and this run used a different model from the original H4 study. We do not attribute the contrast to temporal edges or treat it as a replication.
+Generalization: a full F0-F3 replication on another model was not run. The separate Qwen2.5-3B local B-C control is not that replication. It is a negative result for the explicit-edge condition, confounded with prompt length, and it does not support generalization of the F0-F3 findings.
 
-## Revisions to the paper
+Baseline: F0 is a generic response interface, not a representative production-memory baseline. The contrast tested is interface-conditioned structured accuracy, not generic memory-system capability.
 
-We will distinguish exact-match compliance, question-aligned semantic scoring, and temporal selection; disclose the implicit latest-event convention and the 34 unidentifiable document items; label F1/F2 exploratory; report the BCR independence caveat; remove semantic-superiority claims for F3; and limit H4 conclusions to the tested model and worlds. 
+We will remove the claim that F3 has the highest semantic accuracy.
+
+---
+
+**To Rkeo: leakage, post-result arms, scorer/parser, and typography**
+
+Frozen setup: all four arms used gpt-4.1-2025-04-14, temperature 0, max_tokens 256, the same 150 query IDs, and identical evidence blocks for every query (`evaluation_report.md`). The public artifacts do not verify subtype-schema routing and do not rule out leakage there. We have not located a 26-check forensic audit, so we do not cite one. The response-to-arm mapping was checked in a git-ignored private snapshot that is not public, so that check cannot be reproduced from this repository.
+
+Blinding: the arm can often be guessed from the answer format (F3 is bare JSON; F2 is prev/event/next), so human review was not blind to arm in practice.
+
+Post-result arms: F1 and F2 were designed after observing F3 and are exploratory post-result factorizations. F3 versus F0 is the comparison designated primary. We cannot verify when that designation was fixed, so we do not call it preregistered.
+
+Scorer/parser: the 109/150 F3 figure is offline v1 rescoring (strict keys) with a corrected parser: F0 0/150, F1 86/150, F2 7/150, F3 109/150. The original online parser marked all 150 F3 outputs malformed (bare JSON without the wrapper), so the online pipeline recorded no valid F3 outputs. The two are different measurements and should not be compared as one pipeline. The published F2 39/150 under scorer v2 requires extracting the event sub-object, which is an arm-specific parser accommodation: without that unwrapping F2 scores 0/150, and strict-key v1 gives 7/150. It is therefore not a clean representation-only comparison.
+
+Typography: since review, we prepared a revised 20-page local candidate with fixes to link styling, float placement, Table 6, Figure 2 labels, and long identifiers. Figure 3 is legible but remains small relative to body text. We could not verify this candidate against the PDF uploaded to OpenReview, so we do not claim that the submitted manuscript was changed.
